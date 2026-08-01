@@ -90,8 +90,8 @@ export interface RecentUpdate {
 }
 
 export const PERSONAL_INFO = {
-  name: "西门",
-  fullName: "西门美月勾",
+  name: "小柚",
+  fullName: "小柚",
   englishTitle: "A Product Manager & Vibe Coder",
   practiceTime: "两年半",
   tags: ["Bilibili Creator", "Digital Writer", "Hyperactive Otaku", "toB PM by day", "Vibe Coder by night"],
@@ -102,9 +102,9 @@ export const PERSONAL_INFO = {
   currentRole: "toB 软件产品经理",
   university: "上海交通大学",
   major: "电气工程及其自动化",
-  idCardNo: "XM-20000508-OVO",
+  idCardNo: "XY-20000508-OVO",
   email: "1070218613@qq.com",
-  bilibiliName: "西门美月勾",
+  bilibiliName: "小柚",
   github: "XMMXOVO"
 };
 

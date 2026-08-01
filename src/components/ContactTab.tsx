@@ -110,10 +110,10 @@ export const ContactTab: React.FC = () => {
             
             <div className="border-b-2 border-black pb-4">
               <h3 className="text-xl sm:text-2xl font-black text-black">
-                给西门留言 📝
+                给小柚留言 📝
               </h3>
               <p className="text-xs font-semibold text-gray-600 mt-1">
-                留下你的名字和想法，消息将直接呈递给西门。
+                留下你的名字和想法，消息将直接呈递给小柚。
               </p>
             </div>
 
@@ -124,7 +124,7 @@ export const ContactTab: React.FC = () => {
                 </div>
                 <h4 className="text-2xl font-black text-black">收到你的留言啦！</h4>
                 <p className="text-sm font-bold text-gray-800">
-                  谢谢你的来信！西门会在看到后第一时间回复你～
+                  谢谢你的来信！小柚会在看到后第一时间回复你～
                 </p>
                 <button
                   onClick={() => {

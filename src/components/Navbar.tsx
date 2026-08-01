@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
           <span className="w-7 h-7 bg-[#FF5C8D] rounded-full border-2 border-black flex items-center justify-center text-xs font-bold shadow-[1px_1px_0px_0px_#000]">
             U
           </span>
-          <span className="tracking-tight hidden xs:inline-block">西门美月勾</span>
+          <span className="tracking-tight hidden xs:inline-block">小柚</span>
         </button>
 
         {/* Desktop Nav Items */}
