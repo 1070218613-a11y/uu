@@ -1,0 +1,6 @@
+{
+  "name": "个人主页 | Neo-Pop Personal Site",
+  "description": "具有 neo-brutalist 潮酷风格的个人网站，涵盖首页、关于我、教育背景、工作经历、作品项目、技能与爱好和联系我。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
