@@ -111,11 +111,25 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
 
               <div className="flex items-center justify-between text-xs font-bold text-black">
                 <span className="flex items-center gap-1 text-purple-700 font-black">
-                  <ExternalLink className="w-3.5 h-3.5" /> 查看产品详情
+                  <ExternalLink className="w-3.5 h-3.5" /> {proj.demoUrl ? "阅读文章 / 查看详情" : "查看产品详情"}
                 </span>
-                <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center font-black group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
+                {proj.demoUrl ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(proj.demoUrl, '_blank', 'noopener,noreferrer');
+                    }}
+                    title="点击直接跳转阅读原文"
+                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black hover:bg-[#FF5C8D] hover:scale-110 active:scale-95 transition-all shadow-[2px_2px_0px_0px_#000]"
+                  >
+                    →
+                  </button>
+                ) : (
+                  <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center font-black group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                )}
               </div>
             </div>
 

@@ -60,7 +60,17 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </p>
               </div>
 
-              <div className="pt-6 border-t-2 border-dashed border-gray-300 flex justify-end">
+              <div className="pt-6 border-t-2 border-dashed border-gray-300 flex items-center justify-between">
+                {art.linkUrl ? (
+                  <a
+                    href={art.linkUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-pink-600 transition-colors"
+                  >
+                    <span>前往微信公众号阅读原文</span> <ExternalLink className="w-4 h-4" />
+                  </a>
+                ) : <div />}
                 <button
                   onClick={onClose}
                   className="px-6 py-2.5 font-black bg-yellow-300 border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-yellow-400"
@@ -180,7 +190,17 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </div>
               </div>
 
-              <div className="pt-4 border-t-2 border-dashed border-gray-300 flex justify-end">
+              <div className="pt-4 border-t-2 border-dashed border-gray-300 flex items-center justify-between">
+                {proj.demoUrl ? (
+                  <a
+                    href={proj.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-pink-600 transition-colors"
+                  >
+                    <span>前往微信公众号阅读原文</span> <ExternalLink className="w-4 h-4" />
+                  </a>
+                ) : <div />}
                 <button
                   onClick={onClose}
                   className="px-6 py-2.5 bg-black text-white font-bold rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#FF5C8D]"

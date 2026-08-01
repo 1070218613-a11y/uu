@@ -8,6 +8,7 @@ export interface Article {
   readTime: string;
   content?: string;
   image?: string;
+  linkUrl?: string;
 }
 
 export interface VideoItem {
@@ -136,6 +137,17 @@ export const RECENT_UPDATES: RecentUpdate[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-happy",
+    title: "《快乐的》",
+    category: "深度随笔",
+    date: "2024-05-10",
+    summary: "讲述一个人究竟怎样才能真正快乐，探索内心秩序与自我主体性。",
+    tagColor: "bg-[#FF5C8D]",
+    readTime: "6 min read",
+    content: "这篇文章讲述了一个人怎么才能快乐。探讨如何摆脱外界情绪干扰与焦虑、构建属于自己的内心秩序、找回自我主体性，以及在琐碎生活中拥抱纯粹的快乐。\n\n点击下方按钮可直接跳转至微信公众号查看文章原文！",
+    linkUrl: "https://mp.weixin.qq.com/s/8zi86FuWqfKvgBYvEOaHlA"
+  },
   {
     id: "art-1",
     title: "我可有可无的网友",
@@ -412,6 +424,23 @@ export const EXPERIENCES_DATA: ExperienceInfo[] = [
 ];
 
 export const PROJECTS_DATA: ProjectInfo[] = [
+  {
+    id: "proj-happy-article",
+    title: "深度文章随笔：《快乐的》",
+    category: "Side Project",
+    subtitle: "关于一个人究竟怎样才能获得真正快乐与内心平静的探索",
+    description: "讲述一个人怎么才能快乐。文章深入探讨了如何摆脱焦虑干扰、构建内心秩序、找到自我主体性，以及在琐碎日常中拥抱纯粹快乐的思考。",
+    tags: ["微信公众号", "深度文章", "快乐哲学", "情绪探索"],
+    tagBg: "bg-[#FF5C8D]",
+    demoUrl: "https://mp.weixin.qq.com/s/8zi86FuWqfKvgBYvEOaHlA",
+    highlights: [
+      "记录关于人生态度、情绪解耦与内心平静的深刻随笔",
+      "探讨如何找回自我主体性与拥抱真实的快乐",
+      "点击右下方箭头或详情按钮可直接跳转微信公众号阅读原文"
+    ],
+    coverColor: "bg-[#FFE4E6]",
+    iconName: "BookOpen"
+  },
   {
     id: "proj-1",
     title: "AI Vibe Coding 极速网页构建器",
