@@ -19,58 +19,61 @@ export const AboutTab: React.FC = () => {
                 Welcome to
               </h1>
               <div className="inline-block bg-[#3B82F6] text-white px-5 py-2 rounded-2xl border-3 border-black shadow-[4px_4px_0px_0px_#000] -rotate-1">
-                <span className="text-2xl sm:text-4xl font-black">{PERSONAL_INFO.name}的世界！</span>
+                <span className="text-2xl sm:text-4xl font-black">{PERSONAL_INFO.name} (小柚) 的世界！</span>
               </div>
             </div>
 
             {/* Paragraph 1 */}
             <div className="text-sm sm:text-base text-gray-800 leading-relaxed font-medium space-y-3">
               <p>
-                我出生于 2000 年 5 月，在浙江的一个小村镇长大。家庭环境比较自由，家人都不会对我的选择做过多干涉。这导致我在肆意生长的过程中，拥有了很多复杂的成分。Anyway，欢迎来到西门的世界！
+                我是梁靖悠，2026 届本科应届生，毕业于深圳技术大学（SZTU）工业设计专业，中共党员。在校期间专业成绩优异（GPA 4.32，排名 3/122），荣获国家奖学金与校长奖学金。在系统化设计方法与前沿 AI 技术的结合点上，坚定深耕 AI 产品经理 方向。
               </p>
               
               <p className="p-3 bg-pink-50 border-2 border-black rounded-xl font-bold text-gray-900">
-                我是一只 <span className="bg-pink-300 px-1.5 py-0.5 rounded border border-black">高精力死宅</span>，对出去游山玩水无感，但精力异常旺盛，脑子里 Idea 疯狂溢出。现实中轻微社恐，但在网络上结交了一群素未谋面的电子好友！
+                具备 <span className="bg-pink-300 px-1.5 py-0.5 rounded border border-black">企业级 AI 产品规划与落地经验</span>，能够独立完成业务调研、需求分析、流程梳理、PRD 及原型设计。理解 LLM、MCP、Agent、幻觉等技术原理，具备智能体工作流、工具调用、人机协同与异常兜底能力。
               </p>
 
               <p>
-                目前在一家 995 的 toB 软件公司做产品经理，同时也是一名 B 站小 up 主。还佛系经营了一家女生情趣用品小店（尽管我观念还是比较传统，咳咳）。
+                在实习与项目中主导了【零食电商 AI 客服助手】与【AI 营销工作台】，基于 Dify、RAG 混合召回与自动化 Eval 评测体系推动产品高质上线，让客服 AI 独立解决率达 63.5%，营销文案生产耗时下降 72%。同时曾任校团委主席、音乐社社长及班长，带领团队统筹多场千人级校级活动。
               </p>
             </div>
 
             {/* Tags Pills */}
             <div className="flex flex-wrap gap-2 pt-2">
               <span className="px-3 py-1 bg-[#FEF08A] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🌱 2000年白羊座
+                🎓 深圳技术大学 (SZTU)
               </span>
               <span className="px-3 py-1 bg-[#6EE7B7] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🎓 SJTU 电气工程
+                ⭐ GPA 4.32 (排名 3/122)
               </span>
               <span className="px-3 py-1 bg-[#F472B6] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                💻 toB 软件 PM
+                🏆 国家奖学金
               </span>
               <span className="px-3 py-1 bg-[#A78BFA] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                ⚡ Vibe Coder
+                🤖 AI 产品经理 (26届)
+              </span>
+              <span className="px-3 py-1 bg-[#FDE047] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
+                🚩 中共党员
               </span>
             </div>
 
           </div>
 
-          {/* Right ID Card Visual Element (Matching Screenshot 2 & 3) */}
+          {/* Right ID Card Visual Element */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm bg-[#52E595] border-3 sm:border-4 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_#000] space-y-4">
               
               {/* Sticker overlay top right */}
               <div className="absolute -top-5 -right-5 w-16 h-16 bg-[#FF5C8D] border-2 border-black rounded-full flex flex-col items-center justify-center font-black text-[10px] text-black shadow-[3px_3px_0px_0px_#000] rotate-12 z-20">
-                <span className="text-base">😊</span>
-                <span>XMMXOVO</span>
+                <span className="text-base">✨</span>
+                <span>AI PM</span>
               </div>
 
               {/* ID Card Header */}
               <div className="flex items-center justify-between border-b-2 border-black pb-2">
                 <div>
-                  <h3 className="font-black text-lg text-black">身份证</h3>
-                  <p className="text-[10px] font-extrabold tracking-wider text-black">SHANGHAI JIAOTONG UNIVERSITY</p>
+                  <h3 className="font-black text-lg text-black">身份证件 / ID CARD</h3>
+                  <p className="text-[10px] font-extrabold tracking-wider text-black">SHENZHEN TECHNOLOGY UNIVERSITY</p>
                 </div>
                 <Sparkles className="w-5 h-5 text-black" />
               </div>
@@ -91,7 +94,7 @@ export const AboutTab: React.FC = () => {
                     </svg>
                   </div>
                   <span className="mt-2 text-[10px] font-black text-black bg-yellow-200 px-1.5 py-0.5 rounded border border-black">
-                    交大老学姐
+                    SZTU 国奖应届
                   </span>
                 </div>
 
@@ -100,20 +103,20 @@ export const AboutTab: React.FC = () => {
                   
                   {/* Field 1: Name */}
                   <div className="bg-[#FEF08A] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
-                    <span className="text-[9px] font-black text-gray-700 block">名称</span>
-                    <span className="text-base font-black text-black">{PERSONAL_INFO.name}</span>
+                    <span className="text-[9px] font-black text-gray-700 block">姓名</span>
+                    <span className="text-base font-black text-black">{PERSONAL_INFO.fullName} (小柚)</span>
                   </div>
 
                   {/* Field 2: Major */}
                   <div className="bg-[#CBE4FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
-                    <span className="text-[9px] font-black text-gray-700 block">专业 / 学系</span>
-                    <span className="text-xs font-black text-black">{PERSONAL_INFO.major}</span>
+                    <span className="text-[9px] font-black text-gray-700 block">专业 / 成绩</span>
+                    <span className="text-xs font-black text-black">工业设计 · GPA 4.32 (3/122)</span>
                   </div>
 
                   {/* Field 3: Job */}
                   <div className="bg-[#E9D5FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
-                    <span className="text-[9px] font-black text-gray-700 block">工作</span>
-                    <span className="text-xs font-black text-black">{PERSONAL_INFO.currentRole}</span>
+                    <span className="text-[9px] font-black text-gray-700 block">求职意向</span>
+                    <span className="text-xs font-black text-black">AI 产品经理 (深圳/全职)</span>
                   </div>
 
                 </div>
@@ -124,10 +127,10 @@ export const AboutTab: React.FC = () => {
               <div className="pt-2 space-y-2 border-t-2 border-black">
                 <div className="flex items-center gap-2">
                   <span className="bg-[#3B82F6] text-white text-[10px] font-black px-2 py-0.5 rounded border border-black">
-                    {PERSONAL_INFO.birthDate}
+                    中共党员
                   </span>
                   <span className="bg-[#FF5C8D] text-white text-[10px] font-black px-2 py-0.5 rounded border border-black">
-                    {PERSONAL_INFO.hometown}
+                    深圳
                   </span>
                   <span className="text-[10px] font-mono font-bold text-gray-800 ml-auto">
                     ID: {PERSONAL_INFO.idCardNo}
@@ -146,14 +149,14 @@ export const AboutTab: React.FC = () => {
                     ))}
                   </div>
                   <span className="text-[8px] font-mono font-bold text-gray-500 mt-1">
-                    VERIFIED · SHANGHAI JIAOTONG UNIVERSITY
+                    VERIFIED · SHENZHEN TECHNOLOGY UNIVERSITY (SZTU)
                   </span>
                 </div>
               </div>
 
               {/* Bottom sticker overlay */}
               <div className="absolute -bottom-4 -right-2 bg-[#FF5C8D] text-black font-black text-[10px] px-3 py-1 rounded-full border-2 border-black shadow-[2px_2px_0px_0px_#000] rotate-[-6deg] z-20">
-                官方氛围
+                国家奖学金获得者
               </div>
 
             </div>

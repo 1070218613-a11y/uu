@@ -87,7 +87,7 @@ export const ContactTab: React.FC = () => {
 
               <div className="p-3.5 bg-emerald-50 border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000] font-bold text-sm text-black flex items-center justify-between">
                 <span className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-emerald-600" /> 微信: 西门的电子小站
+                  <MessageSquare className="w-4 h-4 text-emerald-600" /> 微信: 小柚 (梁靖悠)
                 </span>
                 <span className="text-xs bg-white px-2 py-0.5 rounded border border-black font-mono">
                   Online
@@ -97,7 +97,7 @@ export const ContactTab: React.FC = () => {
 
             <div className="p-4 bg-purple-50 border-2 border-black rounded-2xl text-xs font-extrabold text-purple-900 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-purple-600 shrink-0" />
-              <span>一定会成为一个很棒的大人！一定会做出超酷的产品！</span>
+              <span>以严谨的设计与技术洞察，构建真正解决业务痛点的智能体与产品体验！</span>
             </div>
 
           </div>
@@ -163,7 +163,7 @@ export const ContactTab: React.FC = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-black text-black block">想对西门说的话 *</label>
+                  <label className="text-xs font-black text-black block">想对小柚说的话 *</label>
                   <textarea
                     required
                     rows={4}

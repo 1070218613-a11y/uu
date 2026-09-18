@@ -91,19 +91,35 @@ export interface RecentUpdate {
 }
 
 export const PERSONAL_INFO = {
-  name: "小柚",
-  fullName: "小柚",
-  englishTitle: "A Product Manager & Vibe Coder",
+  name: "梁靖悠",
+  nickname: "小柚",
+  fullName: "梁靖悠",
+  englishTitle: "AI Product Manager | 2026 Batch | Shenzhen",
+  targetRole: "AI产品经理",
+  politicalStatus: "中共党员",
+  graduationYear: "2026届本科应届生",
+  location: "广东深圳",
+  phone: "18933174576",
   practiceTime: "两年半",
-  tags: ["Bilibili Creator", "Digital Writer", "Hyperactive Otaku", "toB PM by day", "Vibe Coder by night"],
-  motto: "A PASSIONATE FOOOOOL !!!",
-  bioShort: "出生于 2000 年 5 月，上海交通大学电气工程毕业。一只高精力死宅，脑子里 Idea 疯狂溢出！",
-  birthDate: "2000.05.08",
-  hometown: "浙江",
-  currentRole: "toB 软件产品经理",
-  university: "上海交通大学",
-  major: "电气工程及其自动化",
-  idCardNo: "XY-20000508-OVO",
+  tags: [
+    "AI产品经理",
+    "26届应届生",
+    "中共党员",
+    "深圳技术大学",
+    "GPA 4.32 (3/122)",
+    "国家奖学金",
+    "Agent & RAG",
+    "工业设计"
+  ],
+  motto: "以严谨的设计与技术洞察，构建真正解决业务痛点的智能体与产品体验！",
+  bioShort: "深圳技术大学工业设计专业（GPA 4.32，排名 3/122，国家奖学金，中共党员）。具备企业级 AI 产品规划与落地经验，能够独立完成业务调研、需求分析、流程梳理、PRD 及原型设计。深度理解 LLM、MCP、Agent、幻觉等技术原理，熟练掌握智能体工作流、RAG 混合检索、自动化 Eval 评测及 Bad Case 闭环迭代。",
+  profileSummary: "具备企业级AI产品规划与落地经验，能够独立完成业务调研、需求分析、流程梳理、PRD及原型设计。理解LLM、MCP、Agent、幻觉等技术原理，具备智能体工作流、工具调用、异常处理、人机协同、异常兜底设计能力。拥有RAG、Prompt工程及低代码AI应用实践，能够协同技术团队推动产品评测、上线与Bad Case迭代。",
+  birthDate: "2004.05",
+  hometown: "广东深圳",
+  currentRole: "AI产品经理 (26届应届生)",
+  university: "深圳技术大学 (SZTU)",
+  major: "工业设计专业 (GPA 4.32 排名 3/122)",
+  idCardNo: "SZTU-202209-LJY",
   email: "1070218613@qq.com",
   bilibiliName: "小柚",
   github: "XMMXOVO"
@@ -277,153 +293,215 @@ export const QUEST_TIMELINE: TimelineEvent[] = [
   {
     id: "q-1",
     year: "2026",
-    monthDate: "2026.01",
-    tag: "突破",
+    monthDate: "2026.06",
+    tag: "实习",
     tagBg: "bg-[#FF5C8D]",
-    type: "branch",
-    title: "激动地开始 AI 编程，上线了自己的个人网站",
-    description: "掌握 Vibe Coding，实现自然语言驱动的全栈网页打造！"
+    type: "main",
+    title: "企业合作实践：零食电商AI客服助手 & AI营销工作台",
+    description: "独立完成 PRD 与 Agent 方案，覆盖 63.5% 自助解决率与 2% 异常率，营销文案生产耗时降低 72%。"
   },
   {
     id: "q-2",
-    year: "2025",
-    monthDate: "2025.09",
-    tag: "工作",
+    year: "2026",
+    monthDate: "2026.03",
+    tag: "项目",
     tagBg: "bg-[#3B82F6]",
-    type: "main",
-    title: "toB 软件产品经理，RPA + AI 方向",
-    description: "负责企业级 AI 智能体与自动化流程融合方案。"
+    type: "branch",
+    title: "山海经文化智能记账 App 产品负责人",
+    description: "针对记账繁琐提炼自然语言识别入账与情绪反馈，完成 40+ 页高保真与可运行 Demo 可用性验证。"
   },
   {
     id: "q-3",
     year: "2025",
-    monthDate: "2025.04",
-    tag: "突破",
+    monthDate: "2025.06",
+    tag: "实习",
     tagBg: "bg-[#10B981]",
-    type: "branch",
-    title: "开通股票账户，一根绿油油的小韭菜诞生！",
-    description: "体会大盘起伏，深刻感悟理财与人生的自我修养。"
+    type: "main",
+    title: "深圳禾零科技有限公司 · AIGC 设计实习生",
+    description: "交付 60+ 页原型与高保真界面，沉淀 30+ 组结构化提示词模板，初稿耗时缩短 40%，闭环率 95%。"
   },
   {
     id: "q-4",
     year: "2024",
     monthDate: "2024.11",
-    tag: "突破",
+    tag: "竞赛",
     tagBg: "bg-[#EC4899]",
     type: "branch",
-    title: "发布第一条抽象视频，成为 B 站 up 主",
-    description: "开启创意表达与自媒体分享之路，收获了第一批忠实电子好友！"
+    title: "蓝桥杯全国视觉艺术设计赛 一等奖",
+    description: "斩获蓝桥杯全国一等奖、数字媒体科技作品竞赛全国二等奖、电商三创赛校赛二等奖等多项荣誉。"
   },
   {
     id: "q-5",
-    year: "2024",
-    monthDate: "2024.02",
-    tag: "副业",
+    year: "2023",
+    monthDate: "2023.09",
+    tag: "荣誉",
     tagBg: "bg-[#F59E0B]",
     type: "branch",
-    title: "开了一家女生情趣玩具店",
-    description: "佛系经营，关注女性身体表达与情绪探索。"
+    title: "荣获国家奖学金与校长奖学金",
+    description: "专业 GPA 4.32，综合排名 3/122，在学术成绩与综合素质评价中名列前茅。"
   },
   {
     id: "q-6",
-    year: "2023",
-    monthDate: "2023.07",
-    tag: "工作",
-    tagBg: "bg-[#3B82F6]",
-    type: "main",
-    title: "toB 软件产品经理，BI 方向",
-    description: "主导商业智能数据可视化报表引擎产品的搭建与落地。"
+    year: "2022",
+    monthDate: "2022.10",
+    tag: "领导力",
+    tagBg: "bg-[#A855F7]",
+    type: "branch",
+    title: "曾任校团委主席、音乐社社长及班长",
+    description: "统筹 10+ 场校级大型活动，负责全流程策划与落地执行，累计覆盖超 1000 人次，获 7 项校级荣誉。"
   },
   {
     id: "q-7",
-    year: "2023",
-    monthDate: "2023.06",
+    year: "2022",
+    monthDate: "2022.09",
     tag: "学业",
     tagBg: "bg-[#10B981]",
     type: "main",
-    title: "本科毕业于上海交通大学，电气工程",
-    description: "老学长同一学院，顺利拿到工学学士学位！"
+    title: "入学深圳技术大学 (SZTU) · 工业设计专业",
+    description: "德国应用技术模式培养，全国应用型本科排名第一，深圳公办本科排名第三。"
   }
 ];
 
 export const EDUCATION_DATA: EducationInfo = {
-  school: "上海交通大学 (SJTU)",
-  degree: "工学学士学位 (Bachelor of Engineering)",
-  major: "电气工程及其自动化 (Electrical Engineering & Automation)",
-  period: "2019.09 - 2023.06",
-  location: "上海闵行区",
-  badges: ["985 核心高校", "双一流学科", "工科强校", "优秀毕业生"],
-  description: "在交大的 4 年里，接受了严谨的电工电子与计算机工程训练，奠定了深厚的系统化逻辑思维与问题拆解能力。同时积极参与校园自媒体与社团，碰撞科技与艺术的交火点。",
+  school: "深圳技术大学 (SZTU)",
+  degree: "工业设计专业 | 本科 (GPA 4.32, 排名 3/122)",
+  major: "工业设计 (Industrial Design · AI 产品与体验设计方向)",
+  period: "2022.09 - 2026.07",
+  location: "广东深圳",
+  badges: [
+    "GPA 4.32 (排名 3/122)",
+    "国家奖学金 & 校长奖学金",
+    "德国模式培养",
+    "全国应用型本科排名第一",
+    "深圳公办本科排名第三",
+    "中共党员"
+  ],
+  description: "深圳技术大学工业设计专业，采用德国应用技术大学培养模式。在校期间专业成绩优异（GPA 4.32，排名 3/122），荣获国家奖学金与校长奖学金。系统掌握从用户体验设计、服务设计、调研方法到 UI 界面设计与产品工程全流程，深度融合大语言模型、智能体工作流与前沿 AI 场景开展落地实践。",
   courses: [
-    "C/C++ 程序设计",
-    "数据结构与算法",
-    "电路理论",
-    "模拟与数字电子技术",
-    "信号与系统",
-    "自动控制原理",
-    "微机原理与接口技术",
-    "电力电子技术"
+    "用户体验设计",
+    "服务设计",
+    "设计调研方法",
+    "设计管理与营销",
+    "UI 界面设计",
+    "平面设计",
+    "产品设计",
+    "人机工程学"
   ],
   achievements: [
-    "获得上海交通大学综合优秀奖学金",
-    "全国大学生电工杯数学建模竞赛 二等奖",
-    "上海交通大学机器人创客社团 核心骨干",
-    "主导 SJTU 校园 Vlog 自媒体制作，总播放量超 10万+"
+    "【国家级最高荣誉】国家奖学金、深圳技术大学校长奖学金（专业 GPA 4.32，综合排名前 3/122）",
+    "【国家级专业竞赛】蓝桥杯全国软件和信息技术专业人才大赛 视觉艺术设计赛 全国一等奖",
+    "【国家级学科竞赛】数字媒体科技作品及创意竞赛 全国二等奖",
+    "【创新创业竞赛】第十三届全国大学生电子商务“创新、创意及创业”挑战赛 校赛二等奖",
+    "【校园组织领导力】曾任校团委主席、音乐社社长及班长，统筹 10+ 场校级大型活动，覆盖超 1000 人次，带队获校级“优秀组织奖”等 7 项荣誉"
   ]
 };
 
 export const EXPERIENCES_DATA: ExperienceInfo[] = [
   {
     id: "exp-1",
-    role: "toB 软件产品经理 (RPA + AI 方向)",
-    company: "头部 SaaS 科技企业",
-    period: "2025.09 - 至今",
-    type: "全职",
+    role: "AI产品经理实习生",
+    company: "企业合作实践",
+    period: "2026.06 - 2026.09",
+    type: "企业合作实习",
     tagBg: "bg-[#FF5C8D]",
-    description: "负责 LLM 大模型与企业级自动化 (RPA) 的结合，设计智能化 Flow 与 AI Agent 编排工具。",
+    description: "主导【零食电商AI客服助手】与【AI营销工作台】两款核心项目的业务调研、Agent工作流编排、RAG检索优化、Prompt工程及评测迭代闭环。",
     responsibilities: [
-      "主导 AI Agent 流程编排画布的产品设计，降低 70% 复杂业务自动化构建门槛；",
-      "结合 RAG 知识库与大模型 API，推出智能文档解析与自动填单引擎；",
-      "与研发与算法团队紧密协作，推进产品 MVP 迅速迭代并完成 20+ 家客户试点。"
+      "【项目一：零食电商AI客服助手 - 需求调研与MVP】面向 20 人客服团队及日均 3000 条咨询，访谈业务负责人、客服主管与一线客服，识别物流、退换货等高频场景；将降本诉求转化为覆盖场景内自助解决率≥60%，基于频次、风险、数据基础与开发成本划定首版范围及人工兜底边界；",
+      "【项目一：零食电商AI客服助手 - PRD与Agent方案】独立完成 PRD、UE 原型及可联调 Demo，定义意图路由、身份验证、智能体工具调用逻辑、订单与知识库检索、异常处理及验收标准，与开发协作在 3 周内推动可用版本上线，并通过模块化 Prompt、配置变量槽提升复用性；",
+      "【项目一：零食电商AI客服助手 - RAG与评测闭环】基于 Dify 搭建 Agent 工作流，通过数据清洗、Query 增强、混合召回、重排及硬过滤优化效果；搭建自动化 Eval，规划 650+ 条基础及复杂多轮样本，建立 Bad Case 标签与交叉标注机制，驱动 Prompt、知识库和工作流持续迭代；",
+      "【项目二：AI营销工作台 - 需求拆解与链路打通】针对电商运营跨渠道追踪热点、人工筛选及商品匹配效率低、不同平台内容重复改写等问题，梳理打通“热点获取—筛选—商品匹配—多平台文案生成—人工审核”链路，主导运营后台与 AI 内容工作流设计；",
+      "【项目二：AI营销工作台 - Prompt与人机协同】针对抖音、小红书设计差异化 Prompt，将热点、商品卖点及平台要求参数化，并设置事实核验、人工修改与发布确认机制，降低热点误判、卖点错配和直接发布不合格内容的风险。"
     ],
-    techStack: ["RPA Automation", "LLM Integration", "Agent Architecture", "PRD Specification", "User Journey Mapping"],
-    metrics: "客户流程构建效率提升 3.5 倍"
+    techStack: ["Dify", "Agent工作流", "RAG检索增强", "Prompt工程", "Eval自动化评测", "Bad Case闭环", "PRD/原型设计", "意图路由", "人机协同"],
+    metrics: "客服上线两周处理 4.4 万次咨询，AI 独立解决率 63.5%，异常会话率 2%，客单价提升 24%；营销文案生产耗时下降 72%，有效初稿提升 150%"
   },
   {
     id: "exp-2",
-    role: "toB 软件产品经理 (BI 数据分析方向)",
-    company: "知名企业级软件服务商",
-    period: "2023.07 - 2025.08",
-    type: "全职",
+    role: "AIGC设计实习生",
+    company: "深圳禾零科技有限公司",
+    period: "2025.06 - 2025.12",
+    type: "实习",
     tagBg: "bg-[#3B82F6]",
-    description: "负责核心 BI 报表引擎、拖拽式大屏组件与数据血缘系统的全生命周期管理。",
+    description: "深度参与网页后台及 App 需求讨论与设计调研，结合 AIGC 工具链搭建高保真界面与通用设计组件库。",
     responsibilities: [
-      "从 0 到 1 规划并上线新一代拖拽式可视化看板，涵盖 25+ 种互动图表；",
-      "优化大数据量场景下的图表渲染性能与导出并发逻辑；",
-      "梳理行业通用指标库模板，赋能销售团队快速完成客户 Demo 演示与闭环。"
+      "【AIGC视觉设计】参与网页后台及 App 的需求讨论与设计调研，结合业务目标、用户路径与研发约束梳理功能范围，使用 Lovart、即梦及 ChatGPT 完成产品 UI 视觉、图标与部件设计，累计生成 200+ 候选方案，交付 60+ 页原型及高保真方案，完善主流程、空状态、加载、异常及操作反馈；沉淀按钮、表单、弹窗等通用组件，六成页面实现复用；",
+      "【Prompt优化及协作交付】针对产品特征、视觉风格及品牌主题设计结构化提示词，通过多轮生成、筛选与局部调整沉淀 30+ 组可复用模板；结合产品及研发反馈迭代方案，跟进 19 项设计问题并按期闭环 18 项，闭环率 95%；",
+      "【交付效能提升】AIGC 辅助使视觉初稿产出时间缩短约 40%，通过状态说明与验收核对提升多端设计一致性与交付效率。"
     ],
-    techStack: ["Data Visualization", "SQL/ETL", "Dashboard Design", "Metrics Engine", "Figma"],
-    metrics: "累计服务 100+ 中大型企业客户"
-  },
-  {
-    id: "exp-3",
-    role: "独立创作者 & Vibe Coder & B站 Up 主",
-    company: "个人品牌 / 独立工作室",
-    period: "2024.02 - 至今",
-    type: "自由创作者",
-    tagBg: "bg-[#10B981]",
-    description: "创作科技与生活 Vlog，探索基于 AI 工具的大量 Vibe Coding 实践与自媒体表达。",
-    responsibilities: [
-      "制作并发布数万播放量的 B 站视频，分享个人成长、职场感受与科技爆点；",
-      "全栈设计并开发多款有趣兼实用的 Web 工具与个性化小店铺；",
-      "积累了良好的读者社区生态，搭建了活跃的互动电子朋友群组。"
-    ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Video Editing", "Vibe Coding", "Gemini API"],
-    metrics: "视频累计播放量 20万+"
+    techStack: ["Lovart", "即梦 AIGC", "ChatGPT", "Figma", "UI/UX 高保真", "组件库规范", "结构化提示词"],
+    metrics: "交付 60+ 页高保真方案，初稿产出耗时缩短 40%，设计问题闭环率 95%"
   }
 ];
 
 export const PROJECTS_DATA: ProjectInfo[] = [
+  {
+    id: "proj-ai-cs",
+    title: "零食电商 AI 客服助手 (企业实战)",
+    category: "AI",
+    subtitle: "基于 Dify + RAG + 意图路由的企业级智能客服 Agent",
+    description: "面向 20 人客服团队及日均 3000 条高频咨询，从 0 到 1 打造的企业级 AI 客服智能体。覆盖物流轨迹、智能退换货、订单检索与商品活动推荐，搭建自动化 Eval 评测与 Bad Case 迭代闭环。",
+    tags: ["Agent 工作流", "Dify", "RAG 混合召回", "意图路由", "自动化 Eval", "Bad Case 闭环"],
+    tagBg: "bg-[#FF5C8D]",
+    highlights: [
+      "独立完成完整 PRD、UE 原型及可联调 Demo，3周快速推动可用版本上线",
+      "定义意图路由、身份验证、工具调用与异常兜底逻辑，模块化 Prompt 提升复用性",
+      "基于 Dify 搭建 RAG 工作流，650+ 测试样本自动化 Eval 与 Bad Case 闭环",
+      "上线两周处理 4.4 万次咨询，AI 独立解决率 63.5%，异常会话率仅 2%，客单价提升 24%"
+    ],
+    coverColor: "bg-[#FFE4E6]",
+    iconName: "Bot"
+  },
+  {
+    id: "proj-ai-marketing",
+    title: "电商 AI 营销工作台",
+    category: "AI",
+    subtitle: "跨渠道热点追踪与多平台爆款文案生成系统",
+    description: "打通‘热点获取—筛选—商品匹配—多平台文案生成—人工审核’全链路。针对抖音、小红书定制差异化 Prompt 模板与人机协同审核机制，防范事实幻觉与卖点错配。",
+    tags: ["AI 内容工作流", "Prompt 工程", "人机协同", "抖音/小红书", "运营后台"],
+    tagBg: "bg-[#3B82F6]",
+    highlights: [
+      "主导运营后台与 AI 工作流全流程设计，将热点卖点参数化",
+      "设置事实核验、人工修改与确认发布机制，有效规避误判与错配风险",
+      "单篇文案生产时间由 39 分钟缩短至 11 分钟，耗时下降 72%",
+      "日均有效初稿由 2 篇提升至 5 篇，生产效率提升 150%"
+    ],
+    coverColor: "bg-[#E0F2FE]",
+    iconName: "Workflow"
+  },
+  {
+    id: "proj-shanhai-app",
+    title: "山海经文化智能记账 App (校内重点)",
+    category: "toB Product",
+    subtitle: "自然语言结构化记账与山海经 IP 的深度融合",
+    description: "针对传统记账流程繁琐、用户难以坚持的问题开展调研，提炼自然语言记账、账目确认、分类修正与情绪反馈需求；接入大模型识别金额、收支类型及消费类别，设计追问、确认与人工修正机制。",
+    tags: ["产品负责人", "LLM 语义识别", "Figma 40+页高保真", "Demo 可用性测试", "自然语言记账"],
+    tagBg: "bg-[#10B981]",
+    highlights: [
+      "针对记账繁琐开展用户调研，提炼自然语言记账与情绪反馈核心需求",
+      "完成信息架构、核心流程及 40+ 页 Figma 高保真界面设计",
+      "接入大模型精准识别金额、收支类型并结构化入账，设计异常追问与人工修正",
+      "独立完成可运行 Demo 并通过可用性测试迭代交互方案"
+    ],
+    coverColor: "bg-[#D1FAE5]",
+    iconName: "Sparkles"
+  },
+  {
+    id: "proj-aigc-design",
+    title: "AIGC 视觉与界面设计体系 (禾零科技)",
+    category: "Frontend",
+    subtitle: "网页后台与移动端 60+ 页高保真交付与通用组件库",
+    description: "结合业务目标与研发约束，使用 Lovart、即梦与 ChatGPT 搭建 AIGC 视觉与 UI 设计体系，沉淀 30+ 组结构化提示词模板与通用组件库，交付 60+ 页原型方案。",
+    tags: ["AIGC 设计", "Lovart/即梦", "组件库复用", "提示词沉淀", "设计闭环 95%"],
+    tagBg: "bg-[#F59E0B]",
+    highlights: [
+      "累计生成 200+ 候选方案，交付 60+ 页原型及高保真方案，覆盖全状态反馈",
+      "沉淀按钮、表单、弹窗等通用组件，六成页面实现规范复用",
+      "结构化提示词模板使视觉初稿产出时间缩短约 40%",
+      "跟进 19 项设计问题并按期闭环 18 项，闭环率 95%"
+    ],
+    coverColor: "bg-[#FEF3C7]",
+    iconName: "Palette"
+  },
   {
     id: "proj-happy-article",
     title: "深度文章随笔：《快乐的》",
@@ -431,135 +509,57 @@ export const PROJECTS_DATA: ProjectInfo[] = [
     subtitle: "关于一个人究竟怎样才能获得真正快乐与内心平静的探索",
     description: "讲述一个人怎么才能快乐。文章深入探讨了如何摆脱焦虑干扰、构建内心秩序、找到自我主体性，以及在琐碎日常中拥抱纯粹快乐的思考。",
     tags: ["微信公众号", "深度文章", "快乐哲学", "情绪探索"],
-    tagBg: "bg-[#FF5C8D]",
+    tagBg: "bg-[#A855F7]",
     demoUrl: "https://mp.weixin.qq.com/s/8zi86FuWqfKvgBYvEOaHlA",
     highlights: [
       "记录关于人生态度、情绪解耦与内心平静的深刻随笔",
       "探讨如何找回自我主体性与拥抱真实的快乐",
       "点击右下方箭头或详情按钮可直接跳转微信公众号阅读原文"
     ],
-    coverColor: "bg-[#FFE4E6]",
+    coverColor: "bg-[#F3E8FF]",
     iconName: "BookOpen"
-  },
-  {
-    id: "proj-1",
-    title: "AI Vibe Coding 极速网页构建器",
-    category: "AI",
-    subtitle: "自然语言驱动的生成式 Web 应用制作助手",
-    description: "融合 Gemini API 与现代前端 UI 库，帮助使用者通过纯自然语言无缝实现逻辑完善、审美优秀的 Web 应用。",
-    tags: ["React 19", "Gemini API", "Tailwind CSS", "Vibe Coding"],
-    tagBg: "bg-[#FF5C8D]",
-    highlights: [
-      "内置 Neo-Brutalist 潮流样式模板",
-      "全流式 Response 渲染与代码实时预览",
-      "一键导出打包与组件化架构"
-    ],
-    coverColor: "bg-[#FFD6E8]",
-    iconName: "Sparkles"
-  },
-  {
-    id: "proj-2",
-    title: "地球Online 游戏化个人主页",
-    category: "Frontend",
-    subtitle: "包含 ID 卡牌、主支线 Quest 系统的 Neo-Pop 个人品牌站",
-    description: "高度个性化的个人品牌网站，采用高对比度黑框 shadow-[4px_4px_0px_0px_#000] 美学，展现独特的个人名片。",
-    tags: ["React", "Motion Animation", "Cyber-Pop", "Responsive Layout"],
-    tagBg: "bg-[#3B82F6]",
-    highlights: [
-      "仿身份证/ID Card 动效展示交互",
-      "双轨制主支线成长 Quest 时间线",
-      "文章与视频视听一体化弹窗体验"
-    ],
-    coverColor: "bg-[#CBE4FF]",
-    iconName: "User"
-  },
-  {
-    id: "proj-3",
-    title: "企业级 RPA + AI 可视化编排画布",
-    category: "toB Product",
-    subtitle: "面向跨部门协作的零代码工作流引擎",
-    description: "让业务人员能够通过拖拽节点快速配置 API 调用、RAG 文档识别与表单自动填报。",
-    tags: ["Agent Architect", "RPA Flow", "toB UX", "Workflows"],
-    tagBg: "bg-[#10B981]",
-    highlights: [
-      "支持 50+ 种常用 SaaS 系统 Connector",
-      "节点状态实时追踪与日志回放",
-      "权限隔离与版本控制机制"
-    ],
-    coverColor: "bg-[#D1FAE5]",
-    iconName: "Workflow"
-  },
-  {
-    id: "proj-4",
-    title: "BI 智能可视化报表大屏引擎",
-    category: "toB Product",
-    subtitle: "高拓展性商业智能与指标大盘制作工具",
-    description: "帮助企业搭建敏捷敏捷的数据图表，支持实时数据推送与下钻分析。",
-    tags: ["Data Analytics", "BI Chart", "Dashboard", "ECharts"],
-    tagBg: "bg-[#F59E0B]",
-    highlights: [
-      "毫秒级多图表联动渲染",
-      "自定义指标计算与公式引擎",
-      "一键导出高清 PDF 与交互报表"
-    ],
-    coverColor: "bg-[#FEF3C7]",
-    iconName: "BarChart3"
-  },
-  {
-    id: "proj-5",
-    title: "女生情趣用品与情绪探索体验店",
-    category: "Side Project",
-    subtitle: "以关怀与温暖为核心的个人品牌实验",
-    description: "打破传统刻板印象，以友好且温馨的角度关注女性身体情绪表达的小店产品。",
-    tags: ["E-Commerce", "Brand Strategy", "Community", "UI Design"],
-    tagBg: "bg-[#EC4899]",
-    highlights: [
-      "温馨有爱的私密包装与手写信卡片",
-      "关注真实女性用户反馈与分享",
-      "获得了许多温暖的用户认可"
-    ],
-    coverColor: "bg-[#FCE7F3]",
-    iconName: "Heart"
   }
 ];
 
 export const SKILL_GROUPS: SkillGroup[] = [
   {
-    category: "产品经理 & 方案设计 (Product & UX)",
+    category: "AI能力 & 智能体工程 (AI & Agent Capabilities)",
     color: "bg-[#FFD6E8]",
     skills: [
-      { name: "PRD & 需求拆解", level: 95, desc: "将模糊需求精准转化清晰敏捷 PRD" },
-      { name: "Flowchart & 原型设计 (Figma)", level: 90, desc: "熟练制作高保真原型与交互流程" },
-      { name: "toB SaaS & 架构思考", level: 92, desc: "理解 API 契约、RPA 与数据接入" },
-      { name: "用户旅程 & 体验走查", level: 88, desc: "注重细致入微的视觉与点击反馈" }
+      { name: "LLM 原理 & MCP / Agent", level: 95, desc: "理解大模型、上下文管理、工具调用与安全边界" },
+      { name: "智能体工作流 (Dify / Coze)", level: 96, desc: "多分支节点编排、意图路由与人机协同方案" },
+      { name: "RAG 检索增强设计", level: 93, desc: "数据清洗、Query增强、混合召回、重排与过滤调优" },
+      { name: "Prompt 工程 & 变量槽", level: 96, desc: "结构化提示词模板、多平台差异化参数化配置" },
+      { name: "自动化 Eval & Bad Case 闭环", level: 92, desc: "650+样本评测规划、交叉标注与知识库持续迭代" },
+      { name: "幻觉抑制与异常兜底", level: 94, desc: "事实核验、人工修正机制与异常流程保障" }
     ]
   },
   {
-    category: "AI & 编程研发 (AI & Vibe Coding)",
+    category: "产品经理核心能力 (Product Management & UX)",
     color: "bg-[#CBE4FF]",
     skills: [
-      { name: "AI Prompt & Vibe Coding", level: 96, desc: "用自然语言高效手撕全栈 Web 应用" },
-      { name: "React / TypeScript / Vite", level: 85, desc: "熟悉组件化架构与现代前端开发" },
-      { name: "Tailwind CSS & Neo-Brutalist Design", level: 92, desc: "热爱独特的高对比度 pop 界面" },
-      { name: "LLM Agent & RAG 应用", level: 88, desc: "了解提示词调优与智能体开发" }
+      { name: "业务调研与需求拆解", level: 96, desc: "深度访谈利益相关方，将降本诉求转化为 MVP 指标" },
+      { name: "完整 PRD 与规范文档", level: 95, desc: "独立输出业务流程图、工具调用逻辑与严谨验收标准" },
+      { name: "Figma 高保真与交互原型", level: 94, desc: "40+页高保真界面、空状态/异常/加载全状态闭环" },
+      { name: "工业设计与服务设计思维", level: 93, desc: "德国应用技术培养，系统性设计调研与用户旅程规划" }
     ]
   },
   {
-    category: "数据分析 & 工具 (Data & Analytics)",
+    category: "工具与 AI 实践 (Tools & Practice)",
     color: "bg-[#D1FAE5]",
     skills: [
-      { name: "SQL 数据查询", level: 90, desc: "多表关联、指标聚合与报表生成" },
-      { name: "BI 可视化 & 仪表盘", level: 92, desc: "指标拆解与交互大屏规划" },
-      { name: "Python 基础 & 自动化脚本", level: 80, desc: "数据清洗与爬虫小工具" }
+      { name: "AI 编程 & 可运行 Demo", level: 92, desc: "Codex、ChatGPT、Cursor、Trae 快速验证交互方案" },
+      { name: "AIGC 视觉与多模态", level: 94, desc: "Lovart、即梦、Midjourney 驱动 UI 与图标高效产出" },
+      { name: "协同与项目管理", level: 95, desc: "飞书、Dify、Figma、Git、敏捷看板全流程推进" }
     ]
   },
   {
-    category: "自媒体 & 爱好 (Creator & Lifestyle)",
+    category: "荣誉竞赛与校园领导力 (Honors & Leadership)",
     color: "bg-[#FEF3C7]",
     skills: [
-      { name: "B站视频剪辑与策划", level: 88, desc: "把握网络梗与真诚表达的结合点" },
-      { name: "文案撰写 & 数字随笔", level: 90, desc: "记录生活与交大岁月片段" },
-      { name: "键盘客制化 & 潮玩探索", level: 85, desc: "高精力死宅的极客快乐" }
+      { name: "国家奖学金 & 校长奖学金", level: 100, desc: "GPA 4.32 (专业排名 3/122)，学术与综合素质拔尖" },
+      { name: "蓝桥杯全国一等奖等竞赛", level: 96, desc: "视觉艺术设计赛全国一等奖、数字媒体作品全国二等奖" },
+      { name: "校团委主席 & 音乐社社长", level: 96, desc: "统筹 10+ 场校级大型活动，覆盖超 1000 人次，获 7 项校级荣誉" }
     ]
   }
 ];

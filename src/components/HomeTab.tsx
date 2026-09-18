@@ -48,12 +48,12 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
             {/* Sub-description */}
             <div className="space-y-2 text-sm sm:text-base font-bold text-gray-800 leading-relaxed bg-yellow-50/80 p-4 border-2 border-black rounded-2xl shadow-[2px_2px_0px_0px_#000]">
               <p className="text-gray-900 font-extrabold">
-                Bilibili Creator | Digital Writer | Hyperactive Otaku
+                AI Product Manager | Agent & RAG Workflows | Industrial Design
               </p>
               <p className="text-gray-700 font-mono text-xs sm:text-sm">
-                toB PM by day, Vibe Coder by night. _[ ō_ō ]_
+                SZTU (GPA 4.32 · 排名 3/122) · 国家奖学金 · 中共党员
               </p>
-              <p className="text-pink-600 font-black tracking-widest text-xs">
+              <p className="text-pink-600 font-black tracking-wide text-xs">
                 {PERSONAL_INFO.motto}
               </p>
             </div>
@@ -121,10 +121,10 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
 
               {/* Float sticker badges */}
               <div className="absolute bottom-3 left-3 bg-white border-2 border-black rounded-lg px-2.5 py-1 font-black text-xs shadow-[2px_2px_0px_0px_#000]">
-                SJTU ⚡ 工科女友
+                SZTU ⚡ 26届应届生
               </div>
               <div className="absolute top-3 left-3 bg-[#4ADE80] border-2 border-black rounded-full px-2.5 py-0.5 font-bold text-xs shadow-[2px_2px_0px_0px_#000]">
-                Vibe PM
+                AI PM
               </div>
             </div>
           </div>
