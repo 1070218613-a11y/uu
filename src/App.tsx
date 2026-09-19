@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Navbar, TabKey } from './components/Navbar';
 import { HomeTab } from './components/HomeTab';
 import { AboutTab } from './components/AboutTab';
@@ -42,34 +43,44 @@ export default function App() {
         {/* Navigation Bar */}
         <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {/* Tab Content Rendering */}
-        <main className="mt-6 mb-12">
-          {activeTab === 'home' && (
-            <HomeTab
-              onNavigate={(tab) => setActiveTab(tab)}
-              onOpenItem={(type, item) => handleOpenItem(type, item)}
-            />
-          )}
+        {/* Tab Content Rendering with AnimatePresence */}
+        <main className="mt-6 mb-12 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 14, scale: 0.995 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.995 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {activeTab === 'home' && (
+                <HomeTab
+                  onNavigate={(tab) => setActiveTab(tab)}
+                  onOpenItem={(type, item) => handleOpenItem(type, item)}
+                />
+              )}
 
-          {activeTab === 'about' && <AboutTab />}
+              {activeTab === 'about' && <AboutTab />}
 
-          {activeTab === 'education' && <EducationTab />}
+              {activeTab === 'education' && <EducationTab />}
 
-          {activeTab === 'experience' && (
-            <ExperienceTab
-              onOpenExperience={(exp) => handleOpenItem('experience', exp)}
-            />
-          )}
+              {activeTab === 'experience' && (
+                <ExperienceTab
+                  onOpenExperience={(exp) => handleOpenItem('experience', exp)}
+                />
+              )}
 
-          {activeTab === 'projects' && (
-            <ProjectsTab
-              onOpenProject={(proj) => handleOpenItem('project', proj)}
-            />
-          )}
+              {activeTab === 'projects' && (
+                <ProjectsTab
+                  onOpenProject={(proj) => handleOpenItem('project', proj)}
+                />
+              )}
 
-          {activeTab === 'skills' && <SkillsTab />}
+              {activeTab === 'skills' && <SkillsTab />}
 
-          {activeTab === 'contact' && <ContactTab />}
+              {activeTab === 'contact' && <ContactTab />}
+            </motion.div>
+          </AnimatePresence>
         </main>
 
       </div>

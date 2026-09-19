@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight, UserCheck, Eye, Heart, Sparkles, Video, FileText } from 'lucide-react';
 import { PERSONAL_INFO, ARTICLES, VIDEOS, Article, VideoItem } from '../data/portfolioData';
 import { TabKey } from './Navbar';
@@ -9,16 +10,22 @@ interface HomeTabProps {
 }
 
 export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
+  const [avatarWink, setAvatarWink] = useState(false);
+
   return (
-    <div className="space-y-12 sm:space-y-16 animate-in fade-in duration-300">
+    <div className="space-y-12 sm:space-y-16">
       
       {/* Hero Section */}
       <section className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-10 shadow-[8px_8px_0px_0px_#000] relative overflow-hidden">
         
-        {/* Subtle decorative sticker tag in corner */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 bg-yellow-300 border-2 border-black rounded-full px-3 py-1 font-black text-xs rotate-3 shadow-[2px_2px_0px_0px_#000] hidden sm:block">
+        {/* Animated decorative sticker tag in corner */}
+        <motion.div 
+          animate={{ rotate: [3, 6, 3], y: [0, -3, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-4 right-4 sm:top-6 sm:right-8 bg-yellow-300 border-2 border-black rounded-full px-3 py-1 font-black text-xs shadow-[2px_2px_0px_0px_#000] hidden sm:block select-none"
+        >
           ⚡ 2026 ONLINE
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
@@ -29,9 +36,12 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
                 我是
               </p>
               <div className="flex flex-wrap items-center gap-2 text-2xl sm:text-4xl font-black text-black leading-tight">
-                <span className="bg-[#FF5C8D] text-black px-4 py-1.5 rounded-xl border-3 border-black shadow-[4px_4px_0px_0px_#000] inline-block -rotate-1">
+                <motion.span 
+                  whileHover={{ scale: 1.05, rotate: -2 }}
+                  className="bg-[#FF5C8D] text-black px-4 py-1.5 rounded-xl border-3 border-black shadow-[4px_4px_0px_0px_#000] inline-block -rotate-1 cursor-default"
+                >
                   {PERSONAL_INFO.fullName}
-                </span>
+                </motion.span>
                 <span>,</span>
               </div>
               <div className="text-2xl sm:text-4xl font-black text-black leading-tight pt-1">
@@ -39,14 +49,20 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
               </div>
               <div className="flex flex-wrap items-center gap-2 text-2xl sm:text-4xl font-black text-black leading-tight pt-1">
                 <span>练习时长</span>
-                <span className="bg-[#3B82F6] text-white px-4 py-1 rounded-xl border-3 border-black shadow-[4px_4px_0px_0px_#000] inline-block rotate-1">
+                <motion.span 
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  className="bg-[#3B82F6] text-white px-4 py-1 rounded-xl border-3 border-black shadow-[4px_4px_0px_0px_#000] inline-block rotate-1 cursor-default"
+                >
                   {PERSONAL_INFO.practiceTime}
-                </span>
+                </motion.span>
               </div>
             </div>
 
             {/* Sub-description */}
-            <div className="space-y-2 text-sm sm:text-base font-bold text-gray-800 leading-relaxed bg-yellow-50/80 p-4 border-2 border-black rounded-2xl shadow-[2px_2px_0px_0px_#000]">
+            <motion.div 
+              whileHover={{ y: -2 }}
+              className="space-y-2 text-sm sm:text-base font-bold text-gray-800 leading-relaxed bg-yellow-50/80 p-4 border-2 border-black rounded-2xl shadow-[2px_2px_0px_0px_#000] transition-all"
+            >
               <p className="text-gray-900 font-extrabold">
                 AI Product Manager | Agent & RAG Workflows | Industrial Design
               </p>
@@ -56,34 +72,46 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
               <p className="text-pink-600 font-black tracking-wide text-xs">
                 {PERSONAL_INFO.motto}
               </p>
-            </div>
+            </motion.div>
 
             {/* Hero CTA Button */}
             <div className="pt-2 flex flex-wrap gap-3">
-              <button
+              <motion.button
                 onClick={() => onNavigate('about')}
-                className="neo-btn bg-black text-white px-6 py-3 rounded-2xl font-bold flex items-center gap-2 text-sm sm:text-base hover:bg-gray-900"
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.96 }}
+                className="bg-black text-white px-6 py-3 rounded-2xl font-bold flex items-center gap-2 text-sm sm:text-base hover:bg-gray-900 border-2 border-black shadow-[4px_4px_0px_0px_#FEF08A] cursor-pointer"
               >
                 <UserCheck className="w-5 h-5 text-yellow-300" />
                 <span>More about me</span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
                 onClick={() => onNavigate('projects')}
-                className="neo-btn bg-[#FF5C8D] text-black px-6 py-3 rounded-2xl font-bold flex items-center gap-2 text-sm sm:text-base hover:bg-pink-400"
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.96 }}
+                className="bg-[#FF5C8D] text-black px-6 py-3 rounded-2xl font-bold flex items-center gap-2 text-sm sm:text-base hover:bg-pink-400 border-2 border-black shadow-[4px_4px_0px_0px_#000] cursor-pointer"
               >
                 <Sparkles className="w-5 h-5" />
                 <span>看作品项目</span>
-              </button>
+              </motion.button>
             </div>
           </div>
 
           {/* Right Avatar Visual Box */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-xs sm:max-w-sm aspect-square bg-[#FFE4E6] border-3 sm:border-4 border-black rounded-3xl shadow-[6px_6px_0px_0px_#000] p-4 flex flex-col items-center justify-center overflow-hidden group">
+            <motion.div 
+              whileHover={{ rotate: 1, scale: 1.02 }}
+              onClick={() => setAvatarWink(!avatarWink)}
+              title="点击互动！"
+              className="relative w-full max-w-xs sm:max-w-sm aspect-square bg-[#FFE4E6] border-3 sm:border-4 border-black rounded-3xl shadow-[6px_6px_0px_0px_#000] p-4 flex flex-col items-center justify-center overflow-hidden cursor-pointer select-none group"
+            >
               
               {/* Cute Animated Avatar Visual */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 bg-purple-200 border-3 border-black rounded-full flex items-center justify-center shadow-[3px_3px_0px_0px_#000] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+              <motion.div 
+                whileTap={{ scale: 0.92, rotate: -3 }}
+                className="relative w-48 h-48 sm:w-56 sm:h-56 bg-purple-200 border-3 border-black rounded-full flex items-center justify-center shadow-[3px_3px_0px_0px_#000] overflow-hidden group-hover:scale-105 transition-transform duration-300"
+              >
                 
                 {/* Character SVG Drawing */}
                 <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -101,8 +129,12 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
                   <circle cx="118" cy="108" r="14" fill="none" stroke="#000" strokeWidth="3" />
                   <line x1="96" y1="108" x2="104" y2="108" stroke="#000" strokeWidth="3" />
                   
-                  {/* Eyes */}
-                  <circle cx="82" cy="108" r="4" fill="#000" />
+                  {/* Eyes (interactive wink!) */}
+                  {avatarWink ? (
+                    <path d="M 76 108 Q 82 102 88 108" fill="none" stroke="#000" strokeWidth="4" strokeLinecap="round" />
+                  ) : (
+                    <circle cx="82" cy="108" r="4" fill="#000" />
+                  )}
                   <circle cx="118" cy="108" r="4" fill="#000" />
                   
                   {/* Blush */}
@@ -117,16 +149,24 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
                   <path d="M 85 140 L 85 190 L 115 190 L 115 140 Z" fill="#3B82F6" stroke="#000" strokeWidth="3" />
                   <circle cx="100" cy="152" r="3" fill="#FFF" stroke="#000" strokeWidth="1.5" />
                 </svg>
-              </div>
+              </motion.div>
 
-              {/* Float sticker badges */}
-              <div className="absolute bottom-3 left-3 bg-white border-2 border-black rounded-lg px-2.5 py-1 font-black text-xs shadow-[2px_2px_0px_0px_#000]">
+              {/* Float sticker badges with breathing animation */}
+              <motion.div 
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-3 left-3 bg-white border-2 border-black rounded-lg px-2.5 py-1 font-black text-xs shadow-[2px_2px_0px_0px_#000]"
+              >
                 SZTU ⚡ 26届应届生
-              </div>
-              <div className="absolute top-3 left-3 bg-[#4ADE80] border-2 border-black rounded-full px-2.5 py-0.5 font-bold text-xs shadow-[2px_2px_0px_0px_#000]">
+              </motion.div>
+              <motion.div 
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-3 left-3 bg-[#4ADE80] border-2 border-black rounded-full px-2.5 py-0.5 font-bold text-xs shadow-[2px_2px_0px_0px_#000]"
+              >
                 AI PM
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
         </div>
@@ -137,28 +177,38 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
         
         {/* Header Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#FF5C8D] -rotate-1">
+          <motion.div 
+            whileHover={{ scale: 1.02, rotate: 0 }}
+            className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#FF5C8D] -rotate-1 cursor-default"
+          >
             <h2 className="text-2xl sm:text-3xl font-black text-black tracking-tight flex items-center gap-2">
               <FileText className="w-6 h-6 text-[#FF5C8D]" /> Articles
             </h2>
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onNavigate('projects')}
-            className="group flex items-center gap-2 text-sm font-black text-black hover:text-pink-600 transition-colors"
+            className="group flex items-center gap-2 text-sm font-black text-black hover:text-pink-600 transition-colors cursor-pointer"
           >
             <span>Browse all articles</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </motion.button>
         </div>
 
-        {/* 3 Articles Grid */}
+        {/* 3 Articles Grid with motion hover */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {ARTICLES.slice(0, 3).map((art) => (
-            <div
+          {ARTICLES.slice(0, 3).map((art, idx) => (
+            <motion.div
               key={art.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.08 }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => onOpenItem('article', art)}
-              className="group cursor-pointer bg-white border-3 border-black rounded-2xl overflow-hidden shadow-[5px_5px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#000] transition-all flex flex-col justify-between"
+              className="group cursor-pointer bg-white border-3 border-black rounded-2xl overflow-hidden shadow-[5px_5px_0px_0px_#000] hover:shadow-[8px_8px_0px_0px_#000] transition-all flex flex-col justify-between"
             >
               {/* Card Top Banner / Placeholder Image */}
               <div className="h-40 bg-linear-to-tr from-sky-100 via-pink-100 to-yellow-100 border-b-3 border-black p-4 flex flex-col justify-between relative overflow-hidden">
@@ -197,7 +247,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -207,28 +257,38 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
         
         {/* Header Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#3B82F6] rotate-1">
+          <motion.div 
+            whileHover={{ scale: 1.02, rotate: 0 }}
+            className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#3B82F6] rotate-1 cursor-default"
+          >
             <h2 className="text-2xl sm:text-3xl font-black text-black tracking-tight flex items-center gap-2">
               <Video className="w-6 h-6 text-[#3B82F6]" /> Videos
             </h2>
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onNavigate('skills')}
-            className="group flex items-center gap-2 text-sm font-black text-black hover:text-blue-600 transition-colors"
+            className="group flex items-center gap-2 text-sm font-black text-black hover:text-blue-600 transition-colors cursor-pointer"
           >
             <span>Watch all videos</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </motion.button>
         </div>
 
         {/* 3 Videos Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {VIDEOS.slice(0, 3).map((vid) => (
-            <div
+          {VIDEOS.slice(0, 3).map((vid, idx) => (
+            <motion.div
               key={vid.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.08 }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => onOpenItem('video', vid)}
-              className="group cursor-pointer bg-white border-3 border-black rounded-2xl overflow-hidden shadow-[5px_5px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_#000] transition-all"
+              className="group cursor-pointer bg-white border-3 border-black rounded-2xl overflow-hidden shadow-[5px_5px_0px_0px_#000] hover:shadow-[8px_8px_0px_0px_#000] transition-all"
             >
               {/* Video Cover Box */}
               <div className={`h-48 ${vid.coverBg} border-b-3 border-black p-4 flex flex-col justify-between relative overflow-hidden`}>
@@ -265,7 +325,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({ onNavigate, onOpenItem }) => {
                 <span>B站 独立 Vlog 专栏</span>
                 <span className="text-pink-600 font-extrabold group-hover:underline">播放 ▶</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

@@ -1,24 +1,32 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { SKILL_GROUPS } from '../data/portfolioData';
-import { Wrench, HeartHandshake, Zap, Flame, Youtube, BookOpen, Laptop } from 'lucide-react';
+import { Wrench, HeartHandshake, Zap, Youtube, BookOpen, Laptop } from 'lucide-react';
 
 export const SkillsTab: React.FC = () => {
   return (
-    <div className="space-y-12 animate-in fade-in duration-300">
+    <div className="space-y-12">
       
       {/* Header */}
-      <div className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#F97316] -rotate-1">
+      <motion.div 
+        whileHover={{ rotate: 0, scale: 1.02 }}
+        className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#F97316] -rotate-1 cursor-default"
+      >
         <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
           <Wrench className="w-8 h-8 text-[#F97316]" /> 技能与爱好
         </h1>
-      </div>
+      </motion.div>
 
       {/* Skills Groups Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {SKILL_GROUPS.map((group, gIdx) => (
-          <div
+          <motion.div
             key={gIdx}
-            className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: gIdx * 0.1 }}
+            whileHover={{ y: -4 }}
+            className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] hover:shadow-[9px_9px_0px_0px_#000] transition-shadow space-y-6"
           >
             {/* Group Title */}
             <div className={`p-3.5 ${group.color} border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000]`}>
@@ -41,11 +49,13 @@ export const SkillsTab: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* Meter Progress Bar */}
+                  {/* Meter Progress Bar with Spring Animation */}
                   <div className="w-full h-3.5 bg-gray-100 border-2 border-black rounded-full overflow-hidden p-0.5">
-                    <div
-                      className="h-full bg-[#FF5C8D] border border-black rounded-full transition-all duration-500"
-                      style={{ width: `${skill.level}%` }}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 0.8, delay: 0.15 + sIdx * 0.08, ease: "easeOut" }}
+                      className="h-full bg-[#FF5C8D] border border-black rounded-full"
                     />
                   </div>
 
@@ -56,7 +66,7 @@ export const SkillsTab: React.FC = () => {
               ))}
             </div>
 
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -71,35 +81,47 @@ export const SkillsTab: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           
-          <div className="p-5 bg-pink-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-pink-500 text-white border-2 border-black flex items-center justify-center font-bold">
+          <motion.div 
+            whileHover={{ y: -5, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="p-5 bg-pink-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+          >
+            <div className="w-10 h-10 rounded-xl bg-pink-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
               <Youtube className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">B站 UP 主自媒体</h4>
             <p className="text-xs text-gray-700 leading-relaxed font-medium">
               分享科技、产品经理与高精力生活 Vlog，享受在网络世界里真诚表达与连接朋友。
             </p>
-          </div>
+          </motion.div>
 
-          <div className="p-5 bg-blue-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-blue-500 text-white border-2 border-black flex items-center justify-center font-bold">
+          <motion.div 
+            whileHover={{ y: -5, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="p-5 bg-blue-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+          >
+            <div className="w-10 h-10 rounded-xl bg-blue-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
               <Laptop className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">Vibe Coding 狂热粉</h4>
             <p className="text-xs text-gray-700 leading-relaxed font-medium">
               脑子里充满各种未遂 Idea，全天候尝试用自然语言与 AI 结对编程，手撕全栈工具。
             </p>
-          </div>
+          </motion.div>
 
-          <div className="p-5 bg-yellow-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-amber-500 text-white border-2 border-black flex items-center justify-center font-bold">
+          <motion.div 
+            whileHover={{ y: -5, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="p-5 bg-yellow-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+          >
+            <div className="w-10 h-10 rounded-xl bg-amber-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
               <BookOpen className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">深度阅读 & 独立思考</h4>
             <p className="text-xs text-gray-700 leading-relaxed font-medium">
               喜欢《纳瓦尔宝典》等思维著作，相信杠杆率、知识积累与真诚生活带来的终极自由。
             </p>
-          </div>
+          </motion.div>
 
         </div>
       </section>

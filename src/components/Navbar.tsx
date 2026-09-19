@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Menu, X, Sparkles } from 'lucide-react';
 
 export type TabKey = 'home' | 'about' | 'education' | 'experience' | 'projects' | 'skills' | 'contact';
@@ -23,91 +24,120 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
 
   return (
     <header className="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 mb-8">
-      <div className="bg-white rounded-full border-2 sm:border-3 border-black p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_#000] flex items-center justify-between">
+      <div className="bg-white rounded-full border-2 sm:border-3 border-black p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_#000] flex items-center justify-between transition-shadow">
         
-        {/* Brand / Logo */}
-        <button 
+        {/* Brand / Logo with motion */}
+        <motion.button 
           onClick={() => setActiveTab('home')}
-          className="flex items-center gap-2 pl-3 pr-2 py-1 font-black text-lg text-black hover:opacity-80 transition-opacity"
+          whileHover={{ scale: 1.04, rotate: -1 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-2 pl-3 pr-2 py-1 font-black text-lg text-black cursor-pointer"
         >
-          <span className="w-7 h-7 bg-[#FF5C8D] rounded-full border-2 border-black flex items-center justify-center text-xs font-bold shadow-[1px_1px_0px_0px_#000]">
+          <motion.span 
+            whileHover={{ rotate: 15 }}
+            className="w-7 h-7 bg-[#FF5C8D] rounded-full border-2 border-black flex items-center justify-center text-xs font-bold shadow-[1px_1px_0px_0px_#000]"
+          >
             U
-          </span>
-          <span className="tracking-tight hidden xs:inline-block">小柚</span>
-        </button>
+          </motion.span>
+          <span className="tracking-tight hidden xs:inline-block">梁靖悠</span>
+        </motion.button>
 
-        {/* Desktop Nav Items */}
-        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5">
+        {/* Desktop Nav Items with layoutId & motion */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 relative">
           {NAV_ITEMS.map((item) => {
             const isActive = activeTab === item.key;
             return (
-              <button
+              <motion.button
                 key={item.key}
                 onClick={() => setActiveTab(item.key)}
-                className={`relative px-3 py-1.5 text-sm font-bold rounded-lg transition-all ${
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-3.5 py-1.5 text-sm font-black rounded-xl transition-colors cursor-pointer ${
                   isActive
-                    ? 'bg-black text-white border-2 border-black shadow-[2px_2px_0px_0px_#FF5C8D]'
-                    : 'text-gray-800 hover:bg-gray-100 border-2 border-transparent'
+                    ? 'text-white'
+                    : 'text-gray-800 hover:text-black hover:bg-gray-100/80'
                 }`}
               >
+                {/* Smooth Animated Active Background Pill */}
                 {isActive && (
-                  <span className={`absolute -top-1 -right-1 w-2.5 h-2.5 ${item.highlightColor} rounded-full border border-black`} />
+                  <motion.div
+                    layoutId="activeNavPill"
+                    className="absolute inset-0 bg-black border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#FF5C8D] -z-0"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
                 )}
-                {item.label}
-              </button>
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {item.label}
+                  {isActive && (
+                    <span className={`w-2 h-2 ${item.highlightColor} rounded-full border border-black inline-block animate-pulse`} />
+                  )}
+                </span>
+              </motion.button>
             );
           })}
         </nav>
 
         {/* Actions / Mail Icon */}
         <div className="flex items-center gap-2 pr-1">
-          <button
+          <motion.button
             onClick={() => setActiveTab('contact')}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
             title="联系我"
-            className={`w-9 h-9 rounded-full border-2 border-black flex items-center justify-center transition-transform active:scale-95 ${
+            className={`w-9 h-9 rounded-full border-2 border-black flex items-center justify-center cursor-pointer transition-colors ${
               activeTab === 'contact' 
                 ? 'bg-[#FF5C8D] text-white shadow-[2px_2px_0px_0px_#000]' 
                 : 'bg-yellow-300 text-black hover:bg-yellow-400 shadow-[2px_2px_0px_0px_#000]'
             }`}
           >
             <Mail className="w-4 h-4" />
-          </button>
+          </motion.button>
 
           {/* Mobile menu button */}
-          <button
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-9 h-9 rounded-full border-2 border-black bg-gray-100 flex items-center justify-center shadow-[2px_2px_0px_0px_#000]"
+            className="md:hidden w-9 h-9 rounded-full border-2 border-black bg-gray-100 flex items-center justify-center shadow-[2px_2px_0px_0px_#000] cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden mt-2 bg-white rounded-2xl border-3 border-black p-4 shadow-[6px_6px_0px_0px_#000] flex flex-col gap-2 animate-in slide-in-from-top-2 duration-200">
-          {NAV_ITEMS.map((item) => {
-            const isActive = activeTab === item.key;
-            return (
-              <button
-                key={item.key}
-                onClick={() => {
-                  setActiveTab(item.key);
-                  setMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2.5 font-bold rounded-xl border-2 transition-all flex items-center justify-between ${
-                  isActive
-                    ? 'bg-black text-white border-black shadow-[2px_2px_0px_0px_#000]'
-                    : 'bg-gray-50 border-gray-200 text-black hover:border-black'
-                }`}
-              >
-                <span>{item.label}</span>
-                {isActive && <Sparkles className="w-4 h-4 text-yellow-300" />}
-              </button>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.97 }}
+            transition={{ duration: 0.18 }}
+            className="md:hidden mt-2 bg-white rounded-2xl border-3 border-black p-4 shadow-[6px_6px_0px_0px_#000] flex flex-col gap-2"
+          >
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeTab === item.key;
+              return (
+                <motion.button
+                  key={item.key}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => {
+                    setActiveTab(item.key);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2.5 font-bold rounded-xl border-2 transition-all flex items-center justify-between ${
+                    isActive
+                      ? 'bg-black text-white border-black shadow-[2px_2px_0px_0px_#000]'
+                      : 'bg-gray-50 border-gray-200 text-black hover:border-black'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <Sparkles className="w-4 h-4 text-yellow-300" />}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

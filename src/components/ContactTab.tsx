@@ -87,7 +87,7 @@ export const ContactTab: React.FC = () => {
 
               <div className="p-3.5 bg-emerald-50 border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000] font-bold text-sm text-black flex items-center justify-between">
                 <span className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-emerald-600" /> 微信: 小柚 (梁靖悠)
+                  <MessageSquare className="w-4 h-4 text-emerald-600" /> 微信: 梁靖悠
                 </span>
                 <span className="text-xs bg-white px-2 py-0.5 rounded border border-black font-mono">
                   Online
@@ -110,10 +110,10 @@ export const ContactTab: React.FC = () => {
             
             <div className="border-b-2 border-black pb-4">
               <h3 className="text-xl sm:text-2xl font-black text-black">
-                给小柚留言 📝
+                给梁靖悠留言 📝
               </h3>
               <p className="text-xs font-semibold text-gray-600 mt-1">
-                留下你的名字和想法，消息将直接呈递给小柚。
+                留下你的名字和想法，消息将直接呈递给梁靖悠。
               </p>
             </div>
 
@@ -124,7 +124,7 @@ export const ContactTab: React.FC = () => {
                 </div>
                 <h4 className="text-2xl font-black text-black">收到你的留言啦！</h4>
                 <p className="text-sm font-bold text-gray-800">
-                  谢谢你的来信！小柚会在看到后第一时间回复你～
+                  谢谢你的来信！梁靖悠会在看到后第一时间回复你～
                 </p>
                 <button
                   onClick={() => {
@@ -163,7 +163,7 @@ export const ContactTab: React.FC = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-black text-black block">想对小柚说的话 *</label>
+                  <label className="text-xs font-black text-black block">想对梁靖悠说的话 *</label>
                   <textarea
                     required
                     rows={4}

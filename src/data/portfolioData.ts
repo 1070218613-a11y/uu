@@ -92,7 +92,7 @@ export interface RecentUpdate {
 
 export const PERSONAL_INFO = {
   name: "梁靖悠",
-  nickname: "小柚",
+  nickname: "梁靖悠",
   fullName: "梁靖悠",
   englishTitle: "AI Product Manager | 2026 Batch | Shenzhen",
   targetRole: "AI产品经理",
@@ -121,7 +121,7 @@ export const PERSONAL_INFO = {
   major: "工业设计专业 (GPA 4.32 排名 3/122)",
   idCardNo: "SZTU-202209-LJY",
   email: "1070218613@qq.com",
-  bilibiliName: "小柚",
+  bilibiliName: "梁靖悠",
   github: "XMMXOVO"
 };
 

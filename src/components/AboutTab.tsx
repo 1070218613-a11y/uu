@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { PERSONAL_INFO, RECENT_UPDATES, QUEST_TIMELINE } from '../data/portfolioData';
-import { BookOpen, Tv, Code2, Sparkles, Gamepad2, ArrowLeft, ArrowRight } from 'lucide-react';
+import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const AboutTab: React.FC = () => {
+  // Interactive 3D tilt calculation for ID card
+  const [cardRotate, setCardRotate] = useState({ x: 0, y: 0 });
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    // Tilt angle within ±8 degrees
+    setCardRotate({
+      x: -(y / (rect.height / 2)) * 7,
+      y: (x / (rect.width / 2)) * 7,
+    });
+  };
+
+  const handleCardMouseLeave = () => {
+    setCardRotate({ x: 0, y: 0 });
+  };
+
   return (
-    <div className="space-y-12 sm:space-y-16 animate-in fade-in duration-300">
+    <div className="space-y-12 sm:space-y-16">
       
       {/* Top Banner & ID Card Section */}
-      <section className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-10 shadow-[8px_8px_0px_0px_#000] relative">
+      <section className="relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Text Narrative */}
@@ -18,9 +37,12 @@ export const AboutTab: React.FC = () => {
               <h1 className="text-3xl sm:text-5xl font-black text-black tracking-tight">
                 Welcome to
               </h1>
-              <div className="inline-block bg-[#3B82F6] text-white px-5 py-2 rounded-2xl border-3 border-black shadow-[4px_4px_0px_0px_#000] -rotate-1">
-                <span className="text-2xl sm:text-4xl font-black">{PERSONAL_INFO.name} (小柚) 的世界！</span>
-              </div>
+              <motion.div 
+                whileHover={{ rotate: 0, scale: 1.02 }}
+                className="inline-block bg-[#3B82F6] text-white px-5 py-2 rounded-2xl border-3 border-black shadow-[4px_4px_0px_0px_#000] -rotate-1 cursor-default"
+              >
+                <span className="text-2xl sm:text-4xl font-black">{PERSONAL_INFO.name} 的世界！</span>
+              </motion.div>
             </div>
 
             {/* Paragraph 1 */}
@@ -29,9 +51,12 @@ export const AboutTab: React.FC = () => {
                 我是梁靖悠，2026 届本科应届生，毕业于深圳技术大学（SZTU）工业设计专业，中共党员。在校期间专业成绩优异（GPA 4.32，排名 3/122），荣获国家奖学金与校长奖学金。在系统化设计方法与前沿 AI 技术的结合点上，坚定深耕 AI 产品经理 方向。
               </p>
               
-              <p className="p-3 bg-pink-50 border-2 border-black rounded-xl font-bold text-gray-900">
+              <motion.p 
+                whileHover={{ scale: 1.01 }}
+                className="p-3 bg-pink-50 border-2 border-black rounded-xl font-bold text-gray-900 transition-shadow"
+              >
                 具备 <span className="bg-pink-300 px-1.5 py-0.5 rounded border border-black">企业级 AI 产品规划与落地经验</span>，能够独立完成业务调研、需求分析、流程梳理、PRD 及原型设计。理解 LLM、MCP、Agent、幻觉等技术原理，具备智能体工作流、工具调用、人机协同与异常兜底能力。
-              </p>
+              </motion.p>
 
               <p>
                 在实习与项目中主导了【零食电商 AI 客服助手】与【AI 营销工作台】，基于 Dify、RAG 混合召回与自动化 Eval 评测体系推动产品高质上线，让客服 AI 独立解决率达 63.5%，营销文案生产耗时下降 72%。同时曾任校团委主席、音乐社社长及班长，带领团队统筹多场千人级校级活动。
@@ -40,34 +65,49 @@ export const AboutTab: React.FC = () => {
 
             {/* Tags Pills */}
             <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-3 py-1 bg-[#FEF08A] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🎓 深圳技术大学 (SZTU)
-              </span>
-              <span className="px-3 py-1 bg-[#6EE7B7] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                ⭐ GPA 4.32 (排名 3/122)
-              </span>
-              <span className="px-3 py-1 bg-[#F472B6] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🏆 国家奖学金
-              </span>
-              <span className="px-3 py-1 bg-[#A78BFA] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🤖 AI 产品经理 (26届)
-              </span>
-              <span className="px-3 py-1 bg-[#FDE047] border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                🚩 中共党员
-              </span>
+              {[
+                { text: '🎓 深圳技术大学 (SZTU)', bg: 'bg-[#FEF08A]' },
+                { text: '⭐ GPA 4.32 (排名 3/122)', bg: 'bg-[#6EE7B7]' },
+                { text: '🏆 国家奖学金', bg: 'bg-[#F472B6]' },
+                { text: '🤖 AI 产品经理 (26届)', bg: 'bg-[#A78BFA]' },
+                { text: '🚩 中共党员', bg: 'bg-[#FDE047]' },
+              ].map((pill, i) => (
+                <motion.span
+                  key={i}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-3 py-1 ${pill.bg} border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000] cursor-pointer select-none`}
+                >
+                  {pill.text}
+                </motion.span>
+              ))}
             </div>
 
           </div>
 
-          {/* Right ID Card Visual Element */}
+          {/* Right ID Card Visual Element with 3D Interactive Tilt */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-sm bg-[#52E595] border-3 sm:border-4 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_#000] space-y-4">
+            <motion.div 
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+              animate={{
+                rotateX: cardRotate.x,
+                rotateY: cardRotate.y,
+              }}
+              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+              whileHover={{ scale: 1.02 }}
+              className="relative w-full max-w-sm bg-[#52E595] border-3 sm:border-4 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_#000] space-y-4 cursor-grab select-none"
+            >
               
               {/* Sticker overlay top right */}
-              <div className="absolute -top-5 -right-5 w-16 h-16 bg-[#FF5C8D] border-2 border-black rounded-full flex flex-col items-center justify-center font-black text-[10px] text-black shadow-[3px_3px_0px_0px_#000] rotate-12 z-20">
+              <motion.div 
+                animate={{ rotate: [12, 18, 12], scale: [1, 1.05, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-5 -right-5 w-16 h-16 bg-[#FF5C8D] border-2 border-black rounded-full flex flex-col items-center justify-center font-black text-[10px] text-black shadow-[3px_3px_0px_0px_#000] z-20"
+              >
                 <span className="text-base">✨</span>
                 <span>AI PM</span>
-              </div>
+              </motion.div>
 
               {/* ID Card Header */}
               <div className="flex items-center justify-between border-b-2 border-black pb-2">
@@ -75,7 +115,7 @@ export const AboutTab: React.FC = () => {
                   <h3 className="font-black text-lg text-black">身份证件 / ID CARD</h3>
                   <p className="text-[10px] font-extrabold tracking-wider text-black">SHENZHEN TECHNOLOGY UNIVERSITY</p>
                 </div>
-                <Sparkles className="w-5 h-5 text-black" />
+                <Sparkles className="w-5 h-5 text-black animate-spin" style={{ animationDuration: '6s' }} />
               </div>
 
               {/* Card Main Body */}
@@ -102,22 +142,22 @@ export const AboutTab: React.FC = () => {
                 <div className="col-span-7 space-y-2">
                   
                   {/* Field 1: Name */}
-                  <div className="bg-[#FEF08A] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
+                  <motion.div whileHover={{ scale: 1.03 }} className="bg-[#FEF08A] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
                     <span className="text-[9px] font-black text-gray-700 block">姓名</span>
-                    <span className="text-base font-black text-black">{PERSONAL_INFO.fullName} (小柚)</span>
-                  </div>
+                    <span className="text-base font-black text-black">{PERSONAL_INFO.fullName}</span>
+                  </motion.div>
 
                   {/* Field 2: Major */}
-                  <div className="bg-[#CBE4FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
+                  <motion.div whileHover={{ scale: 1.03 }} className="bg-[#CBE4FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
                     <span className="text-[9px] font-black text-gray-700 block">专业 / 成绩</span>
                     <span className="text-xs font-black text-black">工业设计 · GPA 4.32 (3/122)</span>
-                  </div>
+                  </motion.div>
 
                   {/* Field 3: Job */}
-                  <div className="bg-[#E9D5FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
+                  <motion.div whileHover={{ scale: 1.03 }} className="bg-[#E9D5FF] border-2 border-black rounded-xl p-2 shadow-[2px_2px_0px_0px_#000]">
                     <span className="text-[9px] font-black text-gray-700 block">求职意向</span>
                     <span className="text-xs font-black text-black">AI 产品经理 (深圳/全职)</span>
-                  </div>
+                  </motion.div>
 
                 </div>
 
@@ -159,14 +199,14 @@ export const AboutTab: React.FC = () => {
                 国家奖学金获得者
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
         </div>
       </section>
 
       {/* Middle Statement Box */}
-      <section className="bg-white rounded-3xl border-3 border-black p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] text-center space-y-4">
+      <section className="text-center space-y-4 py-4 sm:py-6">
         <div className="inline-block bg-yellow-300 border-2 border-black px-6 py-2 rounded-xl shadow-[3px_3px_0px_0px_#000] -rotate-1">
           <p className="text-base sm:text-xl font-black text-black">
             每一个别人看起来非常矛盾的特质在我身上神奇地拼合
