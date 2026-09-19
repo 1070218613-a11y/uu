@@ -32,7 +32,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F0EC] text-black font-sans selection:bg-pink-300 selection:text-black flex flex-col justify-between">
+    <div className="min-h-screen bg-[#F2F2F2] text-black font-sans selection:bg-pink-300 selection:text-black flex flex-col justify-between">
       
       {/* Top Banner Accent Line */}
       <div className="h-2 w-full bg-linear-to-r from-[#FF5C8D] via-[#3B82F6] to-[#4ADE80]" />

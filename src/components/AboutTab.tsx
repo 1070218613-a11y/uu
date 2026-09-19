@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, RECENT_UPDATES, QUEST_TIMELINE } from '../data/portfolioData';
-import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight, Rocket, TrendingDown, ChevronUp, Trophy, Award, GraduationCap } from 'lucide-react';
+import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight, ChevronUp, Trophy, Bookmark, Send } from 'lucide-react';
 
 // Cute chubby 5-pointed star matching reference sticker closeup
 const ChubbyStar: React.FC<{ className?: string; color?: string }> = ({
@@ -45,17 +45,13 @@ const getTimelineIcon = (iconName?: string, isLight = false) => {
   const strokeColor = isLight ? 'text-white' : 'text-black';
   switch (iconName) {
     case 'rocket':
-      return <Rocket className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+      return <Send className={`w-5 h-5 stroke-[2.5] ${strokeColor} -rotate-45`} />;
     case 'code':
       return <Code2 className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
-    case 'trending':
-      return <TrendingDown className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'award':
+      return <Bookmark className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
     case 'trophy':
       return <Trophy className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
-    case 'award':
-      return <Award className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
-    case 'school':
-      return <GraduationCap className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
     case 'sparkles':
     default:
       return <Sparkles className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
@@ -131,8 +127,11 @@ export const AboutTab: React.FC = () => {
                 Hi，我是
               </h1>
               <motion.div 
-                whileHover={{ rotate: 0, scale: 1.02 }}
-                className="inline-block bg-[#3B82F6] text-white px-6 py-2.5 rounded-2xl border-[1.5px] border-black shadow-[4px_4px_0px_0px_#000] -rotate-1 cursor-default"
+                initial={{ rotate: -2 }}
+                whileHover={{ rotate: -2, scale: 1.08 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                className="inline-block bg-[#2563EB] text-white px-6 py-2.5 rounded-none border-[2.5px] border-black cursor-pointer select-none origin-center"
               >
                 <span className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-wide">{PERSONAL_INFO.name}</span>
               </motion.div>
@@ -141,36 +140,18 @@ export const AboutTab: React.FC = () => {
             {/* Paragraphs with comfortable line-height and font size matching reference */}
             <div className="text-base sm:text-[17px] text-gray-900 leading-[1.85] font-medium space-y-5">
               <p>
-                2026 届本科应届生，本科工业设计专业，中共党员。在校期间专业成绩优异（排名 3/122），荣获国家奖学金与校长奖学金.在系统化设计方法与前沿 AI 技术的结合点上，坚定深耕 AI 产品经理方向。
+                26届本科应届生，工业设计的学习经历，让我系统掌握产品设计、界面设计与产品思维方法，具有从用户需求出发，统筹体验、功能与落地可行性的能力。专业成绩稳居前三，证明我的学习能力与专业基础，也让我能够更快理解 AI 技术，并将其转化为兼具用户价值、良好体验与商业潜力的产品方案——这正是我从事 AI 产品经理的独特优势。
               </p>
               
               <motion.p 
                 whileHover={{ scale: 1.01 }}
                 className="p-4 bg-pink-50 border-[1.5px] border-black rounded-2xl font-bold text-gray-900 leading-relaxed shadow-[2.5px_2.5px_0px_0px_#000] transition-shadow"
               >
-                具备 <span className="bg-pink-300 px-1.5 py-0.5 rounded border border-black">企业级 AI 产品规划与落地经验</span>，能够独立完成业务调研、需求分析、流程梳理、PRD 及原型设计。理解 LLM、MCP、Agent、幻觉等技术原理，具备智能体工作流、工具调用、人机协同与异常兜底能力。
+                具备 <span className="bg-pink-300 px-1.5 py-0.5 rounded border border-black">企业级 AI产品规划与落地经验</span>能够独立完成业务调研、需求分析、流程梳理、PRD及原型设计。理解LLM、MCP、Agent、幻觉等技术原理，具备智能体工作流、工具调用、人机协同与异常兜底能力。
               </motion.p>
             </div>
 
-            {/* Tags Pills */}
-            <div className="flex flex-wrap gap-2.5 pt-1">
-              {[
-                { text: '🎓 深圳技术大学 (SZTU)', bg: 'bg-[#FEF08A]' },
-                { text: '⭐ GPA 4.32 (排名 3/122)', bg: 'bg-[#6EE7B7]' },
-                { text: '🏆 国家奖学金', bg: 'bg-[#F472B6]' },
-                { text: '🤖 AI 产品经理 (26届)', bg: 'bg-[#A78BFA]' },
-                { text: '🚩 中共党员', bg: 'bg-[#FDE047]' },
-              ].map((pill, i) => (
-                <motion.span
-                  key={i}
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-3.5 py-1.5 ${pill.bg} border border-black rounded-xl text-xs sm:text-sm font-bold shadow-[1.5px_1.5px_0px_0px_#000] cursor-pointer select-none`}
-                >
-                  {pill.text}
-                </motion.span>
-              ))}
-            </div>
+
 
           </div>
 
@@ -296,10 +277,10 @@ export const AboutTab: React.FC = () => {
                   {/* Right Column: 3 Stacked Field Cards */}
                   <div className="col-span-7 flex flex-col justify-between space-y-2.5">
                     
-                    {/* Field 1: NAME (Yellow) */}
+                    {/* Field 1: TARGET (Yellow) */}
                     <motion.div whileHover={{ scale: 1.02 }} className="bg-[#FEF08A] border-[1.5px] border-black rounded-[16px] p-3 shadow-[2.5px_2.5px_0px_0px_#000]">
-                      <span className="text-[10px] font-black text-black tracking-wider block leading-none">NAME</span>
-                      <span className="text-xl font-black text-black block mt-1.5">{PERSONAL_INFO.fullName}</span>
+                      <span className="text-[10px] font-black text-black tracking-wider block leading-none">TARGET</span>
+                      <span className="text-lg sm:text-xl font-black text-black block mt-1.5">AI 产品经理</span>
                     </motion.div>
 
                     {/* Field 2: MAJOR (Soft Blue) */}
@@ -308,10 +289,10 @@ export const AboutTab: React.FC = () => {
                       <span className="text-sm font-black text-black block mt-1.5">工业设计</span>
                     </motion.div>
 
-                    {/* Field 3: JOB (Lavender Purple) */}
+                    {/* Field 3: IDENTITY (Lavender Purple) */}
                     <motion.div whileHover={{ scale: 1.02 }} className="bg-[#E9D5FF] border-[1.5px] border-black rounded-[16px] p-3 shadow-[2.5px_2.5px_0px_0px_#000]">
-                      <span className="text-[10px] font-black text-black tracking-wider block leading-none">JOB</span>
-                      <span className="text-sm font-black text-black block mt-1.5">AI 产品经理</span>
+                      <span className="text-[10px] font-black text-black tracking-wider block leading-none">IDENTITY</span>
+                      <span className="text-sm font-black text-black block mt-1.5">中共党员</span>
                     </motion.div>
 
                   </div>
@@ -366,7 +347,7 @@ export const AboutTab: React.FC = () => {
       </section>
 
       {/* Middle Statement Box */}
-      <section className="text-center space-y-6 sm:space-y-8 py-6 sm:py-10 w-full max-w-5xl mx-auto px-2 sm:px-4 flex flex-col items-center">
+      <section className="text-center space-y-6 sm:space-y-8 pt-6 sm:pt-8 pb-1 sm:pb-2 w-full max-w-5xl mx-auto px-2 sm:px-4 flex flex-col items-center">
         <div className="relative inline-flex items-center justify-center bg-[#FFDE38] border-2 border-black px-6 sm:px-12 py-5 sm:py-7 rounded-none shadow-[6px_6px_0px_0px_#000] sm:shadow-[8px_8px_0px_0px_#000] min-w-[150px] sm:min-w-[180px] max-w-full transition-all duration-150 ease-out">
           {/* Top-Left STATEMENT Tag */}
           <div className="absolute -top-4 -left-1 sm:-left-3 bg-white border-2 border-black px-2.5 sm:px-3 py-0.5 text-[11px] sm:text-xs font-mono font-black tracking-widest uppercase rounded-none select-none shadow-[1px_1px_0px_0px_#000]">
@@ -385,7 +366,7 @@ export const AboutTab: React.FC = () => {
       </section>
 
       {/* 近日生活 | RECENT UPDATES (Matching Reference Image 4 exactly with enlarged border-overlapping stickers) */}
-      <section className="relative py-6 sm:py-10 overflow-visible select-none max-w-5xl mx-auto px-2 sm:px-4">
+      <section className="relative !mt-6 sm:!mt-8 pt-2 sm:pt-4 pb-6 sm:pb-10 overflow-visible select-none max-w-6xl xl:max-w-7xl mx-auto px-2 sm:px-6">
         
         {/* Top Header Area: Left-aligned title + playful accents */}
         <div className="relative mb-10 sm:mb-14">
@@ -450,7 +431,7 @@ export const AboutTab: React.FC = () => {
           
           {/* CARD 1: 最近在读 (Interactive: scales up slightly on hover) */}
           <motion.div
-            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[310px] lg:max-w-[360px] xl:max-w-[400px] relative flex-1 shrink-0 cursor-pointer"
             whileHover={{ scale: 1.04, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 18 }}
           >
@@ -494,13 +475,13 @@ export const AboutTab: React.FC = () => {
                 <span className="text-lg sm:text-xl font-black text-black tracking-tight">
                   《纳瓦尔宝典》
                 </span>
-                <div className="h-[2.5px] bg-[#3B82F6] mt-1 ml-auto w-28" />
+                <div className="h-[2.5px] bg-[#3B82F6] mt-1 ml-auto w-32" />
               </div>
             </div>
           </motion.div>
 
-          {/* Connecting Arrows between Card 1 and Card 2 (Elongated to touch both frames, middle star removed, matching Image 2) */}
-          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[70px] max-w-[170px] h-[135px] py-1 -mx-2.5 z-20">
+          {/* Connecting Arrows between Card 1 and Card 2 (Elongated to touch both frames, adapting to gap) */}
+          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[45px] max-w-[90px] lg:max-w-[110px] xl:max-w-[130px] h-[135px] py-1 -mx-2 z-20">
             {/* Top Arching Solid Arrow (touches left card, curves up, points down-right to right card) */}
             <div className="w-full relative">
               <svg
@@ -510,14 +491,14 @@ export const AboutTab: React.FC = () => {
                 fill="none"
               >
                 <path
-                  d="M 0 28 Q 50 -8 98 18"
+                  d="M 0 28 Q 50 -8 100 18"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M 85 10 L 98 18 L 88 28"
+                  d="M 88 10 L 100 18 L 90 27"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
@@ -526,8 +507,8 @@ export const AboutTab: React.FC = () => {
                 />
               </svg>
               {/* Star placed near right card under top arrowhead (Matching Image 2) */}
-              <div className="absolute right-1 top-7 rotate-[12deg] pointer-events-none">
-                <ChubbyStar className="w-6 h-6" />
+              <div className="absolute right-0 top-7 rotate-[12deg] pointer-events-none">
+                <ChubbyStar className="w-5 h-5" />
               </div>
             </div>
 
@@ -540,7 +521,7 @@ export const AboutTab: React.FC = () => {
                 fill="none"
               >
                 <path
-                  d="M 0 22 Q 52 2 98 16"
+                  d="M 0 22 Q 52 2 100 16"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   strokeDasharray="4 4"
@@ -548,7 +529,7 @@ export const AboutTab: React.FC = () => {
                   strokeLinecap="round"
                 />
                 <path
-                  d="M 85 10 L 98 16 L 88 25"
+                  d="M 88 9 L 100 16 L 90 24"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
@@ -561,7 +542,7 @@ export const AboutTab: React.FC = () => {
 
           {/* CARD 2: 最近狂刷 (Interactive: scales up slightly on hover) */}
           <motion.div
-            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[310px] lg:max-w-[360px] xl:max-w-[400px] relative flex-1 shrink-0 cursor-pointer"
             initial={{ rotate: 1.5 }}
             whileHover={{ scale: 1.04, y: -4, rotate: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 18 }}
@@ -609,13 +590,13 @@ export const AboutTab: React.FC = () => {
                   </span>
                   <span className="text-base font-black text-black">↘</span>
                 </div>
-                <div className="h-[2.5px] bg-[#FF5C8D] mt-1 ml-auto w-36" />
+                <div className="h-[2.5px] bg-[#FF5C8D] mt-1 ml-auto w-40" />
               </div>
             </div>
           </motion.div>
 
-          {/* Connecting Arrows between Card 2 and Card 3 (Elongated to touch both frames, middle star removed) */}
-          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[70px] max-w-[170px] h-[135px] py-1 -mx-2.5 z-20">
+          {/* Connecting Arrows between Card 2 and Card 3 (Adapting to gap between cards) */}
+          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[45px] max-w-[90px] lg:max-w-[110px] xl:max-w-[130px] h-[135px] py-1 -mx-2 z-20">
             {/* Upper Arching Dashed Arrow */}
             <div className="w-full relative">
               <svg
@@ -625,7 +606,7 @@ export const AboutTab: React.FC = () => {
                 fill="none"
               >
                 <path
-                  d="M 0 28 Q 50 -8 98 18"
+                  d="M 0 28 Q 50 -8 100 18"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   strokeDasharray="4 4"
@@ -633,7 +614,7 @@ export const AboutTab: React.FC = () => {
                   strokeLinecap="round"
                 />
                 <path
-                  d="M 85 10 L 98 18 L 88 28"
+                  d="M 88 10 L 100 18 L 90 27"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
@@ -642,8 +623,8 @@ export const AboutTab: React.FC = () => {
                 />
               </svg>
               {/* Star placed near left card edge under arrow */}
-              <div className="absolute left-2 top-7 -rotate-[12deg] pointer-events-none">
-                <ChubbyStar className="w-6 h-6" />
+              <div className="absolute left-0 top-7 -rotate-[12deg] pointer-events-none">
+                <ChubbyStar className="w-5 h-5" />
               </div>
             </div>
 
@@ -656,14 +637,14 @@ export const AboutTab: React.FC = () => {
                 fill="none"
               >
                 <path
-                  d="M 0 22 Q 52 2 98 16"
+                  d="M 0 22 Q 52 2 100 16"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M 85 10 L 98 16 L 88 25"
+                  d="M 88 9 L 100 16 L 90 24"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   vectorEffect="non-scaling-stroke"
@@ -676,7 +657,7 @@ export const AboutTab: React.FC = () => {
 
           {/* CARD 3: 最近感兴趣 (Interactive: scales up slightly on hover) */}
           <motion.div
-            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[310px] lg:max-w-[360px] xl:max-w-[400px] relative flex-1 shrink-0 cursor-pointer"
             whileHover={{ scale: 1.04, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 18 }}
           >
@@ -752,12 +733,12 @@ export const AboutTab: React.FC = () => {
             </div>
             {/* Attached chubby star sticker at top-right */}
             <div className="absolute -top-3.5 -right-3 z-30 pointer-events-none">
-              <ChubbyStar className="w-6 h-6" />
+              <ChubbyStar className="w-6 h-6" color="#000000" />
             </div>
           </motion.div>
         </div>
 
-        {/* Big Timeline Box with Faint Gray Grid Background (框内里面也不是全白，是格子底图，但格子线条颜色是灰色很淡的很浅的) */}
+        {/* Big Timeline Box with Faint Gray Grid Background */}
         <div className="relative bg-white rounded-[28px] sm:rounded-[36px] border-2 border-black p-5 sm:p-8 md:p-10 shadow-[6px_6px_0px_0px_#000] overflow-hidden">
           
           {/* Subtle Faint Gray Millimeter Grid Background */}
@@ -811,8 +792,6 @@ export const AboutTab: React.FC = () => {
             <div className="space-y-10 sm:space-y-12 relative z-10">
               {QUEST_TIMELINE.map((item) => {
                 const isMain = item.type === 'main';
-
-                // Dynamic accent background color & icon contrast from item config
                 const accentBg = item.tagBg || (isMain ? 'bg-[#2563EB]' : 'bg-[#FF5C8D]');
                 const isIconLight = item.iconLight ?? isMain;
 
@@ -822,7 +801,10 @@ export const AboutTab: React.FC = () => {
                     {/* LEFT COLUMN: Main Quest Card (left-aligned icon, tag, date) */}
                     <div className="col-span-5 flex justify-end">
                       {isMain && (
-                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]">
+                        <motion.div 
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]"
+                        >
                           {/* 3D Offset Color Layer */}
                           <div className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[20px] border-2 border-black ${accentBg}`} />
                           
@@ -848,7 +830,7 @@ export const AboutTab: React.FC = () => {
                               </h4>
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       )}
                     </div>
 
@@ -862,7 +844,10 @@ export const AboutTab: React.FC = () => {
                     {/* RIGHT COLUMN: Branch Quest Card (right-aligned icon) */}
                     <div className="col-span-5 flex justify-start">
                       {!isMain && (
-                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]">
+                        <motion.div 
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]"
+                        >
                           {/* 3D Offset Color Layer */}
                           <div className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[20px] border-2 border-black ${accentBg}`} />
                           
@@ -888,7 +873,7 @@ export const AboutTab: React.FC = () => {
                               {getTimelineIcon(item.icon, isIconLight)}
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       )}
                     </div>
 
