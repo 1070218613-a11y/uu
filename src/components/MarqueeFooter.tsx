@@ -12,12 +12,12 @@ export const MarqueeFooter: React.FC<MarqueeFooterProps> = ({ onNavigate }) => {
     <footer className="mt-20 space-y-0 w-full overflow-hidden">
       
       {/* Top Infinite Scrolling Ticker Tape (Friend Links Sticker Bar) */}
-      <div className="bg-white border-y-3 border-black py-3 relative overflow-hidden shadow-[0px_4px_0px_0px_#000]">
+      <div className="bg-white border-y-[1.5px] border-black py-3 relative overflow-hidden shadow-[0px_2px_0px_0px_#000]">
         <div className="animate-marquee flex items-center gap-4 whitespace-nowrap">
           {[...FRIEND_LINKS, ...FRIEND_LINKS, ...FRIEND_LINKS].map((link, idx) => (
             <div
               key={idx}
-              className={`px-4 py-1.5 ${link.color} text-black font-extrabold text-xs rounded-full border-2 border-black shadow-[2px_2px_0px_0px_#000] flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform`}
+              className={`px-4 py-1.5 ${link.color} text-black font-extrabold text-xs rounded-full border border-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform`}
             >
               <span className="w-2 h-2 rounded-full bg-black" />
               <span>{link.name}</span>
@@ -27,7 +27,7 @@ export const MarqueeFooter: React.FC<MarqueeFooterProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Dark Footer Container */}
-      <div className="bg-black text-white border-t-3 border-black pt-12 pb-8 px-6 sm:px-12">
+      <div className="bg-black text-white border-t-[1.5px] border-black pt-12 pb-8 px-6 sm:px-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-b border-gray-800 pb-10">
           
           {/* Left Brand Statement */}

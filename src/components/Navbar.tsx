@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
 
   return (
     <header className="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 mb-8">
-      <div className="bg-white rounded-full border-2 sm:border-3 border-black p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_#000] flex items-center justify-between transition-shadow">
+      <div className="bg-white rounded-full border-[1.5px] border-black p-1.5 sm:p-2 shadow-[3px_3px_0px_0px_#000] flex items-center justify-between transition-shadow">
         
         {/* Brand / Logo with motion */}
         <motion.button 
@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         >
           <motion.span 
             whileHover={{ rotate: 15 }}
-            className="w-7 h-7 bg-[#FF5C8D] rounded-full border-2 border-black flex items-center justify-center text-xs font-bold shadow-[1px_1px_0px_0px_#000]"
+            className="w-7 h-7 bg-[#FF5C8D] rounded-full border border-black flex items-center justify-center text-xs font-bold shadow-[1px_1px_0px_0px_#000]"
           >
             U
           </motion.span>
@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavPill"
-                    className="absolute inset-0 bg-black border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#FF5C8D] -z-0"
+                    className="absolute inset-0 bg-black border border-black rounded-xl shadow-[1.5px_1.5px_0px_0px_#FF5C8D] -z-0"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
             title="联系我"
-            className={`w-9 h-9 rounded-full border-2 border-black flex items-center justify-center cursor-pointer transition-colors ${
+            className={`w-9 h-9 rounded-full border-[1.5px] border-black flex items-center justify-center cursor-pointer transition-colors ${
               activeTab === 'contact' 
                 ? 'bg-[#FF5C8D] text-white shadow-[2px_2px_0px_0px_#000]' 
                 : 'bg-yellow-300 text-black hover:bg-yellow-400 shadow-[2px_2px_0px_0px_#000]'
@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-9 h-9 rounded-full border-2 border-black bg-gray-100 flex items-center justify-center shadow-[2px_2px_0px_0px_#000] cursor-pointer"
+            className="md:hidden w-9 h-9 rounded-full border-[1.5px] border-black bg-gray-100 flex items-center justify-center shadow-[2px_2px_0px_0px_#000] cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </motion.button>
@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            className="md:hidden mt-2 bg-white rounded-2xl border-3 border-black p-4 shadow-[6px_6px_0px_0px_#000] flex flex-col gap-2"
+            className="md:hidden mt-2 bg-white rounded-2xl border-[1.5px] border-black p-4 shadow-[4px_4px_0px_0px_#000] flex flex-col gap-2"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeTab === item.key;
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
                     setActiveTab(item.key);
                     setMobileMenuOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-2.5 font-bold rounded-xl border-2 transition-all flex items-center justify-between ${
+                  className={`w-full text-left px-4 py-2.5 font-bold rounded-xl border transition-all flex items-center justify-between ${
                     isActive
                       ? 'bg-black text-white border-black shadow-[2px_2px_0px_0px_#000]'
                       : 'bg-gray-50 border-gray-200 text-black hover:border-black'

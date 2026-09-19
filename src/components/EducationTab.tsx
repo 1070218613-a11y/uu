@@ -10,7 +10,7 @@ export const EducationTab: React.FC = () => {
       {/* Title Header */}
       <motion.div 
         whileHover={{ rotate: 0, scale: 1.02 }}
-        className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#4ADE80] -rotate-1 cursor-default"
+        className="inline-block bg-white border-[1.5px] border-black px-6 py-2 rounded-2xl shadow-[3px_3px_0px_0px_#4ADE80] -rotate-1 cursor-default"
       >
         <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
           <GraduationCap className="w-8 h-8 text-[#4ADE80]" /> 教育背景
@@ -21,11 +21,11 @@ export const EducationTab: React.FC = () => {
       <motion.div 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-10 shadow-[8px_8px_0px_0px_#000] relative overflow-hidden space-y-8"
+        className="bg-white rounded-3xl border-[1.5px] border-black p-6 sm:p-10 shadow-[5px_5px_0px_0px_#000] relative overflow-hidden space-y-8"
       >
         
         {/* Top Header Row */}
-        <div className="flex flex-wrap items-start justify-between gap-4 border-b-3 border-black pb-6">
+        <div className="flex flex-wrap items-start justify-between gap-4 border-b border-black pb-6">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-2xl sm:text-3xl font-black text-black">
@@ -33,7 +33,7 @@ export const EducationTab: React.FC = () => {
               </h2>
               <motion.span 
                 whileHover={{ scale: 1.08, rotate: 2 }}
-                className="bg-[#FEF08A] text-black text-xs font-black px-3 py-1 rounded-full border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000] cursor-default inline-block"
+                className="bg-[#FEF08A] text-black text-xs font-black px-3 py-1 rounded-full border border-black shadow-[1px_1px_0px_0px_#000] cursor-default inline-block"
               >
                 {EDUCATION_DATA.degree}
               </motion.span>
@@ -61,7 +61,7 @@ export const EducationTab: React.FC = () => {
               key={idx}
               whileHover={{ scale: 1.07, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-3.5 py-1.5 bg-[#4ADE80] text-black font-black text-xs rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_#000] cursor-pointer select-none"
+              className="px-3.5 py-1.5 bg-[#4ADE80] text-black font-black text-xs rounded-xl border border-black shadow-[1.5px_1.5px_0px_0px_#000] cursor-pointer select-none"
             >
               🎓 {badge}
             </motion.span>
@@ -71,7 +71,7 @@ export const EducationTab: React.FC = () => {
         {/* Description Narrative */}
         <motion.div 
           whileHover={{ scale: 1.005 }}
-          className="p-5 bg-emerald-50/80 border-2 border-black rounded-2xl text-gray-800 font-medium text-sm leading-relaxed space-y-2"
+          className="p-5 bg-emerald-50/80 border border-black rounded-2xl text-gray-800 font-medium text-sm leading-relaxed space-y-2"
         >
           <p className="font-bold text-black text-base flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-emerald-600" /> 求学感悟与训练
@@ -89,7 +89,7 @@ export const EducationTab: React.FC = () => {
               <motion.div
                 key={i}
                 whileHover={{ y: -3, scale: 1.03 }}
-                className="bg-white p-3 rounded-xl border-2 border-black font-bold text-xs text-black shadow-[2px_2px_0px_0px_#000] flex items-center gap-2 cursor-default transition-shadow"
+                className="bg-white p-3 rounded-xl border border-black font-bold text-xs text-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-2 cursor-default transition-shadow"
               >
                 <span className="w-2 h-2 rounded-full bg-pink-500 shrink-0" />
                 <span>{course}</span>
@@ -108,7 +108,7 @@ export const EducationTab: React.FC = () => {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.02, x: 2 }}
-                className="bg-yellow-50 p-3.5 rounded-xl border-2 border-black font-bold text-xs text-gray-900 shadow-[3px_3px_0px_0px_#000] flex items-start gap-2.5 cursor-default transition-shadow"
+                className="bg-yellow-50 p-3.5 rounded-xl border border-black font-bold text-xs text-gray-900 shadow-[2px_2px_0px_0px_#000] flex items-start gap-2.5 cursor-default transition-shadow"
               >
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <span>{ach}</span>

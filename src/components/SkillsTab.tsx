@@ -10,7 +10,7 @@ export const SkillsTab: React.FC = () => {
       {/* Header */}
       <motion.div 
         whileHover={{ rotate: 0, scale: 1.02 }}
-        className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#F97316] -rotate-1 cursor-default"
+        className="inline-block bg-white border-[1.5px] border-black px-6 py-2 rounded-2xl shadow-[3px_3px_0px_0px_#F97316] -rotate-1 cursor-default"
       >
         <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
           <Wrench className="w-8 h-8 text-[#F97316]" /> 技能与爱好
@@ -26,10 +26,10 @@ export const SkillsTab: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: gIdx * 0.1 }}
             whileHover={{ y: -4 }}
-            className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] hover:shadow-[9px_9px_0px_0px_#000] transition-shadow space-y-6"
+            className="bg-white rounded-3xl border-[1.5px] border-black p-6 sm:p-8 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-6"
           >
             {/* Group Title */}
-            <div className={`p-3.5 ${group.color} border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000]`}>
+            <div className={`p-3.5 ${group.color} border border-black rounded-2xl shadow-[2px_2px_0px_0px_#000]`}>
               <h3 className="font-black text-base sm:text-lg text-black">
                 {group.category}
               </h3>
@@ -50,7 +50,7 @@ export const SkillsTab: React.FC = () => {
                   </div>
 
                   {/* Meter Progress Bar with Spring Animation */}
-                  <div className="w-full h-3.5 bg-gray-100 border-2 border-black rounded-full overflow-hidden p-0.5">
+                  <div className="w-full h-3 bg-gray-100 border border-black rounded-full overflow-hidden p-0.5">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${skill.level}%` }}
@@ -71,8 +71,8 @@ export const SkillsTab: React.FC = () => {
       </div>
 
       {/* Hobbies Showcase Section */}
-      <section className="bg-white rounded-3xl border-3 sm:border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6">
-        <div className="flex items-center gap-2 border-b-2 border-black pb-4">
+      <section className="bg-white rounded-3xl border-[1.5px] border-black p-6 sm:p-8 shadow-[5px_5px_0px_0px_#000] space-y-6">
+        <div className="flex items-center gap-2 border-b border-black pb-4">
           <HeartHandshake className="w-6 h-6 text-pink-600" />
           <h2 className="text-xl sm:text-2xl font-black text-black">
             生活方式 & 兴趣爆点
@@ -84,9 +84,9 @@ export const SkillsTab: React.FC = () => {
           <motion.div 
             whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="p-5 bg-pink-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+            className="p-5 bg-pink-50 border border-black rounded-2xl shadow-[2.5px_2.5px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
           >
-            <div className="w-10 h-10 rounded-xl bg-pink-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
+            <div className="w-10 h-10 rounded-xl bg-pink-500 text-white border border-black flex items-center justify-center font-bold shadow-[1.5px_1.5px_0px_0px_#000]">
               <Youtube className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">B站 UP 主自媒体</h4>
@@ -98,9 +98,9 @@ export const SkillsTab: React.FC = () => {
           <motion.div 
             whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="p-5 bg-blue-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+            className="p-5 bg-blue-50 border border-black rounded-2xl shadow-[2.5px_2.5px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
           >
-            <div className="w-10 h-10 rounded-xl bg-blue-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
+            <div className="w-10 h-10 rounded-xl bg-blue-500 text-white border border-black flex items-center justify-center font-bold shadow-[1.5px_1.5px_0px_0px_#000]">
               <Laptop className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">Vibe Coding 狂热粉</h4>
@@ -112,9 +112,9 @@ export const SkillsTab: React.FC = () => {
           <motion.div 
             whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="p-5 bg-yellow-50 border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
+            className="p-5 bg-yellow-50 border border-black rounded-2xl shadow-[2.5px_2.5px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-shadow space-y-2 cursor-default"
           >
-            <div className="w-10 h-10 rounded-xl bg-amber-500 text-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_0px_#000]">
+            <div className="w-10 h-10 rounded-xl bg-amber-500 text-white border border-black flex items-center justify-center font-bold shadow-[1.5px_1.5px_0px_0px_#000]">
               <BookOpen className="w-5 h-5" />
             </div>
             <h4 className="font-black text-base text-black">深度阅读 & 独立思考</h4>

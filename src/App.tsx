@@ -44,7 +44,7 @@ export default function App() {
         <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {/* Tab Content Rendering with AnimatePresence */}
-        <main className="mt-6 mb-12 overflow-hidden">
+        <main className="mt-6 mb-14 overflow-visible">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -52,6 +52,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.995 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-visible"
             >
               {activeTab === 'home' && (
                 <HomeTab

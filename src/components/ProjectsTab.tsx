@@ -28,7 +28,7 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <motion.div 
           whileHover={{ rotate: 0, scale: 1.02 }}
-          className="inline-block bg-white border-3 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#A855F7] -rotate-1 cursor-default"
+          className="inline-block bg-white border-[1.5px] border-black px-6 py-2 rounded-2xl shadow-[3px_3px_0px_0px_#A855F7] -rotate-1 cursor-default"
         >
           <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
             <FolderGit2 className="w-8 h-8 text-[#A855F7]" /> 作品项目
@@ -42,14 +42,14 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
             placeholder="搜索项目或关键词..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border-2 border-black rounded-2xl pl-10 pr-4 py-2 text-sm font-bold shadow-[3px_3px_0px_0px_#000] focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
+            className="w-full bg-white border border-black rounded-2xl pl-10 pr-4 py-2 text-sm font-bold shadow-[2px_2px_0px_0px_#000] focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
           />
           <Search className="w-4 h-4 text-gray-500 absolute left-3.5 top-3" />
         </div>
       </div>
 
       {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center gap-2 bg-white p-3 border-3 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000]">
+      <div className="flex flex-wrap items-center gap-2 bg-white p-3 border-[1.5px] border-black rounded-2xl shadow-[3px_3px_0px_0px_#000]">
         <span className="text-xs font-black text-gray-600 flex items-center gap-1 mr-2 pl-1">
           <Filter className="w-3.5 h-3.5" /> 分类:
         </span>
@@ -61,9 +61,9 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors border-2 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors border cursor-pointer ${
                 isActive
-                  ? 'bg-black text-white border-black shadow-[2px_2px_0px_0px_#A855F7]'
+                  ? 'bg-black text-white border-black shadow-[1.5px_1.5px_0px_0px_#A855F7]'
                   : 'bg-gray-50 border-gray-300 text-gray-800 hover:border-black'
               }`}
             >
@@ -87,12 +87,12 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
               whileTap={{ scale: 0.99 }}
               transition={{ duration: 0.22 }}
               onClick={() => onOpenProject(proj)}
-              className="group cursor-pointer bg-white rounded-3xl border-3 sm:border-4 border-black p-6 shadow-[6px_6px_0px_0px_#000] hover:shadow-[9px_9px_0px_0px_#000] transition-shadow flex flex-col justify-between space-y-6"
+              className="group cursor-pointer bg-white rounded-3xl border-[1.5px] border-black p-6 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow flex flex-col justify-between space-y-6"
             >
               {/* Top Banner Box */}
-              <div className={`p-5 ${proj.coverColor} border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000] flex flex-col justify-between space-y-3`}>
+              <div className={`p-5 ${proj.coverColor} border border-black rounded-2xl shadow-[2px_2px_0px_0px_#000] flex flex-col justify-between space-y-3`}>
                 <div className="flex items-center justify-between">
-                  <span className={`px-2.5 py-0.5 text-xs font-black text-white border-2 border-black rounded-md ${proj.tagBg} shadow-[1px_1px_0px_0px_#000]`}>
+                  <span className={`px-2.5 py-0.5 text-xs font-black text-white border border-black rounded-md ${proj.tagBg} shadow-[1px_1px_0px_0px_#000]`}>
                     {proj.category}
                   </span>
                   <Sparkles className="w-4 h-4 text-black group-hover:rotate-12 transition-transform" />
@@ -114,7 +114,7 @@ export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
               </p>
 
               {/* Tags & Action Button */}
-              <div className="space-y-4 pt-2 border-t-2 border-dashed border-gray-200">
+              <div className="space-y-4 pt-2 border-t border-dashed border-gray-200">
                 <div className="flex flex-wrap gap-1.5">
                   {proj.tags.map((tag, i) => (
                     <span key={i} className="px-2.5 py-0.5 bg-yellow-50 border border-black rounded-md text-[11px] font-bold">

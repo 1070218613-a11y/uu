@@ -146,7 +146,7 @@ export const RECENT_UPDATES: RecentUpdate[] = [
     id: "3",
     type: "interest",
     title: "最近感兴趣",
-    subtitle: "AI 编程 & Vibe Coding",
+    subtitle: "AI 编程",
     iconBg: "bg-[#10B981]",
     color: "bg-[#D1FAE5]"
   }

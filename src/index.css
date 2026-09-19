@@ -2,25 +2,25 @@
 
 @layer utilities {
   .neo-box {
-    border: 2.5px solid #000000;
-    box-shadow: 4px 4px 0px 0px #000000;
+    border: 1.5px solid #000000;
+    box-shadow: 3px 3px 0px 0px #000000;
   }
   .neo-box-sm {
-    border: 2px solid #000000;
-    box-shadow: 2px 2px 0px 0px #000000;
+    border: 1px solid #000000;
+    box-shadow: 1.5px 1.5px 0px 0px #000000;
   }
   .neo-box-lg {
-    border: 3px solid #000000;
-    box-shadow: 6px 6px 0px 0px #000000;
+    border: 1.5px solid #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
   }
   .neo-btn {
-    border: 2.5px solid #000000;
-    box-shadow: 3px 3px 0px 0px #000000;
+    border: 1.5px solid #000000;
+    box-shadow: 2px 2px 0px 0px #000000;
     transition: all 0.15s ease-in-out;
   }
   .neo-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px 0px #000000;
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 3.5px 3.5px 0px 0px #000000;
   }
   .neo-btn:active {
     transform: translate(1px, 1px);

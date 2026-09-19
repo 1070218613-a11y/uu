@@ -19,15 +19,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
       <div 
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border-3 sm:border-4 border-black rounded-3xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border-[1.5px] border-black rounded-3xl p-6 sm:p-8 shadow-[5px_5px_0px_0px_#000] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full border-2 border-black bg-[#FF5C8D] text-black font-bold flex items-center justify-center shadow-[2px_2px_0px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] transition-all"
+          className="absolute top-4 right-4 w-9 h-9 rounded-full border border-black bg-[#FF5C8D] text-black font-bold flex items-center justify-center shadow-[1.5px_1.5px_0px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[2px_2px_0px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] transition-all"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {/* Article View */}
@@ -36,7 +36,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
           return (
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <span className={`px-3 py-1 text-sm font-bold border-2 border-black rounded-md ${art.tagColor} text-black shadow-[2px_2px_0px_0px_#000]`}>
+                <span className={`px-3 py-1 text-sm font-bold border border-black rounded-md ${art.tagColor} text-black shadow-[1.5px_1.5px_0px_0px_#000]`}>
                   {art.category}
                 </span>
                 <span className="text-sm font-semibold text-gray-600 flex items-center gap-1">
@@ -49,7 +49,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 {art.title}
               </h2>
 
-              <div className="p-4 bg-gray-100 border-2 border-black rounded-xl text-gray-700 italic font-medium">
+              <div className="p-4 bg-gray-100 border border-black rounded-xl text-gray-700 italic font-medium">
                 "{art.summary}"
               </div>
 
@@ -60,20 +60,20 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </p>
               </div>
 
-              <div className="pt-6 border-t-2 border-dashed border-gray-300 flex items-center justify-between">
+              <div className="pt-6 border-t border-dashed border-gray-300 flex items-center justify-between">
                 {art.linkUrl ? (
                   <a
                     href={art.linkUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-pink-600 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border border-black rounded-xl shadow-[2px_2px_0px_0px_#000] hover:bg-pink-600 transition-colors"
                   >
                     <span>前往微信公众号阅读原文</span> <ExternalLink className="w-4 h-4" />
                   </a>
                 ) : <div />}
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 font-black bg-yellow-300 border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-yellow-400"
+                  className="px-6 py-2.5 font-black bg-yellow-300 border border-black rounded-xl shadow-[2px_2px_0px_0px_#000] hover:bg-yellow-400"
                 >
                   关闭阅读
                 </button>
@@ -87,12 +87,12 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
           const vid = item as VideoItem;
           return (
             <div className="space-y-6">
-              <div className={`w-full h-48 sm:h-56 ${vid.coverBg} border-3 border-black rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden shadow-[4px_4px_0px_0px_#000]`}>
-                <span className={`self-start px-3 py-1 font-black text-xs border-2 border-black rounded-md ${vid.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
+              <div className={`w-full h-48 sm:h-56 ${vid.coverBg} border-[1.5px] border-black rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden shadow-[3px_3px_0px_0px_#000]`}>
+                <span className={`self-start px-3 py-1 font-black text-xs border border-black rounded-md ${vid.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
                   {vid.platform}
                 </span>
 
-                <div className="z-10 bg-white/90 backdrop-blur-xs border-2 border-black p-3 rounded-xl shadow-[2px_2px_0px_0px_#000]">
+                <div className="z-10 bg-white/90 backdrop-blur-xs border border-black p-3 rounded-xl shadow-[1.5px_1.5px_0px_0px_#000]">
                   <h3 className="font-black text-lg text-black">{vid.title}</h3>
                 </div>
 
@@ -109,7 +109,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </div>
               </div>
 
-              <div className="p-4 border-2 border-black rounded-2xl bg-yellow-50 space-y-3">
+              <div className="p-4 border border-black rounded-2xl bg-yellow-50 space-y-3">
                 <h4 className="font-bold text-black flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-pink-500" /> B站UP主日常灵感记录
                 </h4>
@@ -118,18 +118,18 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </p>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t-2 border-dashed border-gray-300">
+              <div className="flex items-center justify-between pt-4 border-t border-dashed border-gray-300">
                 <a
                   href="https://space.bilibili.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-bold border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-pink-600 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-bold border border-black rounded-xl shadow-[2px_2px_0px_0px_#000] hover:bg-pink-600 transition-colors"
                 >
                   前往 B站 观看原视频 <ExternalLink className="w-4 h-4" />
                 </a>
                 <button
                   onClick={onClose}
-                  className="px-5 py-2.5 font-bold bg-gray-100 border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000]"
+                  className="px-5 py-2.5 font-bold bg-gray-100 border border-black rounded-xl shadow-[1.5px_1.5px_0px_0px_#000]"
                 >
                   关闭
                 </button>
@@ -143,9 +143,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
           const proj = item as ProjectInfo;
           return (
             <div className="space-y-6">
-              <div className={`p-6 ${proj.coverColor} border-3 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000]`}>
+              <div className={`p-6 ${proj.coverColor} border-[1.5px] border-black rounded-2xl shadow-[3px_3px_0px_0px_#000]`}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`px-3 py-1 font-bold text-xs border-2 border-black rounded-md ${proj.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
+                  <span className={`px-3 py-1 font-bold text-xs border border-black rounded-md ${proj.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
                     {proj.category}
                   </span>
                   <span className="text-xs font-bold text-black bg-white px-2.5 py-1 rounded-full border border-black">
@@ -160,7 +160,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 <h4 className="font-bold text-black mb-2 flex items-center gap-2">
                   <Tag className="w-4 h-4" /> 项目概述
                 </h4>
-                <p className="text-gray-800 leading-relaxed text-sm bg-gray-50 p-4 border-2 border-black rounded-xl">
+                <p className="text-gray-800 leading-relaxed text-sm bg-gray-50 p-4 border border-black rounded-xl">
                   {proj.description}
                 </p>
               </div>
@@ -183,27 +183,27 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 <h4 className="font-bold text-black mb-2">使用技术 & 标签</h4>
                 <div className="flex flex-wrap gap-2">
                   {proj.tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1 bg-white border-2 border-black rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
+                    <span key={i} className="px-3 py-1 bg-white border border-black rounded-lg text-xs font-bold shadow-[1.5px_1.5px_0px_0px_#000]">
                       #{tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 border-t-2 border-dashed border-gray-300 flex items-center justify-between">
+              <div className="pt-4 border-t border-dashed border-gray-300 flex items-center justify-between">
                 {proj.demoUrl ? (
                   <a
                     href={proj.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border-2 border-black rounded-xl shadow-[3px_3px_0px_0px_#000] hover:bg-pink-600 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF5C8D] text-white font-black border border-black rounded-xl shadow-[2px_2px_0px_0px_#000] hover:bg-pink-600 transition-colors"
                   >
                     <span>前往微信公众号阅读原文</span> <ExternalLink className="w-4 h-4" />
                   </a>
                 ) : <div />}
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 bg-black text-white font-bold rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#FF5C8D]"
+                  className="px-6 py-2.5 bg-black text-white font-bold rounded-xl border border-black shadow-[2px_2px_0px_0px_#FF5C8D]"
                 >
                   了解完毕
                 </button>
@@ -219,7 +219,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
             <div className="space-y-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className={`px-3 py-1 text-xs font-bold border-2 border-black rounded-md ${exp.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
+                  <span className={`px-3 py-1 text-xs font-bold border border-black rounded-md ${exp.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
                     {exp.type}
                   </span>
                   <h2 className="text-2xl font-black text-black mt-2">{exp.role}</h2>
@@ -227,7 +227,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </div>
               </div>
 
-              <p className="text-sm font-medium text-gray-800 bg-yellow-50 p-4 border-2 border-black rounded-xl">
+              <p className="text-sm font-medium text-gray-800 bg-yellow-50 p-4 border border-black rounded-xl">
                 {exp.description}
               </p>
 
@@ -244,7 +244,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
               </div>
 
               {exp.metrics && (
-                <div className="bg-emerald-100 border-2 border-black p-3.5 rounded-xl font-bold text-emerald-900 text-sm flex items-center justify-between">
+                <div className="bg-emerald-100 border border-black p-3.5 rounded-xl font-bold text-emerald-900 text-sm flex items-center justify-between">
                   <span>重点数据转化指标:</span>
                   <span className="text-base text-black bg-white px-3 py-1 rounded-md border border-black shadow-[1px_1px_0px_0px_#000]">
                     {exp.metrics}
@@ -263,10 +263,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
                 </div>
               </div>
 
-              <div className="pt-4 border-t-2 border-dashed border-gray-300 flex justify-end">
+              <div className="pt-4 border-t border-dashed border-gray-300 flex justify-end">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 bg-black text-white font-bold rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#60A5FA]"
+                  className="px-6 py-2.5 bg-black text-white font-bold rounded-xl border border-black shadow-[2px_2px_0px_0px_#60A5FA]"
                 >
                   确认
                 </button>
