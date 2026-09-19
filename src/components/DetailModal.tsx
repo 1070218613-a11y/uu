@@ -219,11 +219,16 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
             <div className="space-y-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className={`px-3 py-1 text-xs font-bold border border-black rounded-md ${exp.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
-                    {exp.type}
-                  </span>
-                  <h2 className="text-2xl font-black text-black mt-2">{exp.role}</h2>
-                  <p className="text-base font-bold text-gray-700">{exp.company} · {exp.period}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-[#7C3AED] text-white font-black text-xs flex items-center justify-center border border-black shadow-[1px_1px_0px_0px_#000]">
+                      {exp.timelineIndex || '01'}
+                    </span>
+                    <span className={`px-3 py-1 text-xs font-bold border border-black rounded-md ${exp.tagBg} text-white shadow-[1px_1px_0px_0px_#000]`}>
+                      {exp.type}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl font-black text-black mt-2">{exp.company} · {exp.role}</h2>
+                  <p className="text-base font-bold text-gray-700 mt-0.5">{exp.period}</p>
                 </div>
               </div>
 
@@ -232,23 +237,55 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, data 
               </p>
 
               <div>
-                <h4 className="font-bold text-black mb-2">主要职责与落地成果：</h4>
-                <ul className="space-y-2.5">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx} className="text-sm text-gray-800 flex items-start gap-2 bg-gray-50 p-3 rounded-lg border border-black">
-                      <span className="font-bold text-pink-500">•</span>
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
+                <h4 className="font-black text-black mb-3 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                  <span>详细负责内容与业务成果：</span>
+                </h4>
+
+                {exp.projectBlocks && exp.projectBlocks.length > 0 ? (
+                  <div className="space-y-4">
+                    {exp.projectBlocks.map((block, bIdx) => (
+                      <div key={bIdx} className="bg-white border-[1.5px] border-black rounded-xl p-4 shadow-[2px_2px_0px_0px_#000] space-y-3">
+                        {block.projectTitle && (
+                          <h5 className="font-black text-base text-blue-800 border-b border-gray-200 pb-1.5 flex items-center gap-2">
+                            <span className="px-2 py-0.5 bg-blue-100 text-blue-900 border border-black rounded-md text-xs font-black">
+                              {block.projectTitle.split('：')[0]}
+                            </span>
+                            <span>{block.projectTitle.split('：')[1] || block.projectTitle}</span>
+                          </h5>
+                        )}
+                        <ul className="space-y-2.5">
+                          {block.bullets.map((bullet, idx) => (
+                            <li key={idx} className="text-xs sm:text-sm text-gray-800 flex items-start gap-2 bg-gray-50 p-2.5 sm:p-3 rounded-lg border border-black/30 leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 mt-2" />
+                              <div>
+                                <span className="font-black text-black mr-1.5">• {bullet.label}：</span>
+                                <span className="font-medium text-gray-700">{bullet.content}</span>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <ul className="space-y-2.5">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx} className="text-sm text-gray-800 flex items-start gap-2 bg-gray-50 p-3 rounded-lg border border-black">
+                        <span className="font-bold text-pink-500">•</span>
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {exp.metrics && (
-                <div className="bg-emerald-100 border border-black p-3.5 rounded-xl font-bold text-emerald-900 text-sm flex items-center justify-between">
-                  <span>重点数据转化指标:</span>
-                  <span className="text-base text-black bg-white px-3 py-1 rounded-md border border-black shadow-[1px_1px_0px_0px_#000]">
+                <div className="bg-emerald-100 border border-black p-3.5 rounded-xl text-emerald-900 text-sm space-y-1">
+                  <span className="font-black block">重点数据转化指标:</span>
+                  <p className="text-sm font-normal text-emerald-950 leading-relaxed">
                     {exp.metrics}
-                  </span>
+                  </p>
                 </div>
               )}
 

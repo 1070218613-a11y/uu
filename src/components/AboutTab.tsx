@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, RECENT_UPDATES, QUEST_TIMELINE } from '../data/portfolioData';
-import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight, ChevronUp, Trophy, Bookmark, Send } from 'lucide-react';
+import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight, ChevronUp, Trophy, Bookmark, Send, Camera } from 'lucide-react';
+import defaultAvatarPhoto from '../assets/images/user_portrait_photo_1789816447911.jpg';
 
 // Cute chubby 5-pointed star matching reference sticker closeup
 const ChubbyStar: React.FC<{ className?: string; color?: string }> = ({
@@ -59,22 +60,31 @@ const getTimelineIcon = (iconName?: string, isLight = false) => {
 };
 
 export const AboutTab: React.FC = () => {
-  // Interactive 3D tilt calculation for ID card
-  const [cardRotate, setCardRotate] = useState({ x: 0, y: 0 });
+  // ID card tilt and hover-straighten interaction
+  const [isCardHovered, setIsCardHovered] = useState(false);
 
-  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    // Tilt angle within ±8 degrees
-    setCardRotate({
-      x: -(y / (rect.height / 2)) * 7,
-      y: (x / (rect.width / 2)) * 7,
-    });
-  };
+  // Avatar photo state (defaults to portrait photo, supports local custom upload)
+  const [customPhoto, setCustomPhoto] = useState<string>(() => {
+    return localStorage.getItem('user_avatar_photo') || defaultAvatarPhoto;
+  });
 
-  const handleCardMouseLeave = () => {
-    setCardRotate({ x: 0, y: 0 });
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        if (result) {
+          setCustomPhoto(result);
+          try {
+            localStorage.setItem('user_avatar_photo', result);
+          } catch {
+            // ignore storage quota error
+          }
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // Typewriter effect for statement box
@@ -119,28 +129,34 @@ export const AboutTab: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start overflow-visible">
           
           {/* Left Text Narrative */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7">
             
             {/* Big Headline */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-black tracking-tight leading-none">
-                Hi，我是
-              </h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-black tracking-tight leading-none">
+              Hi，我是
+            </h1>
+
+            {/* Blue Name Box with equal and comfortable spacing above and below */}
+            <div className="my-6 sm:my-7">
               <motion.div 
                 initial={{ rotate: -2 }}
                 whileHover={{ rotate: -2, scale: 1.08 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                className="inline-block bg-[#2563EB] text-white px-6 py-2.5 rounded-none border-[2.5px] border-black cursor-pointer select-none origin-center"
+                className="inline-block bg-[#2563EB] text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-none border-[3px] border-black cursor-pointer select-none origin-center"
               >
-                <span className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-wide">{PERSONAL_INFO.name}</span>
+                <span className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-wider">{PERSONAL_INFO.name}</span>
               </motion.div>
             </div>
 
             {/* Paragraphs with comfortable line-height and font size matching reference */}
             <div className="text-base sm:text-[17px] text-gray-900 leading-[1.85] font-medium space-y-5">
-              <p>
-                26届本科应届生，工业设计的学习经历，让我系统掌握产品设计、界面设计与产品思维方法，具有从用户需求出发，统筹体验、功能与落地可行性的能力。专业成绩稳居前三，证明我的学习能力与专业基础，也让我能够更快理解 AI 技术，并将其转化为兼具用户价值、良好体验与商业潜力的产品方案——这正是我从事 AI 产品经理的独特优势。
+              <p className="space-y-1 text-gray-900 leading-[1.8] font-medium">
+                <span className="block">工业设计的学习经历，让我系统掌握产品设计、界面设计与产品思维方法</span>
+                <span className="block">具有从用户需求出发，统筹体验、功能与落地可行性的能力。</span>
+                <span className="block">专业成绩稳居前三，证明我的学习能力与专业基础，</span>
+                <span className="block">也让我能够更快理解 AI 技术，并将其转化为兼具用户价值、良好体验与商业潜力的产品方案</span>
+                <span className="block">——这正是我从事 AI 产品经理的独特优势。</span>
               </p>
               
               <motion.p 
@@ -158,15 +174,16 @@ export const AboutTab: React.FC = () => {
           {/* Right ID Card Visual Element with ample clearance for sticker */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end pt-6 sm:pt-8 pr-4 sm:pr-6 overflow-visible">
             <motion.div 
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
+              initial={{ rotate: -2.8 }}
               animate={{
-                rotateX: cardRotate.x,
-                rotateY: cardRotate.y,
+                rotate: isCardHovered ? 0 : -2.8,
+                scale: isCardHovered ? 1.03 : 1,
+                y: isCardHovered ? -4 : 0,
               }}
-              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
-              whileHover={{ scale: 1.02 }}
-              className="relative w-full max-w-[360px] bg-white border-[1.5px] border-black rounded-[26px] shadow-[6px_6px_0px_0px_#000] cursor-grab select-none overflow-visible"
+              onMouseEnter={() => setIsCardHovered(true)}
+              onMouseLeave={() => setIsCardHovered(false)}
+              transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+              className="relative w-full max-w-[360px] bg-white border-[1.5px] border-black rounded-[26px] shadow-[6px_6px_0px_0px_#000] cursor-pointer select-none overflow-visible origin-center"
             >
               
               {/* Overlapping Top-Right Circular Sticker (Pink with Smiley & Handle) - 100% visible */}
@@ -204,64 +221,29 @@ export const AboutTab: React.FC = () => {
                   
                   {/* Left Column: Avatar & Sub-pills */}
                   <div className="col-span-5 flex flex-col justify-between space-y-2.5">
-                    {/* Illustration Avatar Card */}
-                    <div className="w-full bg-[#FFF9DE] border-[1.5px] border-black rounded-[18px] p-2 shadow-[2.5px_2.5px_0px_0px_#000] aspect-4/5 flex items-center justify-center overflow-hidden">
-                      <svg viewBox="0 0 200 240" className="w-full h-full">
-                        {/* Hair back */}
-                        <path d="M 40 100 C 40 40, 160 40, 160 100 C 160 140, 150 160, 140 160 C 120 160, 80 160, 60 160 C 50 160, 40 140, 40 100 Z" fill="#18181B" stroke="#000" strokeWidth="1.5" />
-                        
-                        {/* Neck */}
-                        <rect x="85" y="130" width="30" height="30" fill="#FDDFCE" stroke="#000" strokeWidth="1.2" />
-
-                        {/* Ears */}
-                        <circle cx="55" cy="115" r="10" fill="#FDDFCE" stroke="#000" strokeWidth="1.2" />
-                        <circle cx="145" cy="115" r="10" fill="#FDDFCE" stroke="#000" strokeWidth="1.2" />
-
-                        {/* Face */}
-                        <ellipse cx="100" cy="115" rx="38" ry="42" fill="#FDDFCE" stroke="#000" strokeWidth="1.5" />
-
-                        {/* Bangs / Hair front */}
-                        <path d="M 60 95 C 60 65, 140 65, 140 95 C 130 90, 115 92, 100 95 C 85 92, 70 90, 60 95 Z" fill="#18181B" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 62 95 C 55 120, 52 145, 52 150 C 60 152, 65 140, 66 120 Z" fill="#18181B" />
-                        <path d="M 138 95 C 145 120, 148 145, 148 150 C 140 152, 135 140, 134 120 Z" fill="#18181B" />
-
-                        {/* Eyes */}
-                        <circle cx="85" cy="115" r="3.5" fill="#000" />
-                        <circle cx="115" cy="115" r="3.5" fill="#000" />
-
-                        {/* Eyebrows */}
-                        <path d="M 77 106 Q 85 103 93 106" fill="none" stroke="#000" strokeWidth="1.2" strokeLinecap="round" />
-                        <path d="M 107 106 Q 115 103 123 106" fill="none" stroke="#000" strokeWidth="1.2" strokeLinecap="round" />
-
-                        {/* Round Glasses */}
-                        <circle cx="85" cy="115" r="14" fill="none" stroke="#000" strokeWidth="1.5" />
-                        <circle cx="115" cy="115" r="14" fill="none" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 99 115 L 101 115" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 71 113 L 57 110" stroke="#000" strokeWidth="1.2" />
-                        <path d="M 129 113 L 143 110" stroke="#000" strokeWidth="1.2" />
-
-                        {/* Cheeks / Blush */}
-                        <ellipse cx="76" cy="126" rx="5" ry="3" fill="#FCA5A5" opacity="0.6" />
-                        <ellipse cx="124" cy="126" rx="5" ry="3" fill="#FCA5A5" opacity="0.6" />
-
-                        {/* Mouth (Smile) */}
-                        <path d="M 92 131 Q 100 142 108 131 Z" fill="#EF4444" stroke="#000" strokeWidth="1.2" />
-
-                        {/* Clothes / Windbreaker */}
-                        <path d="M 40 240 L 40 185 C 40 165, 70 155, 100 155 C 130 155, 160 165, 160 185 L 160 240 Z" fill="#F472B6" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 82 160 L 82 240 L 118 240 L 118 160 Z" fill="#3B82F6" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 40 210 L 40 240 L 72 240 L 72 210 Z" fill="#3B82F6" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 160 210 L 160 240 L 128 240 L 128 210 Z" fill="#3B82F6" stroke="#000" strokeWidth="1.5" />
-
-                        {/* Collar flaps */}
-                        <path d="M 68 152 L 85 178 L 98 160 Z" fill="#F472B6" stroke="#000" strokeWidth="1.5" />
-                        <path d="M 132 152 L 115 178 L 102 160 Z" fill="#F472B6" stroke="#000" strokeWidth="1.5" />
-
-                        {/* Collar button */}
-                        <circle cx="100" cy="172" r="3.5" fill="#FFF" stroke="#000" strokeWidth="1.2" />
-                        <circle cx="100" cy="172" r="1" fill="#000" />
-                      </svg>
-                    </div>
+                    {/* Photo Avatar Card with Instant Click-to-Upload Capability */}
+                    <label 
+                      title="点击可上传或更换您的本地原图"
+                      className="relative block w-full bg-gray-100 border-[1.5px] border-black rounded-[18px] shadow-[2.5px_2.5px_0px_0px_#000] aspect-4/5 cursor-pointer overflow-hidden group"
+                    >
+                      <input 
+                        type="file" 
+                        accept="image/*" 
+                        onChange={handlePhotoUpload} 
+                        className="hidden" 
+                      />
+                      <img 
+                        src={customPhoto} 
+                        alt={PERSONAL_INFO.name}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Interactive Hover Overlay to easily replace with original local image anytime */}
+                      <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-1 text-center select-none backdrop-blur-[1px]">
+                        <Camera className="w-5 h-5 mb-1 stroke-[2.5] text-white" />
+                        <span className="text-[10px] font-black leading-tight text-white">点击更换原图</span>
+                      </div>
+                    </label>
 
                     {/* Sub-pills under photo */}
                     <div className="flex items-center gap-1.5">

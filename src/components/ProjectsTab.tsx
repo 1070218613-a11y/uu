@@ -1,157 +1,105 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { PROJECTS_DATA, ProjectInfo } from '../data/portfolioData';
-import { FolderGit2, Search, ExternalLink, Sparkles, Filter } from 'lucide-react';
+import React from 'react';
+import { motion } from 'motion/react';
+import { ProjectInfo } from '../data/portfolioData';
+import { FolderGit2, Sparkles, Code2, Terminal, Rocket, Cpu } from 'lucide-react';
 
 interface ProjectsTabProps {
-  onOpenProject: (proj: ProjectInfo) => void;
+  onOpenProject?: (proj: ProjectInfo) => void;
 }
 
-export const ProjectsTab: React.FC<ProjectsTabProps> = ({ onOpenProject }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-
-  const categories = ['All', 'AI', 'toB Product', 'Frontend', 'Side Project'];
-
-  const filteredProjects = PROJECTS_DATA.filter((proj) => {
-    const matchesCategory = selectedCategory === 'All' || proj.category === selectedCategory;
-    const matchesSearch = proj.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          proj.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          proj.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
+export const ProjectsTab: React.FC<ProjectsTabProps> = () => {
   return (
     <div className="space-y-10">
       
-      {/* Title Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <motion.div 
-          whileHover={{ rotate: 0, scale: 1.02 }}
-          className="inline-block bg-white border-[1.5px] border-black px-6 py-2 rounded-2xl shadow-[3px_3px_0px_0px_#A855F7] -rotate-1 cursor-default"
-        >
-          <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
-            <FolderGit2 className="w-8 h-8 text-[#A855F7]" /> 作品项目
-          </h1>
-        </motion.div>
+      {/* Title Header & SEO Introduction */}
+      <div className="space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <motion.div 
+            whileHover={{ rotate: 0, scale: 1.02 }}
+            className="inline-block bg-white border-[1.5px] border-black px-6 py-2 rounded-2xl shadow-[3px_3px_0px_0px_#A855F7] -rotate-1 cursor-default"
+          >
+            <h1 className="text-2xl sm:text-4xl font-black text-black tracking-tight flex items-center gap-3">
+              <FolderGit2 className="w-8 h-8 text-[#A855F7]" /> 作品项目
+            </h1>
+          </motion.div>
 
-        {/* Search Bar */}
-        <div className="relative w-full sm:w-64">
-          <input
-            type="text"
-            placeholder="搜索项目或关键词..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border border-black rounded-2xl pl-10 pr-4 py-2 text-sm font-bold shadow-[2px_2px_0px_0px_#000] focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
-          />
-          <Search className="w-4 h-4 text-gray-500 absolute left-3.5 top-3" />
+          <div className="flex items-center gap-2">
+            <span className="px-3.5 py-1.5 bg-purple-100 text-purple-900 border border-black rounded-xl text-xs font-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-purple-600 animate-pulse" />
+              AI & Vibe Coding Space
+            </span>
+          </div>
         </div>
+
+        {/* SEO / AI & Vibe Coding Statement Box */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white border-[1.5px] border-black p-5 sm:p-7 rounded-3xl shadow-[4px_4px_0px_0px_#A855F7] space-y-4"
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="px-3 py-1 bg-[#A855F7] text-white text-xs font-black rounded-lg border border-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-1.5">
+              <Cpu className="w-3.5 h-3.5" /> AI 原生创新
+            </span>
+            <span className="px-3 py-1 bg-[#FEF08A] text-black text-xs font-black rounded-lg border border-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-1.5">
+              <Code2 className="w-3.5 h-3.5" /> Vibe Coding 深度实践
+            </span>
+            <span className="px-3 py-1 bg-[#DCFCE7] text-emerald-900 text-xs font-black rounded-lg border border-black shadow-[1.5px_1.5px_0px_0px_#000] flex items-center gap-1.5">
+              <Terminal className="w-3.5 h-3.5" /> 创意敏捷工程化
+            </span>
+          </div>
+
+          <p className="text-sm sm:text-base font-normal text-gray-800 leading-relaxed">
+            作为一名狂热的 AI 探索者与 <strong>Vibe Coding（直觉流编程）</strong>践行者，我热衷于将产品感性直觉与大模型前沿智能深度融合。通过 LLM、AI Agent 智能体以及现代 AIGC 工具链，打破传统设计与工程研发之间的认知壁垒，在灵感涌现的瞬间完成从概念构想、交互原型到全栈可交互代码的极速落地。我享受“心流驱动、人机共创”的 Vibe Coding 过程，致力于持续探索 AI-Native 原生产品在真实商业与用户场景中的无限可能。
+          </p>
+
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-dashed border-gray-200 text-xs">
+            <span className="font-black text-black">关键词 / SEO Tags：</span>
+            {[
+              '#AI产品经理',
+              '#VibeCoding',
+              '#AI直觉编程',
+              '#AI-Native应用',
+              '#Agent智能体协同',
+              '#Prompt工程与大模型应用',
+              '#全栈极速原型验证',
+              '#人机协同创新'
+            ].map((tag, i) => (
+              <span 
+                key={i} 
+                className="px-2.5 py-1 bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-900 border border-gray-300 hover:border-black rounded-lg transition-colors font-medium cursor-default"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
-      {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center gap-2 bg-white p-3 border-[1.5px] border-black rounded-2xl shadow-[3px_3px_0px_0px_#000]">
-        <span className="text-xs font-black text-gray-600 flex items-center gap-1 mr-2 pl-1">
-          <Filter className="w-3.5 h-3.5" /> 分类:
-        </span>
-        {categories.map((cat) => {
-          const isActive = selectedCategory === cat;
-          return (
-            <motion.button
-              key={cat}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors border cursor-pointer ${
-                isActive
-                  ? 'bg-black text-white border-black shadow-[1.5px_1.5px_0px_0px_#A855F7]'
-                  : 'bg-gray-50 border-gray-300 text-gray-800 hover:border-black'
-              }`}
-            >
-              {cat}
-            </motion.button>
-          );
-        })}
-      </div>
+      {/* Cleared Content / Coming Soon State */}
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="bg-white rounded-3xl border-[1.5px] border-black p-8 sm:p-14 shadow-[5px_5px_0px_0px_#000] text-center space-y-5"
+      >
+        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-3xl bg-purple-100 border-[2px] border-black flex items-center justify-center shadow-[3px_3px_0px_0px_#A855F7]">
+          <Rocket className="w-8 h-8 sm:w-10 sm:h-10 text-[#A855F7] animate-bounce" />
+        </div>
 
-      {/* Projects Grid with AnimatePresence */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((proj) => (
-            <motion.div
-              key={proj.id}
-              layout
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              transition={{ duration: 0.22 }}
-              onClick={() => onOpenProject(proj)}
-              className="group cursor-pointer bg-white rounded-3xl border-[1.5px] border-black p-6 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-shadow flex flex-col justify-between space-y-6"
-            >
-              {/* Top Banner Box */}
-              <div className={`p-5 ${proj.coverColor} border border-black rounded-2xl shadow-[2px_2px_0px_0px_#000] flex flex-col justify-between space-y-3`}>
-                <div className="flex items-center justify-between">
-                  <span className={`px-2.5 py-0.5 text-xs font-black text-white border border-black rounded-md ${proj.tagBg} shadow-[1px_1px_0px_0px_#000]`}>
-                    {proj.category}
-                  </span>
-                  <Sparkles className="w-4 h-4 text-black group-hover:rotate-12 transition-transform" />
-                </div>
+        <div className="space-y-2 max-w-lg mx-auto">
+          <h3 className="text-xl sm:text-2xl font-black text-black">
+            新一代 AI & Vibe Coding 作品打磨中
+          </h3>
+          <p className="text-xs sm:text-sm font-normal text-gray-600 leading-relaxed">
+            作品项目内容目前已清空重构。更多基于大语言模型、智能体工作流与 Vibe Coding 模式从 0 到 1 打造的 AI-Native 实战产品即将陆续更新上线，敬请期待！
+          </p>
+        </div>
 
-                <div>
-                  <h3 className="text-xl font-black text-black group-hover:text-purple-700 transition-colors">
-                    {proj.title}
-                  </h3>
-                  <p className="text-xs font-bold text-gray-700 mt-1">
-                    {proj.subtitle}
-                  </p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-xs sm:text-sm font-medium text-gray-800 leading-relaxed line-clamp-3">
-                {proj.description}
-              </p>
-
-              {/* Tags & Action Button */}
-              <div className="space-y-4 pt-2 border-t border-dashed border-gray-200">
-                <div className="flex flex-wrap gap-1.5">
-                  {proj.tags.map((tag, i) => (
-                    <span key={i} className="px-2.5 py-0.5 bg-yellow-50 border border-black rounded-md text-[11px] font-bold">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between text-xs font-bold text-black">
-                  <span className="flex items-center gap-1 text-purple-700 font-black">
-                    <ExternalLink className="w-3.5 h-3.5" /> {proj.demoUrl ? "阅读文章 / 查看详情" : "查看产品详情"}
-                  </span>
-                  {proj.demoUrl ? (
-                    <motion.button
-                      type="button"
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(proj.demoUrl, '_blank', 'noopener,noreferrer');
-                      }}
-                      title="点击直接跳转阅读原文"
-                      className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black hover:bg-[#FF5C8D] transition-colors shadow-[2px_2px_0px_0px_#000] cursor-pointer"
-                    >
-                      →
-                    </motion.button>
-                  ) : (
-                    <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center font-black group-hover:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  )}
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border border-black rounded-2xl text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+          <span>正在构建：多模态智能体助手 & 个性化生成式工作流</span>
+        </div>
       </motion.div>
 
     </div>

@@ -1,6 +1,6 @@
 {
   "name": "梁靖悠 - AI产品经理个人网站",
-  "description": "梁靖悠的个人网站：深圳技术大学工业设计本科、国家奖学金获得者、AI产品经理 (26届应届生)，涵盖个人介绍、教育背景、实习经历、AI智能体项目与技能爱好。",
+  "description": "梁靖悠的个人网站：深圳技术大学工业设计本科、国家奖学金获得者、AI产品经理。热爱AI与Vibe Coding直觉编程，涵盖个人介绍、教育背景、工作经历、AI智能体项目与技能爱好。",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

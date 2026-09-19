@@ -49,6 +49,25 @@ export interface EducationInfo {
   achievements: string[];
 }
 
+export interface ExperienceBullet {
+  label: string;
+  content: string;
+}
+
+export interface ExperienceProjectBlock {
+  projectTitle?: string;
+  bullets: ExperienceBullet[];
+}
+
+export interface ExperienceArtifact {
+  id: string;
+  title: string;
+  category: '实地留影' | '脱敏产物' | '评测看板' | '设计规范' | '业务报表';
+  imageUrl: string;
+  description: string;
+  tag: string;
+}
+
 export interface ExperienceInfo {
   id: string;
   role: string;
@@ -58,8 +77,16 @@ export interface ExperienceInfo {
   tagBg: string;
   description: string;
   responsibilities: string[];
+  projectBlocks?: ExperienceProjectBlock[];
   techStack: string[];
   metrics?: string;
+  // Timeline and Artifact extension fields
+  timelineIndex: string;
+  shortSummary: string[];
+  fieldNotePhoto: string;
+  fieldNoteTag: string;
+  fieldNoteType: 'landscape' | 'polaroid';
+  artifacts: ExperienceArtifact[];
 }
 
 export interface ProjectInfo {
@@ -396,37 +423,175 @@ export const EDUCATION_DATA: EducationInfo = {
 export const EXPERIENCES_DATA: ExperienceInfo[] = [
   {
     id: "exp-1",
+    timelineIndex: "01",
     role: "AI产品经理实习生",
     company: "企业合作实践",
-    period: "2026.06 - 2026.09",
-    type: "企业合作实习",
-    tagBg: "bg-[#FF5C8D]",
-    description: "主导【零食电商AI客服助手】与【AI营销工作台】两款核心项目的业务调研、Agent工作流编排、RAG检索优化、Prompt工程及评测迭代闭环。",
-    responsibilities: [
-      "【项目一：零食电商AI客服助手 - 需求调研与MVP】面向 20 人客服团队及日均 3000 条咨询，访谈业务负责人、客服主管与一线客服，识别物流、退换货等高频场景；将降本诉求转化为覆盖场景内自助解决率≥60%，基于频次、风险、数据基础与开发成本划定首版范围及人工兜底边界；",
-      "【项目一：零食电商AI客服助手 - PRD与Agent方案】独立完成 PRD、UE 原型及可联调 Demo，定义意图路由、身份验证、智能体工具调用逻辑、订单与知识库检索、异常处理及验收标准，与开发协作在 3 周内推动可用版本上线，并通过模块化 Prompt、配置变量槽提升复用性；",
-      "【项目一：零食电商AI客服助手 - RAG与评测闭环】基于 Dify 搭建 Agent 工作流，通过数据清洗、Query 增强、混合召回、重排及硬过滤优化效果；搭建自动化 Eval，规划 650+ 条基础及复杂多轮样本，建立 Bad Case 标签与交叉标注机制，驱动 Prompt、知识库和工作流持续迭代；",
-      "【项目二：AI营销工作台 - 需求拆解与链路打通】针对电商运营跨渠道追踪热点、人工筛选及商品匹配效率低、不同平台内容重复改写等问题，梳理打通“热点获取—筛选—商品匹配—多平台文案生成—人工审核”链路，主导运营后台与 AI 内容工作流设计；",
-      "【项目二：AI营销工作台 - Prompt与人机协同】针对抖音、小红书设计差异化 Prompt，将热点、商品卖点及平台要求参数化，并设置事实核验、人工修改与发布确认机制，降低热点误判、卖点错配和直接发布不合格内容的风险。"
+    period: "2026.06 – 2026.09",
+    type: "实习",
+    tagBg: "bg-[#2563EB]",
+    fieldNotePhoto: "/ant_field_note.jpg",
+    fieldNoteTag: "企业合作实践 / FIELD NOTES",
+    fieldNoteType: "landscape",
+    description: "深入开展【项目一：零食电商AI客服系统】与【项目二：AI营销工作台】的需求洞察、Agent工作流搭建、RAG数据清洗与评测、差异化Prompt设计及人机协同落地。",
+    shortSummary: [
+      "推进零食电商 AI 客服系统与 AI 营销工作台从需求洞察、方案设计到上线验证的完整闭环，将业务痛点转化为可落地 的AI 产品；独立完成 PRD、UE 原型及 Demo，运用自动化评测体系持续优化产品效果，在需求分析、AI 产品设计、数据评测、跨团队协作和商业结果交付方面具有综合优势。"
     ],
-    techStack: ["Dify", "Agent工作流", "RAG检索增强", "Prompt工程", "Eval自动化评测", "Bad Case闭环", "PRD/原型设计", "意图路由", "人机协同"],
-    metrics: "客服上线两周处理 4.4 万次咨询，AI 独立解决率 63.5%，异常会话率 2%，客单价提升 24%；营销文案生产耗时下降 72%，有效初稿提升 150%"
+    projectBlocks: [
+      {
+        projectTitle: "项目一：零食电商AI客服系统",
+        bullets: [
+          {
+            label: "需求洞察与MVP",
+            content: "面向20人客服团队及日均约3000条咨询，访谈业务负责人、客服主管与一线客服，聚焦物流、退换货等高频场景，定义覆盖场景内自助解决率≥60%，并基于频次、风险、数据基础与开发成本划定首版范围及转人工红线。"
+          },
+          {
+            label: "产品设计与AI方案商业迭代",
+            content: "独立完成PRD、UE原型及可联调Demo，3周推动可用版本上线；基于Dify搭建Agent工作流，设计意图路由、订单与知识检索、人工转接及失败降级，并通过模块化Prompt、配置变量槽提升复用性。"
+          },
+          {
+            label: "RAG数据清洗与评测",
+            content: "采用数据清洗、Query增强、混合召回、重排及硬过滤优化检索推荐；搭建自动化测评Eval系统，规划650+条基础及复杂多轮样本，制定事实准确性、工具调用、转人工、安全门槛与兜底，参与交叉标注维护标准。"
+          },
+          {
+            label: "项目结果",
+            content: "上线两周处理约4.4万次咨询，覆盖场景内AI独立解决率63.5%、异常会话率约2%；推荐转化率约8%，推荐用户客单价较同期对照提升约24%。"
+          }
+        ]
+      },
+      {
+        projectTitle: "项目二：AI营销工作台",
+        bullets: [
+          {
+            label: "需求拆解与方案设计",
+            content: "针对电商运营跨渠道追踪热点、人工筛选及商品匹配效率低、不同平台内容重复改写等问题，梳理打通“热点获取—筛选—商品匹配—多平台文案生成—人工审核”链路，主导运营后台与AI内容生产流程设计并搭建平台工作流。"
+          },
+          {
+            label: "Prompt与质量控制",
+            content: "针对抖音、小红书的平台语气和内容结构设计差异化Prompt，将热点、商品卖点与平台要求参数化，并保留人工审核与修改环节，降低热点误判、卖点错配和直接发布不合格内容的风险。"
+          },
+          {
+            label: "业务结果",
+            content: "期间抽样统计50次内容任务，平均单篇生产时间由39分钟缩短至11分钟，耗时下降72%；70%的初稿经轻度修改后可用，日均有效初稿由2篇提升至5篇，增长150%。"
+          }
+        ]
+      }
+    ],
+    responsibilities: [
+      "【项目一：零食电商AI客服系统 · 需求洞察与MVP】面向20人客服团队及日均约3000条咨询，访谈业务负责人、客服主管与一线客服，聚焦物流、退换货等高频场景，定义覆盖场景内自助解决率≥60%，并基于频次、风险、数据基础与开发成本划定首版范围及转人工红线。",
+      "【项目一：零食电商AI客服系统 · 产品设计与AI方案商业迭代】独立完成PRD、UE原型及可联调Demo，3周推动可用版本上线；基于Dify搭建Agent工作流，设计意图路由、订单与知识检索、人工转接及失败降级，并通过模块化Prompt、配置变量槽提升复用性。",
+      "【项目一：零食电商AI客服系统 · RAG数据清洗与评测】采用数据清洗、Query增强、混合召回、重排及硬过滤优化检索推荐；搭建自动化测评Eval系统，规划650+条基础及复杂多轮样本，制定事实准确性、工具调用、转人工、安全门槛与兜底，参与交叉标注维护标准。",
+      "【项目一：零食电商AI客服系统 · 项目结果】上线两周处理约4.4万次咨询，覆盖场景内AI独立解决率63.5%、异常会话率约2%；推荐转化率约8%，推荐用户客单价较同期对照提升约24%。",
+      "【项目二：AI营销工作台 · 需求拆解与方案设计】针对电商运营跨渠道追踪热点、人工筛选及商品匹配效率低、不同平台内容重复改写等问题，梳理打通“热点获取—筛选—商品匹配—多平台文案生成—人工审核”链路，主导运营后台与AI内容生产流程设计并搭建平台工作流。",
+      "【项目二：AI营销工作台 · Prompt与质量控制】针对抖音、小红书的平台语气和内容结构设计差异化Prompt，将热点、商品卖点与平台要求参数化，并保留人工审核与修改环节，降低热点误判、卖点错配和直接发布不合格内容的风险。",
+      "【项目二：AI营销工作台 · 业务结果】期间抽样统计50次内容任务，平均单篇生产时间由39分钟缩短至11分钟，耗时下降72%；70%的初稿经轻度修改后可用，日均有效初稿由2篇提升至5篇，增长150%。"
+    ],
+    techStack: ["Dify", "Agent工作流", "RAG检索增强", "Prompt工程", "自动化测评Eval", "意图路由", "PRD/UE原型", "人机协同", "流程设计"],
+    metrics: "客服处理约4.4万次咨询，覆盖场景内AI独立解决率63.5%，异常会话率约2%，推荐转化率约8%，客单价提升约24%；营销文案生产耗时下降72%，日均有效初稿增长150%",
+    artifacts: [
+      {
+        id: "ant-art-1",
+        title: "企业合作业务研讨与现场实拍留影",
+        category: "实地留影",
+        imageUrl: "/ant_field_note.jpg",
+        description: "参与企业合作业务调研现场与团队项目复盘，实地对接客服与运营主管业务需求。",
+        tag: "职场实景 · 现场证据"
+      },
+      {
+        id: "ant-art-2",
+        title: "零食电商 AI 客服系统 PRD 与 Agent 拓扑架构 (脱敏图)",
+        category: "脱敏产物",
+        imageUrl: "/ant_field_note.jpg",
+        description: "基于 Dify 搭建的意图路由、知识检索、订单系统调用及人机兜底降级全链路拓扑流程图。",
+        tag: "PRD · 架构设计"
+      },
+      {
+        id: "ant-art-3",
+        title: "650+ 样本自动化测评 Eval 评测看板 (脱敏数据)",
+        category: "评测看板",
+        imageUrl: "/ant_field_note.jpg",
+        description: "事实准确性、工具调用成功率、转人工阈值及安全门槛的自动化测评看板与多轮交互表现。",
+        tag: "数据证据 · 测评闭环"
+      },
+      {
+        id: "ant-art-4",
+        title: "AI 营销工作台多平台文案生成全流程设计 (脱敏图)",
+        category: "脱敏产物",
+        imageUrl: "/ant_field_note.jpg",
+        description: "打通热点获取至多平台差异化 Prompt 参数化生成的后台原型与人工复核流转看板。",
+        tag: "交付成果 · 原型设计"
+      }
+    ]
   },
   {
     id: "exp-2",
+    timelineIndex: "02",
     role: "AIGC设计实习生",
     company: "深圳禾零科技有限公司",
-    period: "2025.06 - 2025.12",
+    period: "2025.06 – 2025.12",
     type: "实习",
-    tagBg: "bg-[#3B82F6]",
-    description: "深度参与网页后台及 App 需求讨论与设计调研，结合 AIGC 工具链搭建高保真界面与通用设计组件库。",
-    responsibilities: [
-      "【AIGC视觉设计】参与网页后台及 App 的需求讨论与设计调研，结合业务目标、用户路径与研发约束梳理功能范围，使用 Lovart、即梦及 ChatGPT 完成产品 UI 视觉、图标与部件设计，累计生成 200+ 候选方案，交付 60+ 页原型及高保真方案，完善主流程、空状态、加载、异常及操作反馈；沉淀按钮、表单、弹窗等通用组件，六成页面实现复用；",
-      "【Prompt优化及协作交付】针对产品特征、视觉风格及品牌主题设计结构化提示词，通过多轮生成、筛选与局部调整沉淀 30+ 组可复用模板；结合产品及研发反馈迭代方案，跟进 19 项设计问题并按期闭环 18 项，闭环率 95%；",
-      "【交付效能提升】AIGC 辅助使视觉初稿产出时间缩短约 40%，通过状态说明与验收核对提升多端设计一致性与交付效率。"
+    tagBg: "bg-[#0284C7]",
+    fieldNotePhoto: "/bytedance_field_note.jpg",
+    fieldNoteTag: "深圳禾零科技 / FIELD NOTES",
+    fieldNoteType: "polaroid",
+    description: "深入参与网页后台及 App 需求讨论与设计调研，使用 Lovart、即梦及 ChatGPT 完成高保真原型与通用组件库规范设计，并沉淀 30+ 组结构化提示词模版。",
+    shortSummary: [
+      "参与网页后台及App的需求讨论与设计调研，梳理功能范围，完成产品UI视觉、图标与部件设计；沉淀可复用提示词模板及通用设计组件。同时协同产品与研发持续迭代方案，完善页面流程、状态反馈和交互标注，具备AIGC工具应用、设计规范建设及跨团队交付能力。"
     ],
-    techStack: ["Lovart", "即梦 AIGC", "ChatGPT", "Figma", "UI/UX 高保真", "组件库规范", "结构化提示词"],
-    metrics: "交付 60+ 页高保真方案，初稿产出耗时缩短 40%，设计问题闭环率 95%"
+    projectBlocks: [
+      {
+        projectTitle: "核心实习职责与落地成果",
+        bullets: [
+          {
+            label: "AIGC视觉设计",
+            content: "参与网页后台及App的需求讨论与设计调研，结合业务目标、用户路径与研发约束梳理功能范围，使用Lovart、即梦、及ChatGPT完成产品UI视觉、图标与部件设计，累计生成200+候选方案，交付60+页原型及高保真方案，完善主流程、空状态、加载、异常及操作反馈；沉淀按钮、表单、弹窗等通用组件，六成页面实现复用。"
+          },
+          {
+            label: "Prompt优化及协作交付",
+            content: "针对产品特征、视觉风格及品牌主题设计结构化提示词，通过多轮生成、筛选与局部调整沉淀30+组可复用模板；结合产品及研发反馈迭代方案，跟进19项设计问题并按期闭环18项，闭环率95%；AIGC辅助使视觉初稿产出时间缩短约40%，通过状态说明与验收核对提升多端设计一致性与交付效率。"
+          }
+        ]
+      }
+    ],
+    responsibilities: [
+      "【AIGC视觉设计】参与网页后台及App的需求讨论与设计调研，结合业务目标、用户路径与研发约束梳理功能范围，使用Lovart、即梦、及ChatGPT完成产品UI视觉、图标与部件设计，累计生成200+候选方案，交付60+页原型及高保真方案，完善主流程、空状态、加载、异常及操作反馈；沉淀按钮、表单、弹窗等通用组件，六成页面实现复用。",
+      "【Prompt优化及协作交付】针对产品特征、视觉风格及品牌主题设计结构化提示词，通过多轮生成、筛选与局部调整沉淀30+组可复用模板；结合产品及研发反馈迭代方案，跟进19项设计问题并按期闭环18项，闭环率95%；AIGC辅助使视觉初稿产出时间缩短约40%，通过状态说明与验收核对提升多端设计一致性与交付效率。"
+    ],
+    techStack: ["Lovart", "即梦 AIGC", "ChatGPT", "Figma", "UI/UX 高保真", "组件库规范", "结构化提示词", "需求梳理", "验收核对"],
+    metrics: "累计生成200+候选方案，交付60+页原型及高保真方案，通用组件六成页面复用；跟进19项设计问题闭环率95%，视觉初稿产出耗时缩短约40%",
+    artifacts: [
+      {
+        id: "bytedance-art-1",
+        title: "深圳禾零科技工区与团队实践留影",
+        category: "实地留影",
+        imageUrl: "/bytedance_field_note.jpg",
+        description: "在深圳禾零科技有限公司实习期间的工区工作日常与设计团队协同留影。",
+        tag: "职场实景 · 现场证据"
+      },
+      {
+        id: "bytedance-art-2",
+        title: "AIGC 赋能通用组件库与设计规范 (脱敏图)",
+        category: "设计规范",
+        imageUrl: "/bytedance_field_note.jpg",
+        description: "沉淀覆盖按钮、卡片、表单与异常状态的 60+ 页高保真组件规范，支持六成页面复用。",
+        tag: "设计系统 · 规范产出"
+      },
+      {
+        id: "bytedance-art-3",
+        title: "30+ 组结构化 Prompt 模版与生成资产库",
+        category: "脱敏产物",
+        imageUrl: "/bytedance_field_note.jpg",
+        description: "针对品牌质感与功能部件定制的分层 Prompt 模板，初稿生成效率提升 40%。",
+        tag: "工程沉淀 · AIGC模版"
+      },
+      {
+        id: "bytedance-art-4",
+        title: "19 项跨职能体验优化闭环看板 (95%闭环率)",
+        category: "业务报表",
+        imageUrl: "/bytedance_field_note.jpg",
+        description: "设计与研发协同落地推进看板，精准跟踪 18 项验收问题并按期上线。",
+        tag: "协作效率 · 交付证据"
+      }
+    ]
   }
 ];
 
