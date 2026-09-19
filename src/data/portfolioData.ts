@@ -34,6 +34,7 @@ export interface TimelineEvent {
   title: string;
   description?: string;
   icon?: string;
+  iconLight?: boolean;
 }
 
 export interface EducationInfo {
@@ -291,74 +292,70 @@ export const VIDEOS: VideoItem[] = [
 
 export const QUEST_TIMELINE: TimelineEvent[] = [
   {
-    id: "q-1",
+    id: "q-ai-pm-2026",
     year: "2026",
     monthDate: "2026.06",
-    tag: "实习",
-    tagBg: "bg-[#FF5C8D]",
+    tag: "主线",
+    tagBg: "bg-[#2563EB]",
     type: "main",
-    title: "企业合作实践：零食电商AI客服助手 & AI营销工作台",
-    description: "独立完成 PRD 与 Agent 方案，覆盖 63.5% 自助解决率与 2% 异常率，营销文案生产耗时降低 72%。"
+    title: "企业合作实践 · AI产品经理实习生",
+    icon: "rocket",
+    iconLight: true,
   },
   {
-    id: "q-2",
+    id: "q-shanhaijing-2026",
     year: "2026",
     monthDate: "2026.03",
-    tag: "项目",
-    tagBg: "bg-[#3B82F6]",
+    tag: "支线",
+    tagBg: "bg-[#FF5C8D]",
     type: "branch",
-    title: "山海经文化智能记账 App 产品负责人",
-    description: "针对记账繁琐提炼自然语言识别入账与情绪反馈，完成 40+ 页高保真与可运行 Demo 可用性验证。"
+    title: "设计山海经文化智能记账App",
+    icon: "sparkles",
+    iconLight: false,
   },
   {
-    id: "q-3",
+    id: "q-scholarship-2025",
     year: "2025",
-    monthDate: "2025.06",
-    tag: "实习",
-    tagBg: "bg-[#10B981]",
-    type: "main",
-    title: "深圳禾零科技有限公司 · AIGC 设计实习生",
-    description: "交付 60+ 页原型与高保真界面，沉淀 30+ 组结构化提示词模板，初稿耗时缩短 40%，闭环率 95%。"
-  },
-  {
-    id: "q-4",
-    year: "2024",
-    monthDate: "2024.11",
-    tag: "竞赛",
-    tagBg: "bg-[#EC4899]",
-    type: "branch",
-    title: "蓝桥杯全国视觉艺术设计赛 一等奖",
-    description: "斩获蓝桥杯全国一等奖、数字媒体科技作品竞赛全国二等奖、电商三创赛校赛二等奖等多项荣誉。"
-  },
-  {
-    id: "q-5",
-    year: "2023",
-    monthDate: "2023.09",
-    tag: "荣誉",
+    monthDate: "2025.10",
+    tag: "支线",
     tagBg: "bg-[#F59E0B]",
     type: "branch",
-    title: "荣获国家奖学金与校长奖学金",
-    description: "专业 GPA 4.32，综合排名 3/122，在学术成绩与综合素质评价中名列前茅。"
+    title: "获国家奖学金与校长奖学金",
+    icon: "award",
+    iconLight: false,
   },
   {
-    id: "q-6",
-    year: "2022",
-    monthDate: "2022.10",
-    tag: "领导力",
+    id: "q-lanqiao-2025",
+    year: "2025",
+    monthDate: "2025.08",
+    tag: "支线",
     tagBg: "bg-[#A855F7]",
     type: "branch",
-    title: "曾任校团委主席、音乐社社长及班长",
-    description: "统筹 10+ 场校级大型活动，负责全流程策划与落地执行，累计覆盖超 1000 人次，获 7 项校级荣誉。"
+    title: "蓝桥杯全国视觉艺术设计赛 一等奖",
+    icon: "trophy",
+    iconLight: true,
   },
   {
-    id: "q-7",
-    year: "2022",
-    monthDate: "2022.09",
-    tag: "学业",
-    tagBg: "bg-[#10B981]",
+    id: "q-aigc-2025",
+    year: "2025",
+    monthDate: "2025.06",
+    tag: "主线",
+    tagBg: "bg-[#2563EB]",
     type: "main",
-    title: "入学深圳技术大学 (SZTU) · 工业设计专业",
-    description: "德国应用技术模式培养，全国应用型本科排名第一，深圳公办本科排名第三。"
+    title: "深圳禾零科技有限公司 · AIGC 设计实习生",
+    icon: "code",
+    iconLight: true,
+  },
+  {
+    id: "q-ecommerce-2024",
+    year: "2024",
+    monthDate: "2024.12",
+    tag: "支线",
+    tagBg: "bg-[#10B981]",
+    type: "branch",
+    title: "第十三届全国大学生电子商务“创新、创意及创业”挑战赛校赛二等奖",
+    icon: "trophy",
+    iconLight: false,
   }
 ];
 

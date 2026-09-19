@@ -23,8 +23,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 mb-8">
-      <div className="bg-white rounded-full border-[1.5px] border-black p-1.5 sm:p-2 shadow-[3px_3px_0px_0px_#000] flex items-center justify-between transition-shadow">
+    <header className="sticky top-4 z-50 w-full mb-8 flex flex-col items-center">
+      <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-[820px] bg-white rounded-full border-[1.5px] border-black p-1.5 sm:p-2 shadow-[3px_3px_0px_0px_#000] flex items-center justify-between transition-shadow mx-auto">
         
         {/* Brand / Logo with motion */}
         <motion.button 
@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            className="md:hidden mt-2 bg-white rounded-2xl border-[1.5px] border-black p-4 shadow-[4px_4px_0px_0px_#000] flex flex-col gap-2"
+            className="md:hidden mt-2 w-full max-w-2xl bg-white rounded-2xl border-[1.5px] border-black p-4 shadow-[4px_4px_0px_0px_#000] flex flex-col gap-2"
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeTab === item.key;

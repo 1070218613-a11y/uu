@@ -1,7 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO, RECENT_UPDATES, QUEST_TIMELINE } from '../data/portfolioData';
-import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight } from 'lucide-react';
+import { BookOpen, Tv, Code2, Sparkles, ArrowLeft, ArrowRight, Wrench, ArrowDownRight, Rocket, TrendingDown, ChevronUp, Trophy, Award, GraduationCap } from 'lucide-react';
+
+// Cute chubby 5-pointed star matching reference sticker closeup
+const ChubbyStar: React.FC<{ className?: string; color?: string }> = ({
+  className = "w-7 h-7",
+  color = "#000000",
+}) => (
+  <svg
+    className={`${className} select-none pointer-events-none drop-shadow-[0.5px_0.5px_0px_#000]`}
+    viewBox="0 0 24 24"
+    fill={color}
+  >
+    <path
+      d="M12 2.2l2.6 5.8 6.3.6-4.7 4.2 1.4 6.2-5.6-3.3-5.6 3.3 1.4-6.2-4.7-4.2 6.3-.6L12 2.2z"
+      stroke="#000000"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// High-impact chunky lightning bolt sticker matching reference closeup
+const BoltSticker: React.FC<{ className?: string; color?: string }> = ({
+  className = "w-7 h-7",
+  color = "#FF5C8D",
+}) => (
+  <svg
+    className={`${className} select-none pointer-events-none drop-shadow-[1px_1px_0px_#000]`}
+    viewBox="0 0 24 24"
+    fill={color}
+  >
+    <path
+      d="M13 1.5L4.5 13h6.5l-1.5 9.5 10-12.5h-7l1.5-8.5z"
+      stroke="#000000"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const getTimelineIcon = (iconName?: string, isLight = false) => {
+  const strokeColor = isLight ? 'text-white' : 'text-black';
+  switch (iconName) {
+    case 'rocket':
+      return <Rocket className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'code':
+      return <Code2 className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'trending':
+      return <TrendingDown className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'trophy':
+      return <Trophy className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'award':
+      return <Award className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'school':
+      return <GraduationCap className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+    case 'sparkles':
+    default:
+      return <Sparkles className={`w-5 h-5 stroke-[2.5] ${strokeColor}`} />;
+  }
+};
 
 export const AboutTab: React.FC = () => {
   // Interactive 3D tilt calculation for ID card
@@ -325,288 +384,519 @@ export const AboutTab: React.FC = () => {
         </p>
       </section>
 
-      {/* 近日生活 | RECENT UPDATES (Matching Screenshot 1 exactly) */}
-      <section className="relative py-4 sm:py-6 overflow-visible select-none">
+      {/* 近日生活 | RECENT UPDATES (Matching Reference Image 4 exactly with enlarged border-overlapping stickers) */}
+      <section className="relative py-6 sm:py-10 overflow-visible select-none max-w-5xl mx-auto px-2 sm:px-4">
         
-        {/* Top Header Row with Title Sticker and Accents */}
-        <div className="flex items-end justify-between mb-8 sm:mb-12 relative px-2">
+        {/* Top Header Area: Left-aligned title + playful accents */}
+        <div className="relative mb-10 sm:mb-14">
           
-          {/* Left: Arrow and Circles */}
-          <div className="flex flex-col items-start gap-1">
-            <ArrowLeft className="w-6 sm:w-7 h-6 sm:h-7 text-black stroke-[3.5] mb-2" />
-            <div className="flex items-center gap-1.5 ml-6 sm:ml-10">
-              <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-white inline-block" />
-              <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#FF5C8D] inline-block" />
+          {/* Top Row Accents */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            {/* Top-Left Arrow and Two Circles */}
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-black text-black">←</span>
+              <div className="flex items-center gap-1.5 ml-1">
+                <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-white inline-block shadow-[0.5px_0.5px_0px_0px_#000]" />
+                <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#FF5C8D] inline-block shadow-[0.5px_0.5px_0px_0px_#000]" />
+              </div>
+            </div>
+
+            {/* Top-Right Lightning and Two Circles */}
+            <div className="flex items-center gap-4 sm:gap-6">
+              <BoltSticker className="w-7 h-7" color="#FF5C8D" />
+              <div className="flex items-center gap-1.5">
+                <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#FF5C8D] inline-block shadow-[0.5px_0.5px_0px_0px_#000]" />
+                <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#C084FC] inline-block shadow-[0.5px_0.5px_0px_0px_#000]" />
+              </div>
             </div>
           </div>
 
-          {/* Center-Left: Pink Title Sticker */}
-          <div className="relative inline-block -rotate-2">
-            {/* Chunky double layered offset border */}
-            <div className="absolute inset-0 translate-x-1.5 translate-y-2 bg-black border-2 border-black" />
-            <div className="relative bg-[#FF5C8D] border-2 border-black px-5 sm:px-8 py-2.5 sm:py-3.5 shadow-[4px_4px_0px_0px_#000]">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-black tracking-tight whitespace-nowrap">
-                近日生活 | RECENT UPDATES
-              </h2>
-            </div>
-            {/* Black star sticker on top-right edge */}
-            <span className="absolute -top-3.5 right-6 text-black text-base select-none">★</span>
-          </div>
-
-          {/* Right Accents: Lightning Bolt & Circles */}
-          <div className="flex flex-col items-end gap-2">
-            <svg className="w-4 h-4 fill-[#FF5C8D] mr-8" viewBox="0 0 24 24">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-            <div className="flex items-center gap-1.5">
-              <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#FF5C8D] inline-block" />
-              <span className="w-3.5 h-3.5 rounded-full border-2 border-black bg-[#C084FC] inline-block" />
-            </div>
+          {/* Left-Aligned Pink Title Sticker (Interactive: rotates 3 degrees right around center point on hover) */}
+          <div className="flex justify-start">
+            <motion.div
+              className="relative inline-block origin-center cursor-pointer select-none"
+              initial={{ rotate: -2 }}
+              whileHover={{ rotate: 3 }}
+              transition={{ type: "spring", stiffness: 350, damping: 18 }}
+            >
+              {/* Double-line stacked offset border */}
+              <div className="absolute inset-0 translate-x-1 translate-y-1.5 bg-black border-2 border-black" />
+              <div className="relative bg-[#FF5C8D] border-2 border-black px-6 sm:px-8 py-2.5 sm:py-3 shadow-[4px_4px_0px_0px_#000]">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-black tracking-tight whitespace-nowrap">
+                  近日生活 | RECENT UPDATES
+                </h2>
+              </div>
+              {/* Black star sticker overlapping top-right corner of the title */}
+              <div className="absolute -top-4 -right-3 z-30">
+                <ChubbyStar className="w-7 h-7" />
+              </div>
+              {/* Pink lightning sticker overlapping top-left of the title */}
+              <div className="absolute -top-4 -left-3 z-30">
+                <BoltSticker className="w-6 h-6" color="#FF5C8D" />
+              </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Floating elements on far left of cards */}
-        <div className="hidden lg:flex flex-col items-center gap-4 absolute left-0 top-[45%] -translate-y-1/2 -translate-x-8">
-          <ArrowRight className="w-5 h-5 text-black stroke-[3.5]" />
-          <span className="text-black text-sm">◆</span>
+        <div className="hidden lg:flex flex-col items-center gap-4 absolute left-[-32px] top-[58%] -translate-y-1/2">
+          <span className="text-2xl font-black text-black">➔</span>
+          <span className="text-black text-base font-bold">◆</span>
+          <ChubbyStar className="w-5 h-5" />
         </div>
 
-        {/* Three Cards Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-6 relative items-center">
+        {/* Three Cards Layout with Long Connecting Arrows Touching Both Frames */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative">
           
-          {/* CARD 1: 最近在读 */}
-          <div className="relative">
-            {/* Top-left floating star & dot */}
-            <span className="absolute -top-5 left-1 text-black text-xl select-none">★</span>
-            <span className="absolute -top-2 left-9 text-black text-xs select-none">●</span>
-            {/* Top edge arrow */}
-            <span className="absolute -top-3 right-12 text-black text-sm font-black select-none">→</span>
-            {/* Bottom-left diamond */}
-            <span className="absolute -bottom-4 -left-3 text-black text-sm select-none">◆</span>
-            {/* Right edge neon green lightning bolt */}
-            <svg className="w-4 h-4 fill-[#22C55E] absolute top-10 -right-2 z-10" viewBox="0 0 24 24">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
+          {/* CARD 1: 最近在读 (Interactive: scales up slightly on hover) */}
+          <motion.div
+            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            whileHover={{ scale: 1.04, y: -4 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+          >
+            {/* STICKERS OVERLAPPING THE FRAME */}
+            {/* Top-left rounded corner: ChubbyStar directly overlapping border (Matching Screenshot 2) */}
+            <div className="absolute -top-4 left-4 z-30">
+              <ChubbyStar className="w-8 h-8" />
+            </div>
+            {/* Top border: Solid black dot overlapping frame */}
+            <div className="absolute -top-2 left-16 z-30 w-3.5 h-3.5 rounded-full bg-black border border-white" />
+            {/* Top border right: Arrow pointing right overlapping frame */}
+            <span className="absolute -top-3.5 right-10 text-black text-base font-black select-none z-30">→</span>
+            {/* Right edge: Neon green lightning bolt overlapping both white frame & blue 3D backing layer (Matching Image 2) */}
+            <div className="absolute top-2 -right-3.5 z-30">
+              <BoltSticker className="w-8 h-8" color="#22C55E" />
+            </div>
+            {/* Bottom-left corner: Diamond overlapping frame */}
+            <span className="absolute -bottom-3.5 -left-2.5 text-black text-lg font-black select-none z-30">◆</span>
+            {/* Bottom border center: Small star overlapping frame */}
+            <div className="absolute -bottom-3 left-1/3 z-30">
+              <ChubbyStar className="w-5 h-5" />
+            </div>
 
             {/* Bottom Solid Blue 3D Offset Card */}
-            <div className="absolute inset-0 translate-x-2.5 translate-y-2.5 bg-[#2563EB] rounded-2xl border-2 border-black" />
+            <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[#2563EB] rounded-[22px] border-2 border-black" />
 
-            {/* Main White Card */}
-            <div className="relative bg-white rounded-2xl border-2 border-black p-5 sm:p-6 min-h-[165px] flex flex-col justify-between">
+            {/* Main White Card (Compact + Large Text) */}
+            <div className="relative bg-white rounded-[22px] border-2 border-black p-4 sm:p-5 h-[155px] flex flex-col justify-between shadow-sm">
               {/* Top Row: Icon + Title */}
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-[#2563EB] rounded-xl border-2 border-black flex items-center justify-center text-white shadow-[1px_1px_0px_0px_#000]">
+                <div className="w-12 h-12 bg-[#2563EB] rounded-2xl border-2 border-black flex items-center justify-center text-white shadow-[1.5px_1.5px_0px_0px_#000] shrink-0">
                   <BookOpen className="w-6 h-6 stroke-[2.5]" />
                 </div>
-                <span className="font-black text-sm sm:text-base text-black tracking-tight">
+                <span className="font-black text-base sm:text-lg text-black tracking-tight">
                   最近在读
                 </span>
               </div>
 
-              {/* Bottom Row: Content with Underline */}
-              <div className="text-center sm:text-right pr-1 pt-4">
-                <span className="text-base sm:text-lg font-black text-black tracking-tight">
+              {/* Bottom Row: Large Content with Underline */}
+              <div className="text-right pr-2 pb-1">
+                <span className="text-lg sm:text-xl font-black text-black tracking-tight">
                   《纳瓦尔宝典》
                 </span>
-                <div className="h-[2px] bg-[#60A5FA] mt-1.5 mx-auto sm:ml-auto sm:mr-0 w-32" />
+                <div className="h-[2.5px] bg-[#3B82F6] mt-1 ml-auto w-28" />
               </div>
+            </div>
+          </motion.div>
+
+          {/* Connecting Arrows between Card 1 and Card 2 (Elongated to touch both frames, middle star removed, matching Image 2) */}
+          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[70px] max-w-[170px] h-[135px] py-1 -mx-2.5 z-20">
+            {/* Top Arching Solid Arrow (touches left card, curves up, points down-right to right card) */}
+            <div className="w-full relative">
+              <svg
+                className="w-full h-11 text-black overflow-visible"
+                viewBox="0 0 100 35"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M 0 28 Q 50 -8 98 18"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 85 10 L 98 18 L 88 28"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {/* Star placed near right card under top arrowhead (Matching Image 2) */}
+              <div className="absolute right-1 top-7 rotate-[12deg] pointer-events-none">
+                <ChubbyStar className="w-6 h-6" />
+              </div>
+            </div>
+
+            {/* Bottom Arching Dashed Arrow (touches left card, curves across, touches right card) */}
+            <div className="w-full relative mt-auto">
+              <svg
+                className="w-full h-10 text-black overflow-visible"
+                viewBox="0 0 100 30"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M 0 22 Q 52 2 98 16"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeDasharray="4 4"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 85 10 L 98 16 L 88 25"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
           </div>
 
-          {/* Connecting Arrows between Card 1 and Card 2 (visible on md+) */}
-          <div className="hidden md:flex flex-col items-center justify-center absolute left-[30.5%] top-1/2 -translate-y-1/2 z-20 pointer-events-none w-16">
-            {/* Upper curved solid arrow */}
-            <svg className="w-14 h-8 text-black" viewBox="0 0 60 30" fill="none">
-              <path d="M 5 20 Q 30 -5 55 15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-              <path d="M 48 8 L 56 16 L 45 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-black text-sm my-0.5 select-none">★</span>
-            {/* Lower curved dashed arrow */}
-            <svg className="w-14 h-8 text-black" viewBox="0 0 60 30" fill="none">
-              <path d="M 5 10 Q 30 30 55 12" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" strokeLinecap="round" />
-              <path d="M 48 10 L 56 12 L 52 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-
-          {/* CARD 2: 最近狂刷 (Slightly tilted) */}
-          <div className="relative rotate-[1deg]">
-            {/* Top-right pink lightning bolt */}
-            <svg className="w-4 h-4 fill-[#FF5C8D] absolute -top-4 -right-1 z-10" viewBox="0 0 24 24">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-            {/* Bottom-left blue lightning bolt */}
-            <svg className="w-4 h-4 fill-[#2563EB] absolute -bottom-3 -left-2 z-10" viewBox="0 0 24 24">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
+          {/* CARD 2: 最近狂刷 (Interactive: scales up slightly on hover) */}
+          <motion.div
+            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            initial={{ rotate: 1.5 }}
+            whileHover={{ scale: 1.04, y: -4, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+          >
+            {/* STICKERS OVERLAPPING THE FRAME */}
+            {/* Top-right corner: Pink lightning bolt directly overlapping frame (Matching Screenshot 1) */}
+            <div className="absolute -top-5 -right-3 z-30">
+              <BoltSticker className="w-8 h-8" color="#FF5C8D" />
+            </div>
+            {/* Top border left: ChubbyStar overlapping top border */}
+            <div className="absolute -top-3.5 left-7 z-30">
+              <ChubbyStar className="w-6 h-6" />
+            </div>
+            {/* Bottom-left corner: Blue lightning bolt overlapping frame */}
+            <div className="absolute -bottom-4 -left-3.5 z-30">
+              <BoltSticker className="w-7 h-7" color="#2563EB" />
+            </div>
+            {/* Right edge: ChubbyStar overlapping right border */}
+            <div className="absolute top-10 -right-3.5 z-30">
+              <ChubbyStar className="w-7 h-7" />
+            </div>
+            {/* Bottom border center: Small dot */}
+            <div className="absolute -bottom-1.5 left-1/2 z-30 w-3 h-3 rounded-full bg-black border border-white" />
 
             {/* Bottom Solid Pink 3D Offset Card */}
-            <div className="absolute inset-0 translate-x-2.5 translate-y-2.5 bg-[#FF5C8D] rounded-2xl border-2 border-black" />
+            <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[#FF5C8D] rounded-[22px] border-2 border-black" />
 
             {/* Main White Card */}
-            <div className="relative bg-white rounded-2xl border-2 border-black p-5 sm:p-6 min-h-[165px] flex flex-col justify-between">
+            <div className="relative bg-white rounded-[22px] border-2 border-black p-4 sm:p-5 h-[155px] flex flex-col justify-between shadow-sm">
               {/* Top Row: Icon + Title */}
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-[#FF5C8D] rounded-xl border-2 border-black flex items-center justify-center text-white shadow-[1px_1px_0px_0px_#000]">
+                <div className="w-12 h-12 bg-[#FF5C8D] rounded-2xl border-2 border-black flex items-center justify-center text-white shadow-[1.5px_1.5px_0px_0px_#000] shrink-0">
                   <Tv className="w-6 h-6 stroke-[2.5]" />
                 </div>
-                <span className="font-black text-sm sm:text-base text-black tracking-tight">
+                <span className="font-black text-base sm:text-lg text-black tracking-tight">
                   最近狂刷
                 </span>
               </div>
 
-              {/* Bottom Row: Content with Underline and down-right arrow */}
-              <div className="text-center sm:text-right pr-1 pt-4">
-                <div className="flex items-center justify-center sm:justify-end gap-1">
-                  <span className="text-base sm:text-lg font-black text-black tracking-tight">
+              {/* Bottom Row: Large Content with Underline and down-right arrow */}
+              <div className="text-right pr-2 pb-1">
+                <div className="flex items-center justify-end gap-1">
+                  <span className="text-lg sm:text-xl font-black text-black tracking-tight">
                     鳌太线失事视频
                   </span>
-                  <ArrowDownRight className="w-4 h-4 stroke-[3] text-black inline" />
+                  <span className="text-base font-black text-black">↘</span>
                 </div>
-                <div className="h-[2px] bg-[#FF5C8D] mt-1.5 mx-auto sm:ml-auto sm:mr-0 w-36" />
+                <div className="h-[2.5px] bg-[#FF5C8D] mt-1 ml-auto w-36" />
               </div>
+            </div>
+          </motion.div>
+
+          {/* Connecting Arrows between Card 2 and Card 3 (Elongated to touch both frames, middle star removed) */}
+          <div className="hidden md:flex flex-col justify-between pointer-events-none relative flex-1 min-w-[70px] max-w-[170px] h-[135px] py-1 -mx-2.5 z-20">
+            {/* Upper Arching Dashed Arrow */}
+            <div className="w-full relative">
+              <svg
+                className="w-full h-11 text-black overflow-visible"
+                viewBox="0 0 100 35"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M 0 28 Q 50 -8 98 18"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeDasharray="4 4"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 85 10 L 98 18 L 88 28"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {/* Star placed near left card edge under arrow */}
+              <div className="absolute left-2 top-7 -rotate-[12deg] pointer-events-none">
+                <ChubbyStar className="w-6 h-6" />
+              </div>
+            </div>
+
+            {/* Lower Arching Solid Arrow */}
+            <div className="w-full relative mt-auto">
+              <svg
+                className="w-full h-10 text-black overflow-visible"
+                viewBox="0 0 100 30"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M 0 22 Q 52 2 98 16"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 85 10 L 98 16 L 88 25"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
           </div>
 
-          {/* Connecting Arrows between Card 2 and Card 3 (visible on md+) */}
-          <div className="hidden md:flex flex-col items-center justify-center absolute left-[64.5%] top-1/2 -translate-y-1/2 z-20 pointer-events-none w-16">
-            {/* Upper curved dashed arrow */}
-            <svg className="w-14 h-8 text-black" viewBox="0 0 60 30" fill="none">
-              <path d="M 5 20 Q 30 -5 55 15" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" strokeLinecap="round" />
-              <path d="M 48 8 L 56 16 L 45 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            {/* Lower curved solid arrow */}
-            <svg className="w-14 h-8 text-black mt-2" viewBox="0 0 60 30" fill="none">
-              <path d="M 5 10 Q 30 30 55 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-              <path d="M 48 10 L 56 12 L 52 20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-
-          {/* CARD 3: 最近感兴趣 */}
-          <div className="relative">
-            {/* Top-right pink lightning bolt & diamond */}
-            <svg className="w-4 h-4 fill-[#FF5C8D] absolute -top-4 right-5 z-10" viewBox="0 0 24 24">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-            <span className="absolute -top-3 right-0 text-black text-xs select-none">◆</span>
-            {/* Bottom-right star */}
-            <span className="absolute -bottom-4 -right-2 text-black text-xl select-none">★</span>
+          {/* CARD 3: 最近感兴趣 (Interactive: scales up slightly on hover) */}
+          <motion.div
+            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] xl:max-w-[360px] relative flex-1 shrink-0 cursor-pointer"
+            whileHover={{ scale: 1.04, y: -4 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+          >
+            {/* STICKERS OVERLAPPING THE FRAME */}
+            {/* Top-right border: Pink lightning bolt overlapping frame */}
+            <div className="absolute -top-5 right-6 z-30">
+              <BoltSticker className="w-8 h-8" color="#FF5C8D" />
+            </div>
+            {/* Top-right edge: Diamond overlapping frame */}
+            <span className="absolute -top-3.5 -right-2 text-black text-base font-black select-none z-30">◆</span>
+            {/* Top-left border: Green lightning bolt overlapping frame */}
+            <div className="absolute -top-4 left-6 z-30">
+              <BoltSticker className="w-7 h-7" color="#22C55E" />
+            </div>
+            {/* Bottom-right corner: Large ChubbyStar overlapping bottom-right corner frame */}
+            <div className="absolute -bottom-5 -right-4 z-30">
+              <ChubbyStar className="w-9 h-9" />
+            </div>
+            {/* Bottom border center: Black dot */}
+            <div className="absolute -bottom-2 left-1/2 z-30 w-3.5 h-3.5 rounded-full bg-black border border-white" />
 
             {/* Bottom Solid Green 3D Offset Card */}
-            <div className="absolute inset-0 translate-x-2.5 translate-y-2.5 bg-[#22C55E] rounded-2xl border-2 border-black" />
+            <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[#22C55E] rounded-[22px] border-2 border-black" />
 
             {/* Main White Card */}
-            <div className="relative bg-white rounded-2xl border-2 border-black p-5 sm:p-6 min-h-[165px] flex flex-col justify-between">
+            <div className="relative bg-white rounded-[22px] border-2 border-black p-4 sm:p-5 h-[155px] flex flex-col justify-between shadow-sm">
               {/* Top Row: Icon + Title */}
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-[#22C55E] rounded-xl border-2 border-black flex items-center justify-center text-white shadow-[1px_1px_0px_0px_#000]">
-                  <Wrench className="w-5 h-5 stroke-[2.5]" />
+                <div className="w-12 h-12 bg-[#22C55E] rounded-2xl border-2 border-black flex items-center justify-center text-white shadow-[1.5px_1.5px_0px_0px_#000] shrink-0">
+                  <Wrench className="w-6 h-6 stroke-[2.5]" />
                 </div>
-                <span className="font-black text-sm sm:text-base text-black tracking-tight">
+                <span className="font-black text-base sm:text-lg text-black tracking-tight">
                   最近感兴趣
                 </span>
               </div>
 
-              {/* Bottom Row: Content with Underline and Star */}
-              <div className="text-center sm:text-right pr-1 pt-4">
-                <span className="text-base sm:text-lg font-black text-black tracking-tight">
+              {/* Bottom Row: Large Content with Underline */}
+              <div className="text-right pr-2 pb-1">
+                <span className="text-lg sm:text-xl font-black text-black tracking-tight">
                   AI 编程
                 </span>
-                <div className="h-[2px] bg-[#22C55E] mt-1.5 mx-auto sm:ml-auto sm:mr-0 w-24" />
-                <div className="flex justify-center sm:justify-end mt-1 pr-6">
-                  <span className="text-black text-xs select-none">★</span>
+                <div className="h-[2.5px] bg-[#22C55E] mt-1 ml-auto w-24" />
+                <div className="flex justify-end mt-1 pr-4">
+                  <ChubbyStar className="w-5 h-5" />
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
-      {/* 地球Online 开放游戏进度 Timeline (Matching Screenshot 3) */}
-      <section className="bg-white rounded-3xl border-[1.5px] border-black p-6 sm:p-10 shadow-[5px_5px_0px_0px_#000] space-y-8">
+      {/* 地球Online 我的人生进度 Timeline (Matching Reference Image) */}
+      <section className="space-y-6 pt-4">
         
-        {/* Timeline Title */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-3 text-2xl sm:text-4xl font-black text-black">
-            <span>地球Online</span>
-            <span className="bg-[#FF5C8D] text-black px-4 py-1 rounded-2xl border-[1.5px] border-black shadow-[3px_3px_0px_0px_#000] -rotate-1">
-              开放游戏进度
-            </span>
-          </div>
-          <p className="text-xs sm:text-sm font-bold text-gray-600">
-            RECORD OF EARTH ONLINE QUEST PROGRESS
-          </p>
+        {/* Title Outside Box at Top-Center (放到框外中上方) */}
+        <div className="flex items-center justify-center gap-3 sm:gap-4 select-none">
+          <span className="text-3xl sm:text-4xl md:text-5xl font-black text-black tracking-tight">
+            地球Online
+          </span>
+          <motion.div
+            className="relative inline-block origin-center cursor-pointer select-none"
+            initial={{ rotate: -3 }}
+            whileHover={{ rotate: 0 }}
+            transition={{ type: "spring", stiffness: 350, damping: 18 }}
+          >
+            {/* Double offset black border */}
+            <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-black border-2 border-black" />
+            <div className="relative bg-[#FF5C8D] border-2 border-black px-4 sm:px-6 py-1 sm:py-1.5 shadow-[2px_2px_0px_0px_#000]">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-black text-black tracking-tight whitespace-nowrap">
+                我的人生进度
+              </span>
+            </div>
+            {/* Attached chubby star sticker at top-right */}
+            <div className="absolute -top-3.5 -right-3 z-30 pointer-events-none">
+              <ChubbyStar className="w-6 h-6" />
+            </div>
+          </motion.div>
         </div>
 
-        {/* Quest Columns Header */}
-        <div className="grid grid-cols-2 gap-4 max-w-xl mx-auto text-center font-black">
-          <div className="bg-[#FEF08A] border border-black py-2 rounded-xl shadow-[2px_2px_0px_0px_#000]">
-            主线任务
-          </div>
-          <div className="bg-[#6EE7B7] border border-black py-2 rounded-xl shadow-[2px_2px_0px_0px_#000]">
-            支线任务
-          </div>
-        </div>
-
-        {/* Timeline Nodes Container */}
-        <div className="relative max-w-3xl mx-auto pt-6 pb-4">
+        {/* Big Timeline Box with Faint Gray Grid Background (框内里面也不是全白，是格子底图，但格子线条颜色是灰色很淡的很浅的) */}
+        <div className="relative bg-white rounded-[28px] sm:rounded-[36px] border-2 border-black p-5 sm:p-8 md:p-10 shadow-[6px_6px_0px_0px_#000] overflow-hidden">
           
-          {/* Central Vertical Dotted Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 border-r-[1.5px] border-dashed border-black -translate-x-1/2" />
+          {/* Subtle Faint Gray Millimeter Grid Background */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+              `,
+              backgroundSize: '24px 24px'
+            }}
+          />
 
-          <div className="space-y-8 relative">
-            {QUEST_TIMELINE.map((item) => {
-              const isMain = item.type === 'main';
+          {/* Quest Headers: 主线任务 (Left) / ^ Chevron (Center) / 支线任务 (Right) */}
+          <div className="relative flex items-center justify-between max-w-5xl xl:max-w-6xl mx-auto mb-10 px-1 sm:px-4 z-10">
+            
+            {/* Left: 主线任务 (White sticker with pink 3D offset layer) */}
+            <div className="relative inline-block">
+              <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#FF5C8D] border-2 border-black" />
+              <div className="relative bg-white border-2 border-black px-5 sm:px-8 py-2 text-center shadow-sm">
+                <span className="text-lg sm:text-2xl font-black italic tracking-wider text-black">
+                  主线任务
+                </span>
+              </div>
+            </div>
 
-              return (
-                <div key={item.id} className="relative grid grid-cols-12 items-center gap-4">
-                  
-                  {/* Left Column (Main Quest if isMain) */}
-                  <div className="col-span-5 text-right">
-                    {isMain && (
-                      <div className="inline-block bg-white border border-black p-3.5 rounded-2xl shadow-[2.5px_2.5px_0px_0px_#000] max-w-xs text-left">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`px-2 py-0.5 text-[10px] font-black text-white rounded border border-black ${item.tagBg}`}>
-                            {item.tag}
-                          </span>
-                          <span className="text-xs font-mono font-bold text-gray-600">{item.monthDate}</span>
+            {/* Center Axis Top Chevron Badge (^) */}
+            <div className="w-8 h-8 rounded-lg border-2 border-black bg-white flex items-center justify-center shadow-[1.5px_1.5px_0px_0px_#000] z-20">
+              <ChevronUp className="w-5 h-5 stroke-[3] text-black" />
+            </div>
+
+            {/* Right: 支线任务 (White sticker with green 3D offset layer) */}
+            <div className="relative inline-block">
+              <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#4ADE80] border-2 border-black" />
+              <div className="relative bg-white border-2 border-black px-5 sm:px-8 py-2 text-center shadow-sm">
+                <span className="text-lg sm:text-2xl font-black italic tracking-wider text-black">
+                  支线任务
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline Nodes Container */}
+          <div className="relative max-w-5xl xl:max-w-6xl mx-auto">
+            
+            {/* Central Vertical Dashed Line connecting down from the chevron button */}
+            <div className="absolute left-1/2 -top-6 bottom-4 w-0 border-r-2 border-dashed border-black -translate-x-1/2 z-0" />
+
+            {/* Timeline Events List */}
+            <div className="space-y-10 sm:space-y-12 relative z-10">
+              {QUEST_TIMELINE.map((item) => {
+                const isMain = item.type === 'main';
+
+                // Dynamic accent background color & icon contrast from item config
+                const accentBg = item.tagBg || (isMain ? 'bg-[#2563EB]' : 'bg-[#FF5C8D]');
+                const isIconLight = item.iconLight ?? isMain;
+
+                return (
+                  <div key={item.id} className="relative grid grid-cols-12 items-center gap-2 sm:gap-4">
+                    
+                    {/* LEFT COLUMN: Main Quest Card (left-aligned icon, tag, date) */}
+                    <div className="col-span-5 flex justify-end">
+                      {isMain && (
+                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]">
+                          {/* 3D Offset Color Layer */}
+                          <div className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[20px] border-2 border-black ${accentBg}`} />
+                          
+                          {/* Main White Card */}
+                          <div className="relative bg-white rounded-[20px] border-2 border-black p-3.5 sm:p-4 flex items-center gap-3 shadow-sm">
+                            {/* Left Square Icon Badge */}
+                            <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border-2 border-black flex items-center justify-center shrink-0 shadow-[1px_1px_0px_0px_#000] ${accentBg}`}>
+                              {getTimelineIcon(item.icon, isIconLight)}
+                            </div>
+                            
+                            {/* Card Content */}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="bg-black text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded leading-none">
+                                  【主线】
+                                </span>
+                                <span className="text-xs sm:text-sm font-black font-mono text-black">
+                                  {item.monthDate}
+                                </span>
+                              </div>
+                              <h4 className="font-black text-xs sm:text-sm md:text-base text-black tracking-tight leading-snug">
+                                {item.title}
+                              </h4>
+                            </div>
+                          </div>
                         </div>
-                        <h4 className="font-black text-xs sm:text-sm text-black">{item.title}</h4>
-                        {item.description && (
-                          <p className="text-[11px] text-gray-600 font-medium mt-1">{item.description}</p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Center Node Button */}
-                  <div className="col-span-2 flex justify-center z-10">
-                    <div className="w-9 h-9 rounded-full bg-white border-[1.5px] border-black flex items-center justify-center shadow-[1.5px_1.5px_0px_0px_#000]">
-                      <div className={`w-3.5 h-3.5 rounded-full ${isMain ? 'bg-[#3B82F6]' : 'bg-[#FF5C8D]'}`} />
+                      )}
                     </div>
-                  </div>
 
-                  {/* Right Column (Branch Quest if not isMain) */}
-                  <div className="col-span-5 text-left">
-                    {!isMain && (
-                      <div className="inline-block bg-white border border-black p-3.5 rounded-2xl shadow-[2.5px_2.5px_0px_0px_#000] max-w-xs">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`px-2 py-0.5 text-[10px] font-black text-white rounded border border-black ${item.tagBg}`}>
-                            {item.tag}
-                          </span>
-                          <span className="text-xs font-mono font-bold text-gray-600">{item.monthDate}</span>
-                        </div>
-                        <h4 className="font-black text-xs sm:text-sm text-black">{item.title}</h4>
-                        {item.description && (
-                          <p className="text-[11px] text-gray-600 font-medium mt-1">{item.description}</p>
-                        )}
+                    {/* CENTER COLUMN: Concentric Target Bullseye Node */}
+                    <div className="col-span-2 flex justify-center z-10">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-black flex items-center justify-center shadow-[1px_1px_0px_0px_#000]">
+                        <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-black" />
                       </div>
-                    )}
-                  </div>
+                    </div>
 
-                </div>
-              );
-            })}
+                    {/* RIGHT COLUMN: Branch Quest Card (right-aligned icon) */}
+                    <div className="col-span-5 flex justify-start">
+                      {!isMain && (
+                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[460px] xl:max-w-[500px]">
+                          {/* 3D Offset Color Layer */}
+                          <div className={`absolute inset-0 translate-x-2 translate-y-2 rounded-[20px] border-2 border-black ${accentBg}`} />
+                          
+                          {/* Main White Card */}
+                          <div className="relative bg-white rounded-[20px] border-2 border-black p-3.5 sm:p-4 flex items-center justify-between gap-3 shadow-sm">
+                            {/* Card Content */}
+                            <div className="min-w-0 flex-1 text-left">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-xs sm:text-sm font-black font-mono text-black">
+                                  {item.monthDate}
+                                </span>
+                                <span className="bg-black text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded leading-none">
+                                  【支线】
+                                </span>
+                              </div>
+                              <h4 className="font-black text-xs sm:text-sm md:text-base text-black tracking-tight leading-snug">
+                                {item.title}
+                              </h4>
+                            </div>
+
+                            {/* Right Square Icon Badge */}
+                            <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border-2 border-black flex items-center justify-center shrink-0 shadow-[1px_1px_0px_0px_#000] ${accentBg}`}>
+                              {getTimelineIcon(item.icon, isIconLight)}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
 
         </div>

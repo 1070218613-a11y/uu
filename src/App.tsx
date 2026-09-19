@@ -38,7 +38,7 @@ export default function App() {
       <div className="h-2 w-full bg-linear-to-r from-[#FF5C8D] via-[#3B82F6] to-[#4ADE80]" />
 
       {/* Main Container */}
-      <div className="w-full max-w-5xl mx-auto px-4 py-6 flex-1">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1">
         
         {/* Navigation Bar */}
         <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />

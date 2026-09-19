@@ -28,7 +28,7 @@ export const MarqueeFooter: React.FC<MarqueeFooterProps> = ({ onNavigate }) => {
 
       {/* Main Dark Footer Container */}
       <div className="bg-black text-white border-t-[1.5px] border-black pt-12 pb-8 px-6 sm:px-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-b border-gray-800 pb-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-b border-gray-800 pb-10">
           
           {/* Left Brand Statement */}
           <div className="md:col-span-6 space-y-3">
